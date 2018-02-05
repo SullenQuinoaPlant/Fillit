@@ -1,6 +1,6 @@
 include Makefile.mk
 
-export $(OBJS)
+export OBJS
 unit-tests ut :
 	make -C unit-tests
 
