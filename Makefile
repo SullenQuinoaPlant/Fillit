@@ -8,10 +8,6 @@ export SRCS
 unit-tests ut :
 	make -C unit-tests
 
-
-
-.PHONY : git-push gp
-git-push gp :
-	git status
-	git commit -a -m incremental
-	git push
+.PHONY : all_unit-tests aut
+all_unit-tests aut :
+	make -C unit-tests all

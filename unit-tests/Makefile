@@ -7,15 +7,19 @@ CFLAGS = -fno-builtin -Wall -Wextra -Werror
 
 
 
-.PHONY : all
-all : list_tests #build_tests run_tests
+.PHONY : test
+test : list_tests build_tests run_tests
+
 
 
 .PHONY : list_tests
 list_tests :
-	for i in "$TEST_OBJS"; do\
-		if [ -f $$i ]; then echo $$i; fi\
+	@echo "list of test objects : "
+	@for i in "$(TEST_OBJS)"; do\
+		if [ -f $$i ]; then echo $$i; fi;\
 	done
+	@echo "\n"
+
 
 
 .PHONY : build_tests
@@ -31,20 +35,36 @@ cmocka :
 		-include $(SRC_DIR)/$*.c \
 		-o $@ \
 		$<
-	touch "$@"".stamp"
+	touch $@.stamp
 
 
-#.SECONDARY : $(SRCS:.c=.test.c)
-.SECONDARY : %.test.c
+.SECONDARY : $(SRCS:.c=.test.c)
+#.SECONDARY : %.test.c
 %.test.c :
 	cp no_test.c $@
 	touch $@
 
 
+
 .PHONY : run_tests
-run_tests : $(BUILD_STAMPS)
+run_tests : test_execution.stamp
+
+
+test_execution.stamp : $(BUILD_STAMPS) 
+	for i in "$(basename $?)"; do\
+		./$$i;\
+	done
 	touch test_execution.stamp
 
 
-%.test.o.stamp : test_execution.stamp
-	-./$*.test.o
+
+.PHONY : clean
+clean :
+	-rm *.o
+	-rm *.stamp
+	touch test_execution.stamp
+
+
+
+.PHONY : all
+all : clean test
