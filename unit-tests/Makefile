@@ -33,5 +33,6 @@ cmocka :
 
 %.test.c :
 	cp no_test.c $@
+	touch $@
 
 run_tests : 
