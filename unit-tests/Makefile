@@ -1,5 +1,5 @@
 TEST_OBJS := $(addprefix test_, $(OBJS))
-OBJS = $(addprefix ../, $(OBJS))
+OBJS := $(addprefix ../, $(OBJS))
 
 all :
 	echo $(OBJS)
