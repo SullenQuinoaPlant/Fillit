@@ -32,7 +32,8 @@ cmocka :
 	touch "$@"".stamp"
 
 
-.SECONDARY : $(SRCS:.c=.test.c)
+#.SECONDARY : $(SRCS:.c=.test.c)
+.SECONDARY : %.test.c
 %.test.c :
 	cp no_test.c $@
 	touch $@
