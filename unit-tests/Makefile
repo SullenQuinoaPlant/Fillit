@@ -28,7 +28,7 @@ cmocka :
 	touch "$@"".stamp"
 
 
-test_%.c :
-	cp no_test.c test_%.c
+%.test.c :
+	cp no_test.c $@
 
 run_tests : 
