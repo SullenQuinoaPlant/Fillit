@@ -17,7 +17,7 @@ list_tests :
 
 build_tests : $(TEST_OBJS) | cmocka
 
-.PHONY : tests
+.PHONY : build_tests
 
 
 cmocka :
@@ -30,6 +30,6 @@ cmocka :
 
 %.test.c :
 	touch $@
-	cp no_test.c $@
+#	cp no_test.c $@
 
 run_tests : 
