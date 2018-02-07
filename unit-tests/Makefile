@@ -1,6 +1,6 @@
 SRC_DIR = ..
 TEST_OBJS := $(SRCS:.c=.test.o)
-BUILD_STAMPS := (TEST_OBJS:.o=.o.stamp)
+BUILD_STAMPS := $(TEST_OBJS:.o=.o.stamp)
 
 CC = gcc
 CFLAGS = -fno-builtin -Wall -Wextra -Werror
