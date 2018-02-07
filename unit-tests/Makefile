@@ -1,10 +1,12 @@
-TEST_OBJS := $(addprefix test_, $(OBJS))
-OBJS := $(addprefix ../, $(OBJS))
+TEST_EXES := $(addprefix test_, $($(SRCS):%c=%.exe))
+SRCS := $(addprefix ../, $(SRCS))
 
 all :
-	echo $(OBJS)
-	cat $(OBJS)
-	echo $(TEST_OBJS)
-
+	echo $(TEST_EXES)
+	echo ${SRCS}
+	echo $(SRCS)
+	cat $(SRCS)
 
 .PHONY : all
+
+
