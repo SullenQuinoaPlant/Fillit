@@ -1,4 +1,4 @@
-TEST_OBJS := $(addprefix test_, $(SRCS:.c=.o))
+TEST_OBJS := $(SRCS:.c=.test.o))
 SRC_DIR = ..
 
 CC = gcc
@@ -23,13 +23,12 @@ build_tests : $(TEST_OBJS) | cmocka
 cmocka :
 	
 
-test_%.o : test_%.c $(SRC_DIR)/%.c
+%.test.o : %.test.c $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $<
 	touch "$@"".stamp"
 
 
 test_%.c :
-	touch $@
-
+	cp no_test.c test_%.c
 
 run_tests : 
