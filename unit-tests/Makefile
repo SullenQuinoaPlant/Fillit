@@ -6,16 +6,17 @@ CC = gcc
 CFLAGS = -fno-builtin -Wall -Wextra -Werror
 
 
-.PHONY : all list_tests build_tests run_tests
-.SECONDARY : $(SRCS:.c=.test.c)
 
+.PHONY : all
 all : build_tests run_tests
 
 
+.PHONY : list_tests
 list_tests :
-	echo $(TEST_OBJS)
+	for i in "$TEST_OBJS"; do echo $i;done
 
 
+.PHONY : build_tests
 build_tests : $(TEST_OBJS) | cmocka
 
 
@@ -31,14 +32,16 @@ cmocka :
 	touch "$@"".stamp"
 
 
+.SECONDARY : $(SRCS:.c=.test.c)
 %.test.c :
 	cp no_test.c $@
 	touch $@
 
 
+.PHONY : run_tests
 run_tests : $(BUILD_STAMPS)
-	touch run_tests
+	touch test_execution.stamp
 
 
-%.test.o.stamp :
+%.test.o.stamp : test_execution.stamp
 	-./$*.test.o
