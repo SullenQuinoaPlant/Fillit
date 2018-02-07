@@ -1,23 +1,22 @@
-TEST_OBJS := $(SRCS:.c=.test.o)
 SRC_DIR = ..
+TEST_OBJS := $(SRCS:.c=.test.o)
+BUILD_STAMPS := (TEST_OBJS:.o=.o.stamp)
 
 CC = gcc
-CFLAGS = -g -fno-builtin -Wall -Wextra -Werror
+CFLAGS = -fno-builtin -Wall -Wextra -Werror
 
-all : build_tests
 
-.PHONY : all
+.PHONY : all list_tests build_tests run_tests
+.SECONDARY : $(SRCS:.c=.test.c)
+
+all : build_tests run_tests
 
 
 list_tests :
 	echo $(TEST_OBJS)
 
-.PHONY : list_tests
-
 
 build_tests : $(TEST_OBJS) | cmocka
-
-.PHONY : build_tests
 
 
 cmocka :
@@ -27,6 +26,7 @@ cmocka :
 	$(CC) $(CFLAGS) \
 		-D main=testee_main \
 		-include $(SRC_DIR)/$*.c \
+		-o $@ \
 		$<
 	touch "$@"".stamp"
 
@@ -34,4 +34,10 @@ cmocka :
 %.test.c :
 	cp no_test.c $@
 
-run_tests : 
+
+run_tests : $(BUILD_STAMPS)
+	touch run_tests
+
+
+%.test.o.stamp :
+	-./$*.test.o
