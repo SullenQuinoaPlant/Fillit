@@ -1,6 +1,6 @@
-#define main testee_main
-# include FILE
-#undef main
+#ifdef main
+# undef main
+#endif
 
 int		main(int ac, char *av[])
 {

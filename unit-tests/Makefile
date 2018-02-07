@@ -24,12 +24,14 @@ cmocka :
 	
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -D FILE="$(SRC_DIR)/$*.c" $<
+	$(CC) $(CFLAGS) \
+		-D main=testee_main \
+		-include $(SRC_DIR)/$*.c \
+		$<
 	touch "$@"".stamp"
 
 
 %.test.c :
-#	touch $@
 	cp no_test.c $@
 
 run_tests : 
