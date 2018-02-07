@@ -27,4 +27,9 @@ test_%.o : test_%.c $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $<
 	touch "$@"".stamp"
 
+
+test_%.c :
+
+
+
 run_tests : 
