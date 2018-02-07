@@ -1,6 +1,6 @@
 include Makefile.mk
 
-SRCS := $($(OBJS):%.o=%.c)
+SRCS := $(OBJS:%.o=%.c)
 export SRCS
 
 unit-tests ut :

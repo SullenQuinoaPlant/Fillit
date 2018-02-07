@@ -1,4 +1,4 @@
-TEST_EXES := $(addprefix test_, $($(SRCS):%c=%.exe))
+TEST_EXES := $(addprefix test_, $(SRCS:.c=.exe))
 SRCS := $(addprefix ../, $(SRCS))
 
 all :
