@@ -8,12 +8,14 @@ CFLAGS = -fno-builtin -Wall -Wextra -Werror
 
 
 .PHONY : all
-all : build_tests run_tests
+all : list_tests #build_tests run_tests
 
 
 .PHONY : list_tests
 list_tests :
-	for i in "$TEST_OBJS"; do echo $i;done
+	for i in "$TEST_OBJS"; do\
+		if [ -f $$i ]; then echo $$i; fi\
+	done
 
 
 .PHONY : build_tests
