@@ -5,13 +5,20 @@ CC = gcc
 CFLAGS = -g -fno-builtin -Wall -Wextra -Werror
 
 all : build_tests
-#	echo $(TEST_OBJS)
 
 .PHONY : all
+
+
+list_tests :
+	echo $(TEST_OBJS)
+
+.PHONY : list_tests
+
 
 build_tests : $(TEST_OBJS) | cmocka
 
 .PHONY : tests
+
 
 cmocka :
 	
