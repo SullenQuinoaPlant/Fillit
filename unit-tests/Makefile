@@ -1,4 +1,4 @@
-TEST_OBJS := $(SRCS:.c=.test.o))
+TEST_OBJS := $(SRCS:.c=.test.o)
 SRC_DIR = ..
 
 CC = gcc
@@ -29,7 +29,7 @@ cmocka :
 
 
 %.test.c :
-	touch $@
-#	cp no_test.c $@
+#	touch $@
+	cp no_test.c $@
 
 run_tests : 
