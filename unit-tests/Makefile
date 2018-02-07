@@ -29,7 +29,7 @@ test_%.o : test_%.c $(SRC_DIR)/%.c
 
 
 test_%.c :
-
+	touch $@
 
 
 run_tests : 
