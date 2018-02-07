@@ -1,5 +1,6 @@
 NAME = hello_world
-OBJS = hello_world.o
+OBJS = hello_world.o\
+		hello_other_world.o
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

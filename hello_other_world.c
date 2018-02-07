@@ -1,7 +1,3 @@
-#ifdef main
-# undef main
-#endif
-
 #include <stdio.h>
 
 int		main(int ac, char *av[])
@@ -9,7 +5,6 @@ int		main(int ac, char *av[])
 	(void)ac;
 	(void)av;
 
-	testee_main(0, 0);
-	printf("no_test.c\n");
+	printf("hello other world\n");
 	return (0);
 }
