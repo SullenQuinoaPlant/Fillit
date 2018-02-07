@@ -1,5 +1,5 @@
 #define main testee_main
-# include "FILE"
+# include FILE
 #undef main
 
 int		main(int ac, char *av[])

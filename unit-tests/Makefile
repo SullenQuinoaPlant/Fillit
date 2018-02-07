@@ -24,7 +24,7 @@ cmocka :
 	
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -D FILE=$(SRC_DIR)/$*.c $<
+	$(CC) $(CFLAGS) -D FILE="$(SRC_DIR)/$*.c" $<
 	touch "$@"".stamp"
 
 
