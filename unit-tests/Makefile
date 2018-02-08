@@ -31,10 +31,11 @@ cmocka :
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) \
+		-L $(SRC_DIR) -I $(SRC_DIR)\
 		-D main=testee_main \
 		-include $(SRC_DIR)/$*.c \
 		-o $@ \
-		$<; touch $@.stamp
+		$< -lfillit; touch $@.stamp
 
 
 %.test.c :
