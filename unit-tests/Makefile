@@ -14,8 +14,8 @@ test : list_tests build_tests run_tests
 
 .PHONY : list_tests
 list_tests :
-	@echo "list of test objects : "
-	@for i in "$(TEST_OBJS)"; do\
+	@echo "list of test objects:"
+	@for i in $(TEST_OBJS); do\
 		if [ -f $$i ]; then echo $$i; fi;\
 	done
 	@echo "\n"
@@ -51,7 +51,7 @@ run_tests : test_execution.stamp
 
 
 test_execution.stamp : $(BUILD_STAMPS) 
-	for i in "$(basename $?)"; do\
+	@for i in $(basename $?); do\
 		./$$i;\
 	done
 	touch test_execution.stamp
