@@ -1,7 +1,7 @@
 include Makefile.mk
 
 
-libfillit.a : all
+libfillit.a : $(OBJS)
 	ar -rcs $@ $(OBJS)
 
 
@@ -15,9 +15,9 @@ SRCS := $(OBJS:%.o=%.c)
 export SRCS
 
 .PHONY : unit-tests ut
-unit-tests ut : all libfillit.a
+unit-tests ut : libfillit.a
 	make -C unit-tests
 
 .PHONY : all_unit-tests aut
-all_unit-tests aut : all libfillit.a
+all_unit-tests aut : libfillit.a
 	make -C unit-tests all
