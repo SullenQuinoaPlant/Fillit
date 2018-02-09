@@ -6,7 +6,7 @@ TEST_SRCS += $(shell \
 	done; echo $$srcs;)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
-CMOCKA_DIR := $(shell echo $$(pwd)/cmocka/)
+CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
 
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
@@ -43,7 +43,7 @@ build_tests : $(TEST_OBJS)
 		touch $@.stamp
 
 
-%.test.c : $(CMOCKA_DIR)my_macro_overlay.h
+%.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
 	@:
 
 
@@ -52,7 +52,7 @@ build_tests : $(TEST_OBJS)
 ############
 #RUN TESTS :
 
-.PHONY : run_tests
+.PHONY : run_tests
 run_tests : test_execution.stamp
 
 
