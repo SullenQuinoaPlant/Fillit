@@ -37,7 +37,7 @@ build_tests : $(TEST_OBJS)
 		-include $(SRC_DIR)/$*.c\
 		$<\
 		-lfillit\
-		cmocka/libcmocka.so\
+		-lcmocka\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
 		touch $@.stamp
