@@ -3,13 +3,21 @@ project(cmocka-library C)
 set(CMOCKA_PLATFORM_INCLUDE CACHE PATH "Path to include directory for cmocka_platform.h")
 
 set(CMOCKA_PUBLIC_INCLUDE_DIRS
+<<<<<<< HEAD
     ${cmocka_SOURCE_DIR}/include
+=======
+    ${CMAKE_SOURCE_DIR}/include
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     ${CMOCKA_PLATFORM_INCLUDE}
     CACHE INTERNAL "cmocka public include directories"
 )
 
 set(CMOCKA_PRIVATE_INCLUDE_DIRS
+<<<<<<< HEAD
     ${cmocka_BINARY_DIR}
+=======
+    ${CMAKE_BINARY_DIR}
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 )
 
 set(CMOCKA_SHARED_LIBRARY

@@ -76,7 +76,10 @@ check_function_exists(exit HAVE_EXIT)
 check_function_exists(fprintf HAVE_FPRINTF)
 check_function_exists(free HAVE_FREE)
 check_function_exists(longjmp HAVE_LONGJMP)
+<<<<<<< HEAD
 check_function_exists(siglongjmp HAVE_SIGLONGJMP)
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 check_function_exists(malloc HAVE_MALLOC)
 check_function_exists(memcpy HAVE_MEMCPY)
 check_function_exists(memset HAVE_MEMSET)
@@ -84,7 +87,13 @@ check_function_exists(printf HAVE_PRINTF)
 check_function_exists(setjmp HAVE_SETJMP)
 check_function_exists(signal HAVE_SIGNAL)
 check_function_exists(strsignal HAVE_STRSIGNAL)
+<<<<<<< HEAD
 check_function_exists(strcmp HAVE_STRCMP)
+=======
+check_function_exists(sprintf HAVE_SNPRINTF)
+check_function_exists(strcmp HAVE_STRCMP)
+check_function_exists(vsnprintf HAVE_VSNPRINTF)
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 check_function_exists(clock_gettime HAVE_CLOCK_GETTIME)
 
 if (WIN32)
@@ -92,6 +101,7 @@ if (WIN32)
     check_function_exists(_vsnprintf HAVE__VSNPRINTF)
     check_function_exists(_snprintf HAVE__SNPRINTF)
     check_function_exists(_snprintf_s HAVE__SNPRINTF_S)
+<<<<<<< HEAD
     check_symbol_exists(snprintf stdio.h HAVE_SNPRINTF)
     check_symbol_exists(vsnprintf stdio.h HAVE_VSNPRINTF)
 else (WIN32)
@@ -103,6 +113,16 @@ find_library(RT_LIBRARY rt)
 if (RT_LIBRARY AND NOT LINUX)
     set(CMOCKA_REQUIRED_LIBRARIES ${RT_LIBRARY} CACHE INTERNAL "cmocka required system libraries")
 endif ()
+=======
+endif (WIN32)
+
+find_library(RT_LIBRARY rt)
+if (RT_LIBRARY)
+    set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
+endif (RT_LIBRARY)
+
+set(CMOCKA_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} CACHE INTERNAL "cmocka required system libraries")
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 # OPTIONS
 check_c_source_compiles("
@@ -122,10 +142,16 @@ int main(void) {
 endif(WIN32)
 
 if (HAVE_TIME_H AND HAVE_STRUCT_TIMESPEC AND HAVE_CLOCK_GETTIME)
+<<<<<<< HEAD
     if (RT_LIBRARY)
         set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
     endif()
 
+=======
+    set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
+
+    message(STATUS "CMAKE_REQUIRED_INCLUDES=${CMAKE_REQUIRED_INCLUDES} CMAKE_REQUIRED_LIBRARIES=${CMAKE_REQUIRED_LIBRARIES}")
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     check_c_source_compiles("
 #include <time.h>
 
@@ -135,11 +161,16 @@ int main(void) {
     clock_gettime(CLOCK_REALTIME, &ts);
 
     return 0;
+<<<<<<< HEAD
 }" HAVE_CLOCK_REALTIME)
 
     # reset cmake requirements
     set(CMAKE_REQUIRED_INCLUDES)
     set(CMAKE_REQUIRED_LIBRARIES)
+=======
+}" HAVE_CLOCK_GETTIME_REALTIME)
+    set(CMAKE_REQUIRED_INCLUDES)
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 endif ()
 
 # ENDIAN

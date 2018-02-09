@@ -13,7 +13,11 @@ if (UNIX AND NOT WIN32)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -pedantic -pedantic-errors")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wshadow -Wmissing-prototypes -Wdeclaration-after-statement")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wunused -Wfloat-equal -Wpointer-arith -Wwrite-strings -Wformat-security")
+<<<<<<< HEAD
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-format-attribute -Wundef -Wstrict-prototypes")
+=======
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-format-attribute -Wundef")
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
         # with -fPIC
         check_c_compiler_flag("-fPIC" WITH_FPIC)

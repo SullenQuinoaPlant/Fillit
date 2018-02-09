@@ -18,9 +18,15 @@
 #include <setjmp.h>
 #include <cmocka.h>
 
+<<<<<<< HEAD
 extern void leak_memory(void);
 extern void buffer_overflow(void);
 extern void buffer_underflow(void);
+=======
+extern void leak_memory();
+extern void buffer_overflow();
+extern void buffer_underflow();
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 /* Test case that fails as leak_memory() leaks a dynamically allocated block. */
 static void leak_memory_test(void **state) {

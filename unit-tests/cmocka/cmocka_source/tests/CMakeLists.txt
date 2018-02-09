@@ -8,21 +8,31 @@ include_directories(
 
 set(CMOCKA_TESTS
     test_alloc
+<<<<<<< HEAD
     test_group_setup_assert
     test_group_setup_fail
     test_fixtures
     test_group_fixtures
     test_groups
+=======
+    test_group_setup_fail
+    test_fixtures
+    test_group_fixtures
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     test_assert_macros
     test_assert_macros_fail
     test_exception_handler
     test_basics
     test_skip
+<<<<<<< HEAD
     test_setup_fail
     test_ordering
     test_ordering_fail
     test_returns
     test_returns_fail)
+=======
+    test_setup_fail)
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 foreach(_CMOCKA_TEST ${CMOCKA_TESTS})
     add_cmocka_test(${_CMOCKA_TEST} ${_CMOCKA_TEST}.c ${CMOCKA_STATIC_LIBRARY})
@@ -36,7 +46,11 @@ add_cmocka_test(test_cmockery test_cmockery.c ${CMOCKA_STATIC_LIBRARY})
 
 ### Exceptions
 
+<<<<<<< HEAD
 # test_skip
+=======
+# test_assert_macros_fail
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 set_tests_properties(
     test_skip
         PROPERTIES
@@ -52,6 +66,7 @@ set_tests_properties(
         "\\[  FAILED  \\] 1 test"
 )
 
+<<<<<<< HEAD
 # test_ordering ensure proper failures
 set_tests_properties(
     test_ordering_fail
@@ -68,6 +83,8 @@ set_tests_properties(
         "\\[  FAILED  \\] 3 test"
 )
 
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 # test_exception_handler
 if (WIN32)
     set_tests_properties(
@@ -92,6 +109,7 @@ set_tests_properties(
 )
 
 set_tests_properties(
+<<<<<<< HEAD
     test_group_setup_assert
         PROPERTIES
         WILL_FAIL
@@ -99,6 +117,8 @@ set_tests_properties(
 )
 
 set_tests_properties(
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     test_group_setup_fail
         PROPERTIES
         WILL_FAIL
@@ -143,7 +163,10 @@ set_tests_properties(
 set(OUTPUT_TESTS
     test_basics
     test_assert_macros_fail
+<<<<<<< HEAD
     test_groups
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     test_skip
     test_setup_fail)
 
@@ -153,6 +176,7 @@ set(TEST_OUTPUT_FMTS
     xml)
 
 set(test_basics_tap_out
+<<<<<<< HEAD
     "^1\\.\\.2"
     "ok 1 - null_test_success"
     "ok 2 - int_test_success"
@@ -211,6 +235,33 @@ set(test_skip_xml_out
 set(test_setup_fail_xml_out
     "<testcase name=\"int_test_ignored\" time=\"[0-9.]+\" >"
     "<failure><!\\[CDATA\\[Test setup failed\\]\\]></failure>")
+=======
+    "^1\\.\\.2[ \n\r]+ok 1 - null_test_success")
+set(test_assert_macros_fail_tap_out
+    "^1\\.\\.1[ \n\r]+not ok 1 - test_assert_return_code_fail")
+set(test_skip_tap_out
+    "not ok 1 # SKIP")
+set(test_setup_fail_tap_out
+    "not ok 1 - int_test_ignored Could not run the test - check test fixtures")
+
+set(test_basics_subunit_out
+    "^test: null_test_success[ \n\r]+success: null_test_success")
+set(test_assert_macros_fail_subunit_out
+    "failure: test_assert_return_code_fail \\[")
+set(test_skip_subunit_out
+    "^test: test_check_skip[ \n\r]+skip: test_check_skip")
+set(test_setup_fail_subunit_out
+    "error: int_test_ignored \\[ Could not run the test - check test fixtures \\]")
+
+set(test_basics_xml_out
+    "<testsuite name=\"tests\" time=\"[0-9.]+\" tests=\"2\" failures=\"0\" errors=\"0\" skipped=\"0\" >[ \n\r]+<testcase name=\"null_test_success\" time=\"[0-9.]+\" >.*</testcase>")
+set(test_assert_macros_fail_xml_out
+    "<testcase name=\"test_assert_return_code_fail\" time=\"[0-9.]+\" >[ \n\r]+<failure>")
+set(test_skip_xml_out
+    "<testcase name=\"test_check_skip\" time=\"[0-9.]+\" >[ \n\r]+<skipped/>")
+set(test_setup_fail_xml_out
+    "<testcase name=\"int_test_ignored\" time=\"[0-9.]+\" >[ \n\r]+<failure><!\\[CDATA\\[Test setup failed\\]\\]></failure>")
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 foreach(_TEST_OUTPUT_FMT ${TEST_OUTPUT_FMTS})
     foreach(_OUTPUT_TEST ${OUTPUT_TESTS})
@@ -224,6 +275,7 @@ foreach(_TEST_OUTPUT_FMT ${TEST_OUTPUT_FMTS})
                 ENVIRONMENT CMOCKA_MESSAGE_OUTPUT=${_TEST_OUTPUT_FMT}
             )
 
+<<<<<<< HEAD
         list(LENGTH ${TEST_NAME}_out len)
         list(GET ${TEST_NAME}_out 0 output)
         if(len GREATER 1)
@@ -239,5 +291,13 @@ foreach(_TEST_OUTPUT_FMT ${TEST_OUTPUT_FMTS})
             PASS_REGULAR_EXPRESSION
             ${output}
         )
+=======
+            set_tests_properties(
+                    ${TEST_NAME}
+                    PROPERTIES
+                    PASS_REGULAR_EXPRESSION
+                    ${${TEST_NAME}_out}
+            )
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     endforeach()
 endforeach()

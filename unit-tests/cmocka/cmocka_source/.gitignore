@@ -1,7 +1,15 @@
 *.swp
 *~$
+<<<<<<< HEAD
 tags
 cscope.*
 .ycm_extra_conf.pyc
 /build
 /obj*
+=======
+build
+obj
+tags
+cscope.*
+.ycm_extra_conf.pyc
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9

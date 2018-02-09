@@ -31,6 +31,7 @@ static void malloc_teardown_test(void **state)
     assert_non_null(*state);
 }
 
+<<<<<<< HEAD
 static int prestate_setup(void **state)
 {
     int *val = (int *)*state, *a;
@@ -67,6 +68,9 @@ static void prestate_test(void **state)
 
 int main(void) {
     int prestate = 42;
+=======
+int main(void) {
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     const struct CMUnitTest tests[] = {
         cmocka_unit_test_setup(malloc_setup_test, setup_only),
         cmocka_unit_test_setup(malloc_setup_test, setup_only),
@@ -74,8 +78,11 @@ int main(void) {
         cmocka_unit_test_teardown(malloc_teardown_test, teardown_only),
         cmocka_unit_test_teardown(malloc_teardown_test, teardown_only),
         cmocka_unit_test_teardown(malloc_teardown_test, teardown_only),
+<<<<<<< HEAD
         cmocka_unit_test_prestate(prestate_test, &prestate),
         cmocka_unit_test_prestate_setup_teardown(prestate_setup_test, prestate_setup, prestate_teardown, &prestate),
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     };
 
     return cmocka_run_group_tests(tests, NULL, NULL);

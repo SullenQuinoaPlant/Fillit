@@ -64,6 +64,7 @@ static void torture_test_realloc(void **state)
     test_free(str);
 }
 
+<<<<<<< HEAD
 static void torture_test_realloc_set0(void **state)
 {
     char *str;
@@ -80,11 +81,16 @@ static void torture_test_realloc_set0(void **state)
     assert_null(str);
 }
 
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 int main(void) {
     const struct CMUnitTest alloc_tests[] = {
         cmocka_unit_test(torture_test_malloc),
         cmocka_unit_test(torture_test_realloc),
+<<<<<<< HEAD
         cmocka_unit_test(torture_test_realloc_set0),
+=======
+>>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     };
 
     return cmocka_run_group_tests(alloc_tests, NULL, NULL);
