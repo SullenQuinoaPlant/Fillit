@@ -44,8 +44,7 @@ build_tests : $(TEST_OBJS)
 
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
-	@:
-
+	touch $@
 
 
 
