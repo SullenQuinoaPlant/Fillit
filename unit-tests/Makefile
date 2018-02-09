@@ -62,10 +62,6 @@ test_execution.stamp : $(BUILD_STAMPS)
 	touch test_execution.stamp
 
 
-$(BUILD_STAMPS) :
-	@:
-
-
 
 
 ###############
