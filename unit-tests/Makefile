@@ -6,7 +6,8 @@ TEST_SRCS += $(shell \
 	done; echo $$srcs;)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
-CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
+#CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
+CMOCKA_DIR := $(shell echo ./cmocka)
 
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
@@ -29,7 +30,6 @@ build_tests : $(TEST_OBJS)
 
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	@echo $(CMOCKA_DIR)
 	@$(CC) $(CFLAGS)\
 		-L $(SRC_DIR) -I $(SRC_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
