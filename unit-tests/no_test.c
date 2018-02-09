@@ -1,15 +1,16 @@
-#ifdef main
-# undef main
-#endif
+//main is defined (see compiler invocation)
+#undef main
 
 #include <stdio.h>
+#define HOW_MANY_TESTS 50
+#include "cmocka/my_macro_overlay.h"
 
-int		main(int ac, char *av[])
+
+int		main(void)
 {
-	(void)ac;
-	(void)av;
-
 	testee_main(0, 0);
-	printf("no_test.c\n");
-	return (0);
-}
+	T(nop,
+		(void)state;
+	)
+    return (cmocka_run_group_tests(tests, NULL, NULL));
+ }

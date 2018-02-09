@@ -5,11 +5,13 @@ TEST_SRCS += $(shell \
 		if [ -f $$i ]; then srcs="$$srcs $$i"; fi;\
 	done; echo $$srcs;)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
-BUILD_STAMPS := $(TEST_OBJS:.o=.o.stamp)
+
+CMOCKA_DIR := $(shell echo $$(pwd)/cmocka/)
 
 CC = gcc
-CFLAGS = -fno-builtin -Wall -Wextra -Werror
+CFLAGS = -fno-builtin #-Wall -Wextra -Werror
 
+BUILD_STAMPS := $(TEST_OBJS:.o=.o.stamp)
 
 
 
@@ -23,22 +25,25 @@ test : list_tests build_tests run_tests
 #BUILD TESTS
 
 .PHONY : build_tests
-build_tests : $(TEST_OBJS) | cmocka
+build_tests : $(TEST_OBJS)
 
-
-cmocka :
-	
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	@$(CC) $(CFLAGS) \
+	@echo $(CMOCKA_DIR)
+	@$(CC) $(CFLAGS)\
 		-L $(SRC_DIR) -I $(SRC_DIR)\
-		-D main=testee_main \
-		-include $(SRC_DIR)/$*.c \
-		-o $@ \
-		$< -lfillit; touch $@.stamp
+		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
+		-D main=testee_main\
+		-include $(SRC_DIR)/$*.c\
+		$<\
+		-lfillit\
+		-l libcmocka.so\
+		-o $@\
+		-Wl,-rpath=$(CMOCKA_DIR);\
+		touch $@.stamp
 
 
-%.test.c :
+%.test.c : $(CMOCKA_DIR)my_macro_overlay.h
 	@:
 
 
