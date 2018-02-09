@@ -1,9 +1,9 @@
 SRC_DIR = ..
-TEST_SRCS :=
-TEST_SRCS += $(shell \
-	for i in $(SRCS:.c=.test.c); do\
-		if [ -f $$i ]; then srcs="$$srcs $$i"; fi;\
-	done; echo $$srcs;)
+TEST_SRCS := $(shell echo *.test.c)
+#TEST_SRCS += $(shell \
+#	for i in $(SRCS:.c=.test.c); do\
+#		if [ -f $$i ]; then srcs="$$srcs $$i"; fi;\
+#	done; echo $$srcs;)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
 #CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
@@ -42,9 +42,18 @@ build_tests : $(TEST_OBJS)
 		-Wl,-rpath=$(CMOCKA_DIR);\
 		touch $@.stamp
 
+%.test.o : %.test.c
+	@$(CC) $(CFLAGS)\
+		-L $(SRC_DIR) -I $(SRC_DIR)\
+		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
+		$<\
+		-lfillit\
+		-lcmocka\
+		-o $@\
+		-Wl,-rpath=$(CMOCKA_DIR);\
+		touch $@.stamp
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
-	touch $@
 
 
 
@@ -61,6 +70,8 @@ test_execution.stamp : $(BUILD_STAMPS)
 	done
 	touch test_execution.stamp
 
+$(BUILD_STAMPS) :
+	@:
 
 
 
@@ -84,3 +95,5 @@ clean :
 list_tests :
 	@echo "list of test sources:"
 	@echo $(TEST_SRCS)
+	@echo "list of test objects:"
+	@echo $(TEST_OBJS)

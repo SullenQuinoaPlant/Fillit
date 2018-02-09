@@ -13,4 +13,4 @@ int		main(void)
 		(void)state;
 	)
     return (cmocka_run_group_tests(tests, NULL, NULL));
- }
+}
