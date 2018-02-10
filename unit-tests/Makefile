@@ -12,7 +12,8 @@ CMOCKA_DIR := $(shell echo ./cmocka)
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
 
-BUILD_STAMPS := $(TEST_OBJS:.o=.o.stamp)
+BUILD_STAMPS := $(TEST_OBJS:.o=.build.stamp)
+EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 
 
 
@@ -40,7 +41,7 @@ build_tests : $(TEST_OBJS)
 		-lcmocka\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
-		touch $@.test.build.stamp
+		touch $*.test.build.stamp
 
 %.test.o : %.test.c
 	@$(CC) $(CFLAGS)\
@@ -51,7 +52,7 @@ build_tests : $(TEST_OBJS)
 		-lcmocka\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
-		touch $@.test.build.stamp
+		touch $*.test.build.stamp
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
 
@@ -63,21 +64,23 @@ build_tests : $(TEST_OBJS)
 
 .PHONY : run_tests
 #run_tests : test_execution.stamp
-run_tests : %.test.execution.stamp
+run_tests : $(EXECUTION_STAMPS)
 
 
-%.test.execution.stamp : %.test.build.stamp
+%.execution.stamp : %.build.stamp
 	./$*.test.o
 	touch $@
 
-test_execution.stamp : $(BUILD_STAMPS) 
-	@for i in $(basename $?); do\
-		if [ -f $$i ]; then ./$$i; fi;\
-	done
-	touch test_execution.stamp
-
-$(BUILD_STAMPS) :
-	@:
+#the following clutters less with stamp files but prevents the concurrent execution of tests
+# (whatever)
+#test_execution.stamp : $(BUILD_STAMPS) 
+#	@for i in $(basename $?); do\
+#		if [ -f $$i ]; then ./$$i; fi;\
+#	done
+#	touch test_execution.stamp
+#
+#$(BUILD_STAMPS) :
+#	@:
 
 
 
