@@ -11,8 +11,8 @@ libfillit.a : $(OBJS)
 #TESTS :
 
 
-SRCS := $(OBJS:%.o=%.c)
-export SRCS
+#SRCS := $(OBJS:%.o=%.c)
+#export SRCS
 
 .PHONY : unit-tests ut
 unit-tests ut : libfillit.a

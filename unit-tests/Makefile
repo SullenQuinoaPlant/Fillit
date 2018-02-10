@@ -1,5 +1,5 @@
 SRC_DIR = ..
-TEST_SRCS := $(shell echo *.test.c)
+TEST_SRCS := $(wildcard *.test.c)
 #TEST_SRCS += $(shell \
 #	for i in $(SRCS:.c=.test.c); do\
 #		if [ -f $$i ]; then srcs="$$srcs $$i"; fi;\
@@ -7,7 +7,7 @@ TEST_SRCS := $(shell echo *.test.c)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
 #CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
-CMOCKA_DIR := $(shell echo ./cmocka)
+CMOCKA_DIR := ./cmocka
 
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
