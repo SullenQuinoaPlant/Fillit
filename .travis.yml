@@ -1,6 +1,9 @@
 language: c
 os: linux
 install:
+ - AAA=aaa
+ - echo $AAA
+ - exec .travis/install_cmocka.sh
 script:
  - make #-p
  - make unit-tests
