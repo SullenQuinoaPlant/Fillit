@@ -27,8 +27,11 @@ test : list_tests build_tests run_tests
 #BUILD TESTS
 
 .PHONY : build_tests
-build_tests : $(TEST_OBJS)
+build_tests : cmocka $(TEST_OBJS)
 
+.PHONY : cmocka
+cmocka : 
+	$(MAKE) -C cmocka/
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS)\
@@ -68,7 +71,7 @@ run_tests : $(EXECUTION_STAMPS)
 
 
 %.execution.stamp : %.build.stamp
-	./$*.test.o
+	./$*.o
 	touch $@
 
 #the following clutters less with stamp files but prevents the concurrent execution of tests
