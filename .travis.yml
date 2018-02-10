@@ -1,13 +1,6 @@
 language: c
 os: linux
 install:
- - git clone https://github.com/clibs/cmocka.git cmocka_download
- - mkdir cmocka_build
- - cd cmocka_build
- - cmake ../cmocka_download
- - make
- - sudo make install
- - cd ..
 script:
  - make #-p
  - make unit-tests

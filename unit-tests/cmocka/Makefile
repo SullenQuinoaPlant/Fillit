@@ -9,6 +9,9 @@ cmocka : $(BUILD_DIR) $(SOURCE_DIR)
 
 $(BUILD_DIR) :
 	if [ -d $(BUILD_DIR) ]; then :; else mkdir $(BUILD_DIR); fi
+
+$(SOURCE_DIR) :
+	if [ -d $(SOURCE_DIR) ]; then :; else git clone git://git.cryptomilk.org/projects/cmocka.git $(SOURCE_DIR); fi
 	
 
 clean :
