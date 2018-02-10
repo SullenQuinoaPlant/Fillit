@@ -6,3 +6,8 @@ cmocka :
 	cd $(BUILD_DIR) && cmake ../$(SOURCE_DIR) && make;
 	cp $(SOURCE_DIR)/include/cmocka.h .
 	cp $(BUILD_DIR)/src/libcmocka* .
+
+clean :
+	rm libcmocka.so*
+	rm cmocka.h
+	rm -rf $(BUILD_DIR)

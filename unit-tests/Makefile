@@ -40,7 +40,7 @@ build_tests : $(TEST_OBJS)
 		-lcmocka\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
-		touch $@.stamp
+		touch $@.test.build.stamp
 
 %.test.o : %.test.c
 	@$(CC) $(CFLAGS)\
@@ -51,7 +51,7 @@ build_tests : $(TEST_OBJS)
 		-lcmocka\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
-		touch $@.stamp
+		touch $@.test.build.stamp
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
 
@@ -62,8 +62,13 @@ build_tests : $(TEST_OBJS)
 #RUN TESTS :
 
 .PHONY : run_tests
-run_tests : test_execution.stamp
+#run_tests : test_execution.stamp
+run_tests : %.test.execution.stamp
 
+
+%.test.execution.stamp : %.test.build.stamp
+	./$*.test.o
+	touch $@
 
 test_execution.stamp : $(BUILD_STAMPS) 
 	@for i in $(basename $?); do\
