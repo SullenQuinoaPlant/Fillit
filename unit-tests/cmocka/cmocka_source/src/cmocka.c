@@ -31,13 +31,10 @@
 #include <signal.h>
 #endif
 
-<<<<<<< HEAD
 #ifdef HAVE_STRINGS_H
 #include <strings.h>
 #endif
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 #include <stdint.h>
 #include <setjmp.h>
 #include <stdarg.h>
@@ -85,17 +82,12 @@
 # define CMOCKA_THREAD
 #endif
 
-<<<<<<< HEAD
 #ifdef HAVE_CLOCK_REALTIME
-=======
-#ifdef HAVE_CLOCK_GETTIME_REALTIME
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 #define CMOCKA_CLOCK_GETTIME(clock_id, ts) clock_gettime((clock_id), (ts))
 #else
 #define CMOCKA_CLOCK_GETTIME(clock_id, ts)
 #endif
 
-<<<<<<< HEAD
 #ifndef MAX
 #define MAX(a,b) ((a) < (b) ? (b) : (a))
 #endif
@@ -114,8 +106,6 @@
 #endif
 
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /*
  * Declare and initialize the pointer member of ValuePointer variable name
  * with ptr.
@@ -192,15 +182,12 @@ typedef struct SymbolMapValue {
     ListNode symbol_values_list_head;
 } SymbolMapValue;
 
-<<<<<<< HEAD
 /* Where a particular ordering was located and its symbol name */
 typedef struct FuncOrderingValue {
     SourceLocation location;
     const char * function;
 } FuncOrderingValue;
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /* Used by list_free() to deallocate values referenced by list nodes. */
 typedef void (*CleanupListValue)(const void *value, void *cleanup_value_data);
 
@@ -256,7 +243,6 @@ static void free_symbol_map_value(
     const void *value, void *cleanup_value_data);
 static void remove_always_return_values(ListNode * const map_head,
                                         const size_t number_of_symbol_names);
-<<<<<<< HEAD
 
 static int check_for_leftover_values_list(const ListNode * head,
     const char * const error_message);
@@ -267,11 +253,6 @@ static int check_for_leftover_values(
 
 static void remove_always_return_values_from_list(ListNode * const map_head);
 
-=======
-static int check_for_leftover_values(
-    const ListNode * const map_head, const char * const error_message,
-    const size_t number_of_symbol_names);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /*
  * This must be called at the beginning of a test to initialize some data
  * structures.
@@ -281,11 +262,8 @@ static void initialize_testing(const char *test_name);
 /* This must be called at the end of a test to free() allocated structures. */
 static void teardown_testing(const char *test_name);
 
-<<<<<<< HEAD
 static enum cm_message_output cm_get_output(void);
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 static int cm_error_message_enabled = 1;
 static CMOCKA_THREAD char *cm_error_message;
 
@@ -295,11 +273,7 @@ void cm_print_error(const char * const format, ...) CMOCKA_PRINTF_ATTRIBUTE(1, 2
  * Keeps track of the calling context returned by setenv() so that the fail()
  * method can jump out of a test.
  */
-<<<<<<< HEAD
 static CMOCKA_THREAD cm_jmp_buf global_run_test_env;
-=======
-static CMOCKA_THREAD jmp_buf global_run_test_env;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 static CMOCKA_THREAD int global_running_test = 0;
 
 /* Keeps track of the calling context returned by setenv() so that */
@@ -321,14 +295,11 @@ static CMOCKA_THREAD ListNode global_function_parameter_map_head;
 /* Location of last parameter value checked was declared. */
 static CMOCKA_THREAD SourceLocation global_last_parameter_location;
 
-<<<<<<< HEAD
 /* List (acting as FIFO) of call ordering. */
 static CMOCKA_THREAD ListNode global_call_ordering_head;
 /* Location of last call ordering that was declared. */
 static CMOCKA_THREAD SourceLocation global_last_call_ordering_location;
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /* List of all currently allocated blocks. */
 static CMOCKA_THREAD ListNode global_allocated_blocks;
 
@@ -416,11 +387,7 @@ static void exit_test(const int quit_application)
         print_error("%s", cm_error_message);
         abort();
     } else if (global_running_test) {
-<<<<<<< HEAD
         cm_longjmp(global_run_test_env, 1);
-=======
-        longjmp(global_run_test_env, 1);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     } else if (quit_application) {
         exit(-1);
     }
@@ -458,7 +425,6 @@ static void set_source_location(
 }
 
 
-<<<<<<< HEAD
 static int c_strreplace(char *src,
                         size_t src_len,
                         const char *pattern,
@@ -501,30 +467,18 @@ static int c_strreplace(char *src,
 /* Create function results and expected parameter lists. */
 void initialize_testing(const char *test_name) {
     (void)test_name;
-=======
-/* Create function results and expected parameter lists. */
-void initialize_testing(const char *test_name) {
-	(void)test_name;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     list_initialize(&global_function_result_map_head);
     initialize_source_location(&global_last_mock_value_location);
     list_initialize(&global_function_parameter_map_head);
     initialize_source_location(&global_last_parameter_location);
-<<<<<<< HEAD
     list_initialize(&global_call_ordering_head);
     initialize_source_location(&global_last_parameter_location);
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 }
 
 
 static void fail_if_leftover_values(const char *test_name) {
     int error_occurred = 0;
-<<<<<<< HEAD
     (void)test_name;
-=======
-	(void)test_name;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     remove_always_return_values(&global_function_result_map_head, 1);
     if (check_for_leftover_values(
             &global_function_result_map_head,
@@ -538,15 +492,12 @@ static void fail_if_leftover_values(const char *test_name) {
             "%s parameter still has values that haven't been checked.\n", 2)) {
         error_occurred = 1;
     }
-<<<<<<< HEAD
 
     remove_always_return_values_from_list(&global_call_ordering_head);
     if (check_for_leftover_values_list(&global_call_ordering_head,
         "%s function was expected to be called but was not not.\n")) {
         error_occurred = 1;
     }
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     if (error_occurred) {
         exit_test(1);
     }
@@ -554,23 +505,16 @@ static void fail_if_leftover_values(const char *test_name) {
 
 
 static void teardown_testing(const char *test_name) {
-<<<<<<< HEAD
     (void)test_name;
-=======
-	(void)test_name;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     list_free(&global_function_result_map_head, free_symbol_map_value,
               (void*)0);
     initialize_source_location(&global_last_mock_value_location);
     list_free(&global_function_parameter_map_head, free_symbol_map_value,
               (void*)1);
     initialize_source_location(&global_last_parameter_location);
-<<<<<<< HEAD
     list_free(&global_call_ordering_head, free_value,
               (void*)0);
     initialize_source_location(&global_last_call_ordering_location);
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 }
 
 /* Initialize a list node. */
@@ -689,11 +633,7 @@ static int list_first(ListNode * const head, ListNode **output) {
 
 /* Deallocate a value referenced by a list. */
 static void free_value(const void *value, void *cleanup_value_data) {
-<<<<<<< HEAD
     (void)cleanup_value_data;
-=======
-	(void)cleanup_value_data;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     assert_non_null(value);
     free((void*)value);
 }
@@ -721,10 +661,6 @@ static int symbol_names_match(const void *map_value, const void *symbol) {
                    (const char*)symbol);
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /*
  * Adds a value to the queue of values associated with the given hierarchy of
  * symbols.  It's assumed value is allocated from the heap.
@@ -796,15 +732,10 @@ static int get_symbol_value(
             assert_true(return_value);
             *output = (void*) value_node->value;
             return_value = value_node->refcount;
-<<<<<<< HEAD
             if (value_node->refcount - 1 == 0) {
                 list_remove_free(value_node, NULL, NULL);
             } else if (value_node->refcount > WILL_RETURN_ONCE) {
                 --value_node->refcount;
-=======
-            if (--value_node->refcount == 0) {
-                list_remove_free(value_node, NULL, NULL);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
             }
         } else {
             return_value = get_symbol_value(
@@ -821,7 +752,6 @@ static int get_symbol_value(
     return 0;
 }
 
-<<<<<<< HEAD
 /**
  * Taverse a list of nodes and remove first symbol value in list that has a
  * refcount < -1 (i.e. should always be returned and has been returned at
@@ -842,8 +772,6 @@ static void remove_always_return_values_from_list(ListNode * const map_head)
         }
     }
 }
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 /*
  * Traverse down a tree of symbol values and remove the first symbol value
@@ -883,7 +811,6 @@ static void remove_always_return_values(ListNode * const map_head,
     }
 }
 
-<<<<<<< HEAD
 static int check_for_leftover_values_list(const ListNode * head,
                                           const char * const error_message)
 {
@@ -904,8 +831,6 @@ static int check_for_leftover_values_list(const ListNode * head,
     return leftover_count;
 }
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 /*
  * Checks if there are any leftover values set up by the test that were never
  * retrieved through execution, and fail the test if that is the case.
@@ -982,7 +907,6 @@ LargestIntegralType _mock(const char * const function, const char* const file,
     return 0;
 }
 
-<<<<<<< HEAD
 /* Ensure that function is being called in proper order */
 void _function_called(const char *const function,
                       const char *const file,
@@ -1058,21 +982,14 @@ void _function_called(const char *const function,
         exit_test(1);
     }
 }
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 /* Add a return value for the specified mock function name. */
 void _will_return(const char * const function_name, const char * const file,
                   const int line, const LargestIntegralType value,
                   const int count) {
     SymbolValue * const return_value =
-<<<<<<< HEAD
         (SymbolValue*)malloc(sizeof(*return_value));
     assert_true(count != 0);
-=======
-	    (SymbolValue*)malloc(sizeof(*return_value));
-    assert_true(count > 0 || count == -1);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     return_value->value = value;
     set_source_location(&return_value->location, file, line);
     add_symbol_value(&global_function_result_map_head, &function_name, 1,
@@ -1103,7 +1020,6 @@ void _expect_check(
                      count);
 }
 
-<<<<<<< HEAD
 /*
  * Add an call expectations that a particular function is called correctly.
  * This is used for code under test that makes calls to several functions
@@ -1129,8 +1045,6 @@ void _expect_function_call(
 
     list_add_value(&global_call_ordering_head, ordering, count);
 }
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 /* Returns 1 if the specified values are equal.  If the values are not equal
  * an error is displayed and 0 is returned. */
@@ -1185,18 +1099,11 @@ static int value_in_set_display_error(
         if (succeeded) {
             return 1;
         }
-<<<<<<< HEAD
         cm_print_error(LargestIntegralTypePrintfFormatDecimal
                        " is %sin the set (",
                        value, invert ? "" : "not ");
         for (i = 0; i < size_of_set; i++) {
             cm_print_error(LargestIntegralTypePrintfFormat ", ", set[i]);
-=======
-        cm_print_error("%" PRIu64 " is %sin the set (", value,
-                       invert ? "" : "not ");
-        for (i = 0; i < size_of_set; i++) {
-            cm_print_error("%" PRIu64 ", ", set[i]);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         }
         cm_print_error(")\n");
     }
@@ -1215,14 +1122,10 @@ static int integer_in_range_display_error(
     if (value >= range_min && value <= range_max) {
         return 1;
     }
-<<<<<<< HEAD
     cm_print_error(LargestIntegralTypePrintfFormatDecimal
                    " is not within the range "
                    LargestIntegralTypePrintfFormatDecimal "-"
                    LargestIntegralTypePrintfFormatDecimal "\n",
-=======
-    cm_print_error("%" PRIu64 " is not within the range %" PRIu64 "-%" PRIu64 "\n",
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                    value, range_min, range_max);
     return 0;
 }
@@ -1239,14 +1142,10 @@ static int integer_not_in_range_display_error(
     if (value < range_min || value > range_max) {
         return 1;
     }
-<<<<<<< HEAD
     cm_print_error(LargestIntegralTypePrintfFormatDecimal
                    " is within the range "
                    LargestIntegralTypePrintfFormatDecimal "-"
                    LargestIntegralTypePrintfFormatDecimal "\n",
-=======
-    cm_print_error("%" PRIu64 " is within the range %" PRIu64 "-%" PRIu64 "\n",
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                    value, range_min, range_max);
     return 0;
 }
@@ -1300,13 +1199,8 @@ static int memory_equal_display_error(const char* const a, const char* const b,
         }
     }
     if (differences) {
-<<<<<<< HEAD
         cm_print_error("%d bytes of %p and %p differ\n",
                        differences, (void *)a, (void *)b);
-=======
-        cm_print_error("%d bytes of %p and %p differ\n", differences,
-                    a, b);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         return 0;
     }
     return 1;
@@ -1330,13 +1224,8 @@ static int memory_not_equal_display_error(
         }
     }
     if (same == size) {
-<<<<<<< HEAD
         cm_print_error("%"PRIdS "bytes of %p and %p the same\n",
                        same, (void *)a, (void *)b);
-=======
-        cm_print_error("%"PRIdS "bytes of %p and %p the same\n", same,
-                    a, b);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         return 0;
     }
     return 1;
@@ -1569,11 +1458,7 @@ static void expect_memory_setup(
         const void * const memory, const size_t size,
         const CheckParameterValue check_function, const int count) {
     CheckMemoryData * const check_data =
-<<<<<<< HEAD
         (CheckMemoryData*)malloc(sizeof(*check_data) + size);
-=======
-	    (CheckMemoryData*)malloc(sizeof(*check_data) + size);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     void * const mem = (void*)(check_data + 1);
     declare_initialize_value_pointer_pointer(check_data_pointer, check_data);
     assert_non_null(memory);
@@ -1605,11 +1490,7 @@ static int check_not_memory(const LargestIntegralType value,
     assert_non_null(check);
     return memory_not_equal_display_error(
         cast_largest_integral_type_to_pointer(const char*, value),
-<<<<<<< HEAD
         (const char*)check->memory,
-=======
-	(const char*)check->memory,
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         check->size);
 }
 
@@ -1627,13 +1508,8 @@ void _expect_not_memory(
 /* CheckParameterValue callback that always returns 1. */
 static int check_any(const LargestIntegralType value,
                      const LargestIntegralType check_value_data) {
-<<<<<<< HEAD
     (void)value;
     (void)check_value_data;
-=======
-	(void)value;
-	(void)check_value_data;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     return 1;
 }
 
@@ -1747,12 +1623,8 @@ void _assert_return_code(const LargestIntegralType result,
 
     if (result > valmax - 1) {
         if (error > 0) {
-<<<<<<< HEAD
             cm_print_error("%s < 0, errno("
                            LargestIntegralTypePrintfFormatDecimal "): %s\n",
-=======
-            cm_print_error("%s < 0, errno(%" PRIu64 "): %s\n",
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                            expression, error, strerror((int)error));
         } else {
             cm_print_error("%s < 0\n", expression);
@@ -1858,11 +1730,7 @@ void _assert_not_in_set(const LargestIntegralType value,
 
 
 /* Get the list of allocated blocks. */
-<<<<<<< HEAD
 static ListNode* get_allocated_blocks_list(void) {
-=======
-static ListNode* get_allocated_blocks_list() {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     /* If it initialized, initialize the list of allocated blocks. */
     if (!global_allocated_blocks.value) {
         list_initialize(&global_allocated_blocks);
@@ -1904,19 +1772,12 @@ static void vcm_print_error(const char* const format, va_list args)
     size_t msg_len = 0;
     va_list ap;
     int len;
-<<<<<<< HEAD
     va_copy(ap, args);
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
     len = vsnprintf(buffer, sizeof(buffer), format, args);
     if (len < 0) {
         /* TODO */
-<<<<<<< HEAD
         goto end;
-=======
-        return;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     }
 
     if (cm_error_message == NULL) {
@@ -1925,11 +1786,7 @@ static void vcm_print_error(const char* const format, va_list args)
         cm_error_message = libc_malloc(len + 1);
         if (cm_error_message == NULL) {
             /* TODO */
-<<<<<<< HEAD
             goto end;
-=======
-            return;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         }
     } else {
         /* APPEND MESSAGE */
@@ -1938,11 +1795,7 @@ static void vcm_print_error(const char* const format, va_list args)
         msg_len = strlen(cm_error_message);
         tmp = libc_realloc(cm_error_message, msg_len + len + 1);
         if (tmp == NULL) {
-<<<<<<< HEAD
             goto end;
-=======
-            return;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         }
         cm_error_message = tmp;
     }
@@ -1951,18 +1804,11 @@ static void vcm_print_error(const char* const format, va_list args)
         /* Use len + 1 to also copy '\0' */
         memcpy(cm_error_message + msg_len, buffer, len + 1);
     } else {
-<<<<<<< HEAD
         vsnprintf(cm_error_message + msg_len, len, format, ap);
     }
 end:
     va_end(ap);
 
-=======
-        va_copy(ap, args);
-        vsnprintf(cm_error_message + msg_len, len, format, ap);
-        va_end(ap);
-    }
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 }
 
 static void vcm_free_error(char *err_msg)
@@ -2043,11 +1889,7 @@ void _test_free(void* const ptr, const char* file, const int line) {
                                    file, line,
                                    ptr, (unsigned long)block_info->size,
                                    block_info->location.file, block_info->location.line,
-<<<<<<< HEAD
                                    (void *)&guard[j]);
-=======
-                                   &guard[j]);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                     _fail(file, line);
                 }
             }
@@ -2070,34 +1912,22 @@ void *_test_realloc(void *ptr,
     MallocBlockInfo *block_info;
     char *block = ptr;
     size_t block_size = size;
-<<<<<<< HEAD
     void *new_block;
-=======
-    void *new;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
     if (ptr == NULL) {
         return _test_malloc(size, file, line);
     }
 
     if (size == 0) {
-<<<<<<< HEAD
         _test_free(ptr, file, line);
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         return NULL;
     }
 
     block_info = (MallocBlockInfo*)(block - (MALLOC_GUARD_SIZE +
                                              sizeof(*block_info)));
 
-<<<<<<< HEAD
     new_block = _test_malloc(size, file, line);
     if (new_block == NULL) {
-=======
-    new = _test_malloc(size, file, line);
-    if (new == NULL) {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         return NULL;
     }
 
@@ -2105,29 +1935,17 @@ void *_test_realloc(void *ptr,
         block_size = block_info->size;
     }
 
-<<<<<<< HEAD
     memcpy(new_block, ptr, block_size);
-=======
-    memcpy(new, ptr, block_size);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
     /* Free previous memory */
     _test_free(ptr, file, line);
 
-<<<<<<< HEAD
     return new_block;
-=======
-    return new;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 }
 #define realloc test_realloc
 
 /* Crudely checkpoint the current heap state. */
-<<<<<<< HEAD
 static const ListNode* check_point_allocated_blocks(void) {
-=======
-static const ListNode* check_point_allocated_blocks() {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     return get_allocated_blocks_list()->prev;
 }
 
@@ -2143,11 +1961,7 @@ static int display_allocated_blocks(const ListNode * const check_point) {
 
     for (node = check_point->next; node != head; node = node->next) {
         const MallocBlockInfo * const block_info =
-<<<<<<< HEAD
             (const MallocBlockInfo*)node->value;
-=======
-		(const MallocBlockInfo*)node->value;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         assert_non_null(block_info);
 
         if (!allocated_blocks) {
@@ -2194,7 +2008,6 @@ static void fail_if_blocks_allocated(const ListNode * const check_point,
 
 
 void _fail(const char * const file, const int line) {
-<<<<<<< HEAD
     enum cm_message_output output = cm_get_output();
 
     switch(output) {
@@ -2205,16 +2018,12 @@ void _fail(const char * const file, const int line) {
             cm_print_error(SOURCE_LOCATION_FORMAT ": error: Failure!", file, line);
             break;
     }
-=======
-    cm_print_error(SOURCE_LOCATION_FORMAT ": error: Failure!\n", file, line);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     exit_test(1);
 }
 
 
 #ifndef _WIN32
 static void exception_handler(int sig) {
-<<<<<<< HEAD
     const char *sig_strerror = "";
 
 #ifdef HAVE_STRSIGNAL
@@ -2223,13 +2032,6 @@ static void exception_handler(int sig) {
 
     cm_print_error("Test failed with exception: %s(%d)",
                    sig_strerror, sig);
-=======
-#ifdef HAVE_STRSIGNAL
-    cm_print_error("Test failed with exception: %s\n", strsignal(sig));
-#else
-    cm_print_error("Test failed with exception: %d\n", sig);
-#endif
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     exit_test(1);
 }
 
@@ -2350,12 +2152,9 @@ enum cm_printf_type {
     PRINTF_TEST_SKIPPED,
 };
 
-<<<<<<< HEAD
 static int xml_printed;
 static int file_append;
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 static void cmprintf_group_finish_xml(const char *group_name,
                                       size_t total_executed,
                                       size_t total_failed,
@@ -2366,17 +2165,13 @@ static void cmprintf_group_finish_xml(const char *group_name,
 {
     FILE *fp = stdout;
     int file_opened = 0;
-<<<<<<< HEAD
     int multiple_files = 0;
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     char *env;
     size_t i;
 
     env = getenv("CMOCKA_XML_FILE");
     if (env != NULL) {
         char buf[1024];
-<<<<<<< HEAD
         int rc;
 
         snprintf(buf, sizeof(buf), "%s", env);
@@ -2386,25 +2181,17 @@ static void cmprintf_group_finish_xml(const char *group_name,
             snprintf(buf, sizeof(buf), "%s", env);
         }
 
-=======
-        snprintf(buf, sizeof(buf), "%s", env);
-
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         fp = fopen(buf, "r");
         if (fp == NULL) {
             fp = fopen(buf, "w");
             if (fp != NULL) {
-<<<<<<< HEAD
                 file_append = 1;
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                 file_opened = 1;
             } else {
                 fp = stderr;
             }
         } else {
             fclose(fp);
-<<<<<<< HEAD
             if (file_append) {
                 fp = fopen(buf, "a");
                 if (fp != NULL) {
@@ -2426,22 +2213,11 @@ static void cmprintf_group_finish_xml(const char *group_name,
         }
     }
 
-=======
-            fp = stderr;
-        }
-    }
-
-    fprintf(fp, "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     fprintf(fp, "<testsuites>\n");
     fprintf(fp, "  <testsuite name=\"%s\" time=\"%.3f\" "
                 "tests=\"%u\" failures=\"%u\" errors=\"%u\" skipped=\"%u\" >\n",
                 group_name,
-<<<<<<< HEAD
                 total_runtime, /* seconds */
-=======
-                total_runtime * 1000, /* miliseconds */
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                 (unsigned)total_executed,
                 (unsigned)total_failed,
                 (unsigned)total_errors,
@@ -2451,11 +2227,7 @@ static void cmprintf_group_finish_xml(const char *group_name,
         struct CMUnitTestState *cmtest = &cm_tests[i];
 
         fprintf(fp, "    <testcase name=\"%s\" time=\"%.3f\" >\n",
-<<<<<<< HEAD
                 cmtest->test->name, cmtest->runtime);
-=======
-                cmtest->test->name, cmtest->runtime * 1000);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
         switch (cmtest->status) {
         case CM_TEST_ERROR:
@@ -2497,10 +2269,7 @@ static void cmprintf_group_finish_standard(size_t total_executed,
                                            size_t total_passed,
                                            size_t total_failed,
                                            size_t total_errors,
-<<<<<<< HEAD
                                            size_t total_skipped,
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                                            struct CMUnitTestState *cm_tests)
 {
     size_t i;
@@ -2509,7 +2278,6 @@ static void cmprintf_group_finish_standard(size_t total_executed,
     print_error("[  PASSED  ] %u test(s).\n",
                 (unsigned)(total_passed));
 
-<<<<<<< HEAD
     if (total_skipped) {
         print_error("[  SKIPPED ] %"PRIdS " test(s), listed below:\n", total_skipped);
         for (i = 0; i < total_executed; i++) {
@@ -2522,8 +2290,6 @@ static void cmprintf_group_finish_standard(size_t total_executed,
         print_error("\n %u SKIPPED TEST(S)\n", (unsigned)(total_skipped));
     }
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     if (total_failed) {
         print_error("[  FAILED  ] %"PRIdS " test(s), listed below:\n", total_failed);
         for (i = 0; i < total_executed; i++) {
@@ -2551,11 +2317,7 @@ static void cmprintf_standard(enum cm_printf_type type,
         break;
     case PRINTF_TEST_FAILURE:
         if (error_message != NULL) {
-<<<<<<< HEAD
             print_error("[  ERROR   ] --- %s\n", error_message);
-=======
-            print_error("%s\n", error_message);
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         }
         print_message("[  FAILED  ] %s\n", test_name);
         break;
@@ -2576,7 +2338,6 @@ static void cmprintf_group_start_tap(const size_t num_tests)
     print_message("1..%u\n", (unsigned)num_tests);
 }
 
-<<<<<<< HEAD
 static void cmprintf_group_finish_tap(const char *group_name,
                                       size_t total_executed,
                                       size_t total_passed,
@@ -2589,8 +2350,6 @@ static void cmprintf_group_finish_tap(const char *group_name,
     print_message("# %s - %s\n", status, group_name);
 }
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 static void cmprintf_tap(enum cm_printf_type type,
                          uint32_t test_number,
                          const char *test_name,
@@ -2707,7 +2466,6 @@ static void cmprintf_group_finish(const char *group_name,
                                     total_passed,
                                     total_failed,
                                     total_errors,
-<<<<<<< HEAD
                                     total_skipped,
                                     cm_tests);
         break;
@@ -2715,12 +2473,6 @@ static void cmprintf_group_finish(const char *group_name,
         break;
     case CM_OUTPUT_TAP:
         cmprintf_group_finish_tap(group_name, total_executed, total_passed, total_skipped);
-=======
-                                    cm_tests);
-        break;
-    case CM_OUTPUT_SUBUNIT:
-    case CM_OUTPUT_TAP:
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         break;
     case CM_OUTPUT_XML:
         cmprintf_group_finish_xml(group_name,
@@ -2859,11 +2611,7 @@ static int cmocka_run_one_test_or_fixture(const char *function_name,
 
     global_running_test = 1;
 
-<<<<<<< HEAD
     if (cm_setjmp(global_run_test_env) == 0) {
-=======
-    if (setjmp(global_run_test_env) == 0) {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         if (test_func != NULL) {
             test_func(state != NULL ? state : &current_state);
 
@@ -3028,10 +2776,7 @@ int _cmocka_run_group_tests(const char *group_name,
     struct CMUnitTestState *cm_tests;
     const ListNode *group_check_point = check_point_allocated_blocks();
     void *group_state = NULL;
-<<<<<<< HEAD
     size_t total_tests = 0;
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     size_t total_failed = 0;
     size_t total_passed = 0;
     size_t total_executed = 0;
@@ -3049,7 +2794,6 @@ int _cmocka_run_group_tests(const char *group_name,
         return -1;
     }
 
-<<<<<<< HEAD
     /* Setup cmocka test array */
     for (i = 0; i < num_tests; i++) {
         if (tests[i].name != NULL &&
@@ -3067,19 +2811,6 @@ int _cmocka_run_group_tests(const char *group_name,
 
     cmprintf_group_start(total_tests);
 
-=======
-    cmprintf_group_start(num_tests);
-
-    /* Setup cmocka test array */
-    for (i = 0; i < num_tests; i++) {
-        cm_tests[i] = (struct CMUnitTestState) {
-            .test = &tests[i],
-            .status = CM_TEST_NOT_STARTED,
-            .state = NULL,
-        };
-    }
-
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     rc = 0;
 
     /* Run group setup */
@@ -3093,27 +2824,18 @@ int _cmocka_run_group_tests(const char *group_name,
 
     if (rc == 0) {
         /* Execute tests */
-<<<<<<< HEAD
         for (i = 0; i < total_tests; i++) {
-=======
-        for (i = 0; i < num_tests; i++) {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
             struct CMUnitTestState *cmtest = &cm_tests[i];
             size_t test_number = i + 1;
 
             cmprintf(PRINTF_TEST_START, test_number, cmtest->test->name, NULL);
 
             if (group_state != NULL) {
-<<<<<<< HEAD
                 cmtest->state = group_state;
             } else if (cmtest->test->initial_state  != NULL) {
                 cmtest->state = cmtest->test->initial_state;
             }
 
-=======
-                cm_tests[i].state = group_state;
-            }
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
             rc = cmocka_run_one_tests(cmtest);
             total_executed++;
             total_runtime += cmtest->runtime;
@@ -3149,7 +2871,6 @@ int _cmocka_run_group_tests(const char *group_name,
                         break;
                 }
             } else {
-<<<<<<< HEAD
                 char err_msg[2048] = {0};
 
                 snprintf(err_msg, sizeof(err_msg),
@@ -3160,17 +2881,10 @@ int _cmocka_run_group_tests(const char *group_name,
                          test_number,
                          cmtest->test->name,
                          err_msg);
-=======
-                cmprintf(PRINTF_TEST_ERROR,
-                         test_number,
-                         cmtest->test->name,
-                         "Could not run the test - check test fixtures");
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
                 total_errors++;
             }
         }
     } else {
-<<<<<<< HEAD
         if (cm_error_message != NULL) {
             print_error("[  ERROR   ] --- %s\n", cm_error_message);
             vcm_free_error(cm_error_message);
@@ -3178,10 +2892,6 @@ int _cmocka_run_group_tests(const char *group_name,
         }
         cmprintf(PRINTF_TEST_ERROR, 0,
                  group_name, "[  FAILED  ] GROUP SETUP");
-=======
-        cmprintf(PRINTF_TEST_ERROR, 0,
-                 group_name, "Group setup failed");
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         total_errors++;
     }
 
@@ -3192,7 +2902,6 @@ int _cmocka_run_group_tests(const char *group_name,
                                       group_teardown,
                                       &group_state,
                                       group_check_point);
-<<<<<<< HEAD
         if (rc != 0) {
             if (cm_error_message != NULL) {
                 print_error("[  ERROR   ] --- %s\n", cm_error_message);
@@ -3202,8 +2911,6 @@ int _cmocka_run_group_tests(const char *group_name,
             cmprintf(PRINTF_TEST_ERROR, 0,
                      group_name, "[  FAILED  ] GROUP TEARDOWN");
         }
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     }
 
     cmprintf_group_finish(group_name,
@@ -3215,11 +2922,7 @@ int _cmocka_run_group_tests(const char *group_name,
                           total_runtime,
                           cm_tests);
 
-<<<<<<< HEAD
     for (i = 0; i < total_tests; i++) {
-=======
-    for (i = 0; i < num_tests; i++) {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         vcm_free_error(discard_const_p(char, cm_tests[i].error_message));
     }
     libc_free(cm_tests);
@@ -3269,11 +2972,7 @@ int _run_test(
     }
     initialize_testing(function_name);
     global_running_test = 1;
-<<<<<<< HEAD
     if (cm_setjmp(global_run_test_env) == 0) {
-=======
-    if (setjmp(global_run_test_env) == 0) {
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
         Function(state ? state : &current_state);
         fail_if_leftover_values(function_name);
 
@@ -3338,11 +3037,7 @@ int _run_tests(const UnitTest * const tests, const size_t number_of_tests) {
      * when a test setup occurs and popped on tear down.
      */
     TestState* test_states =
-<<<<<<< HEAD
        (TestState*)malloc(number_of_tests * sizeof(*test_states));
-=======
-	    (TestState*)malloc(number_of_tests * sizeof(*test_states));
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     /* The number of test states which should be 0 at the end */
     long number_of_test_states = 0;
     /* Names of the tests that failed. */
@@ -3478,11 +3173,7 @@ int _run_group_tests(const UnitTest * const tests, const size_t number_of_tests)
     const char *setup_name;
     size_t num_setups = 0;
     UnitTestFunction teardown = NULL;
-<<<<<<< HEAD
     const char *teardown_name = NULL;
-=======
-    const char *teardown_name;
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     size_t num_teardowns = 0;
     size_t current_test = 0;
     size_t i;

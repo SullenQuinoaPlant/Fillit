@@ -16,10 +16,7 @@ EXPORTS
     _cmocka_run_group_tests
     _expect_any
     _expect_check
-<<<<<<< HEAD
     _expect_function_call
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     _expect_in_range
     _expect_in_set
     _expect_memory
@@ -31,10 +28,7 @@ EXPORTS
     _expect_string
     _expect_value
     _fail
-<<<<<<< HEAD
     _function_called
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     _mock
     _run_test
     _run_tests
@@ -44,10 +38,7 @@ EXPORTS
     _test_malloc
     _test_realloc
     _will_return
-<<<<<<< HEAD
     cmocka_set_message_output
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     global_expect_assert_env
     global_expecting_assert
     global_last_failed_assert

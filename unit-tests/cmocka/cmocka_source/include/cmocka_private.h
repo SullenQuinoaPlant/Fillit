@@ -17,13 +17,9 @@
 #ifndef CMOCKA_PRIVATE_H_
 #define CMOCKA_PRIVATE_H_
 
-<<<<<<< HEAD
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-=======
-#include "config.h"
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 #include <stdint.h>
 
@@ -36,13 +32,10 @@
 #  undef inline
 #  define inline __inline
 
-<<<<<<< HEAD
 #  ifndef va_copy
 #   define va_copy(dest, src) (dest = src)
 #  endif
 
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 #  define strcasecmp _stricmp
 #  define strncasecmp _strnicmp
 

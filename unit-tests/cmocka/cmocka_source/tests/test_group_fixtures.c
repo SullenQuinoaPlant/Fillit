@@ -39,17 +39,11 @@ static void test_value_range(void **state)
 }
 
 int main(void) {
-<<<<<<< HEAD
     int prestate = 1337;
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_value_equal),
         cmocka_unit_test(test_value_range),
 	cmocka_unit_test_prestate(test_value_equal, &prestate),
-=======
-    const struct CMUnitTest tests[] = {
-        cmocka_unit_test(test_value_equal),
-        cmocka_unit_test(test_value_range),
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     };
 
     return cmocka_run_group_tests(tests, group_setup, group_teardown);

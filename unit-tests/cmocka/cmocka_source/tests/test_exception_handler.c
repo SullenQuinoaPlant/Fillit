@@ -22,11 +22,8 @@ static void test_segfault_recovery(void **state)
 int main(void) {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_segfault_recovery),
-<<<<<<< HEAD
         cmocka_unit_test(test_segfault_recovery),
         cmocka_unit_test(test_segfault_recovery),
-=======
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
     };
 
     return cmocka_run_group_tests(tests, NULL, NULL);

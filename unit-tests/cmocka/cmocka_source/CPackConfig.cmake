@@ -4,17 +4,10 @@
 ### general settings
 set(CPACK_PACKAGE_NAME ${APPLICATION_NAME})
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Unit testing framework for C with mock objects")
-<<<<<<< HEAD
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
 set(CPACK_PACKAGE_VENDOR "Andreas Schneider")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
-=======
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README")
-set(CPACK_PACKAGE_VENDOR "Andreas Schneider")
-set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 
 
 ### versions
@@ -26,11 +19,7 @@ set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSIO
 
 ### source generator
 set(CPACK_SOURCE_GENERATOR "TGZ")
-<<<<<<< HEAD
 set(CPACK_SOURCE_IGNORE_FILES "~$;[.]swp$;/[.]svn/;/[.]git/;.gitignore;/obj*;tags;cscope.*;.ycm_extra_conf.pyc")
-=======
-set(CPACK_SOURCE_IGNORE_FILES "~$;[.]swp$;/[.]svn/;/[.]git/;.gitignore;obj*;tags;cscope.*;.ycm_extra_conf.pyc")
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}")
 
 if (WIN32)

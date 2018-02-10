@@ -15,12 +15,6 @@ set_target_properties(waiter_test_wrap
         PROPERTIES
         LINK_FLAGS  "-Wl,--wrap=chef_cook"
 )
-<<<<<<< HEAD
 if (WIN32 OR MINGW OR CYGWIN)
     set_tests_properties(waiter_test_wrap PROPERTIES ENVIRONMENT "PATH=${DLL_PATH_ENV}")
 endif (WIN32 OR MINGW OR CYGWIN)
-=======
-if (WIN32)
-    set_tests_properties(waiter_test_wrap PROPERTIES ENVIRONMENT "PATH=${DLL_PATH_ENV}")
-endif (WIN32)
->>>>>>> ffbf144e3c4a58b24ec6db8182fec4746d50d9a9
