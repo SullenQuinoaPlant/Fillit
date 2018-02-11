@@ -10,5 +10,6 @@ install:
 script:
  - export CPATH
  - export LIBRARY_PATH
+ - export LD_LIBRARY_PATH=$LIBRARY_PATH
  - make #-p
  - make unit-tests
