@@ -11,6 +11,18 @@ int		main(void)
 	T(nop,
 		(void)state;
 	)
+	T(valid_sample_1,
+		mock_assert(!check_input(\
+			"./check_input_invalid_sample_1)
+		)
+	)	
+	T(invalid_sample_1,
+		expect_assert_failure(\
+			mock_assert(!check_input(\
+				"./check_input_invalid_sample_1)
+			)
+		)
+	)	
     return (\
 		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,\
 					test_index, 0, 0)\

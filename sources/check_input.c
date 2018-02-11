@@ -3,5 +3,5 @@
 int		check_input(const char *input)
 {
 
-	return (1);
+	return (0);
 }
