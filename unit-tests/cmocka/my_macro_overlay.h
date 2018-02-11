@@ -30,6 +30,6 @@ size_t				test_index = 0;
 		test_code\
 	};tests[test_index++] = (struct CMUnitTest)cmocka_unit_test(test_name);
 	
-# define T_STOP tests[test_index] = (struct CMUnitTest){"stop", 0, 0, 0};
+# define T_STOP tests[test_index] = (struct CMUnitTest){0, 0, 0, 0};
 
 #endif
