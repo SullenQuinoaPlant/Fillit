@@ -6,7 +6,7 @@
 # include <stdarg.h>
 # include <stddef.h>
 # include <setjmp.h>
-# include "cmocka.h"
+# include <cmocka.h>
 
 # ifndef HOW_MANY_TESTS
 #  define HOW_MANY_TESTS 500
