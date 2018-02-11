@@ -35,7 +35,7 @@ cmocka :
 		$(MAKE) -C cmocka/;\
 	else\
 		rm test.o;\
-		echo "cmocka already installed"
+		echo "cmocka already installed"\
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
