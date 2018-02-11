@@ -1,5 +1,6 @@
 NAME = fillit.exe
-TARGETS = check_input
+TARGETS = dummy_main \
+			check_input
 SRC = ./sources
 OBJ = ./objects
 #OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
