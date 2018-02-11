@@ -1,4 +1,4 @@
-SRC_DIR = ..
+SRC_DIR = ../sources
 TEST_SRCS := $(wildcard *.test.c)
 #TEST_SRCS += $(shell \
 #	for i in $(SRCS:.c=.test.c); do\

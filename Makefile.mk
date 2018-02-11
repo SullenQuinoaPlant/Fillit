@@ -1,6 +1,8 @@
-NAME = hello_world
-OBJS = hello_world.o\
-		hello_other_world.o
+NAME = fillit.exe
+TARGETS = check_input
+SRC = ./sources
+OBJ = ./objects
+OBJS = $(addprefix $(OBJ)/,$(TARGETS))
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -9,6 +11,9 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
+
+$(OBJ)/%.o : $(SRC)/%.c
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean :
 	-rm $(OBJS)
