@@ -12,8 +12,9 @@
 #  define HOW_MANY_TESTS 500
 # endif
 
+# define TEST_ARR tests
 
-struct CMUnitTest	tests[HOW_MANY_TESTS];
+struct CMUnitTest	TEST_ARR[HOW_MANY_TESTS];
 size_t				test_index = 0;
 
 //This didn't work (sad) can't forward declare functions within functions
@@ -22,14 +23,16 @@ size_t				test_index = 0;
 // couldn't figure out a way to make the forward declaration work
 //# define T(x) \
 //			void x(void* *);\
-//			tests[test_index++] = (struct CMUnitTest)cmocka_unit_test(x);\
+//			TEST_ARR[test_index++] = (struct CMUnitTest)cmocka_unit_test(x);\
 //			void x(void* *state){
 
 # define T(test_name, test_code) \
 	void	test_name(void* *state) {\
 		test_code\
-	};tests[test_index++] = (struct CMUnitTest)cmocka_unit_test(test_name);
+	};TEST_ARR[test_index++] = (struct CMUnitTest)cmocka_unit_test(test_name);
 	
-# define T_STOP tests[test_index] = (struct CMUnitTest){0, 0, 0, 0};
+# define T_STOP TEST_ARR[test_index] = (struct CMUnitTest){0, 0, 0, 0};
+
+# define RUN_T _cmocka_run_group_tests(#TEST_ARR, TEST_ARR, test_index, NULL, NULL);
 
 #endif

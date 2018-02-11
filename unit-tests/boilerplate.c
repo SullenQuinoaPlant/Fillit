@@ -8,10 +8,8 @@
 
 int		main(void)
 {
-//	testee_main(0, 0);
 	T(nop,
 		(void)state;
 	)
-	T_STOP
-    return (cmocka_run_group_tests(tests, NULL, NULL));
+    return (RUN_T);
 }
