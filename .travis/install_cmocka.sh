@@ -7,3 +7,8 @@ cd cmocka_build
 cmake -DCMAKE_INSTALL_PREFIX=$LD_LIBRARY_PATH ../cmocka_download
 make
 make install
+cd ..
+cp cmocka_download/include/cmocka.h $LD_LIBRARY_PATH
+rm -rf cmocka_download
+rm -rf cmocka_build
+ls $LS_LIBRARY_PATH
