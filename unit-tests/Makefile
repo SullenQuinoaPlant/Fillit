@@ -31,7 +31,11 @@ build_tests : cmocka $(TEST_OBJS)
 
 .PHONY : cmocka
 cmocka : 
-	$(MAKE) -C cmocka/
+	if $(CC) $(CFLAGS) boilerplate.c -o test.o; then\
+		$(MAKE) -C cmocka/;
+	else\
+		rm test.o;
+	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS)\

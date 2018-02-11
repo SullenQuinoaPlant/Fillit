@@ -8,7 +8,7 @@
 
 int		main(void)
 {
-	testee_main(0, 0);
+//	testee_main(0, 0);
 	T(nop,
 		(void)state;
 	)
