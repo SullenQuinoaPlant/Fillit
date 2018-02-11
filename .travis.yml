@@ -5,11 +5,11 @@ install:
  - LIBRARY_PATH=$INSTALL_HERE/lib
  - CPATH="$INSTALL_HERE/include"
  - source .travis/install_cmocka.sh
- - echo "installed :"
- - ls -R $INSTALL_HERE
-script:
+# - echo "installed :"
+# - ls -R $INSTALL_HERE
  - export CPATH
  - export LIBRARY_PATH
  - export LD_LIBRARY_PATH=$LIBRARY_PATH
+script:
  - make #-p
  - make unit-tests
