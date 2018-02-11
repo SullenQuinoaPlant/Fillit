@@ -3,8 +3,8 @@ TARGETS = dummy_main \
 			check_input
 SRC = ./sources
 OBJ = ./objects
-#OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
-OBJS := $($(TARGETS):%=$(OBJ)/%.o)
+OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
+#OBJS := $($(TARGETS):%=$(OBJ)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
