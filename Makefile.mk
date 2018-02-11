@@ -4,7 +4,7 @@ TARGETS = dummy_main \
 SRC = ./sources
 OBJ = ./objects
 #OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
-OBJS := $($(TARGET):%=$(OBJ)/%.o)
+OBJS := $($(TARGETS):%=$(OBJ)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
