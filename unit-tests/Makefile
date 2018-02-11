@@ -32,10 +32,10 @@ build_tests : cmocka $(TEST_OBJS)
 .PHONY : cmocka
 cmocka : 
 	if $(CC) $(CFLAGS) boilerplate.c -o test.o; then\
-		$(MAKE) -C cmocka/;\
-	else\
 		rm test.o;\
 		echo "cmocka already installed";\
+	else\
+		$(MAKE) -C cmocka/;\
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
