@@ -1,6 +1,8 @@
 language: c
 os: linux
 install:
+ - LD_LIBRARY_PATH=$(pwd)/libs
+ - CPATH+="$LD_LIBRARY_PATH/include"
  - source .travis/install_cmocka.sh
 script:
  - make #-p
