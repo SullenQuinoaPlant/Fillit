@@ -4,9 +4,6 @@ TARGETS = dummy_main \
 SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
-#OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
-#OBJS := $($(addsuffix .o,$(OBJS)):%=%.o)
-#OBJS := $($(TARGETS):%=$(OBJ)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
