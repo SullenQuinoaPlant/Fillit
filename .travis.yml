@@ -8,5 +8,7 @@ install:
  - echo "installed :"
  - ls -R $INSTALL_HERE
 script:
+ - export CPATH
+ - export LIBRARY_PATH
  - make #-p
  - make unit-tests
