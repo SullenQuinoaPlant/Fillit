@@ -1,10 +1,12 @@
 include Makefile.mk
 
 
-libfillit.a : $(OBJS)
-	ar -rcs $@ $(OBJS)
+#######
+#LAZY :
 
 
+%.c :
+	echo yo
 
 
 ########
@@ -21,3 +23,13 @@ unit-tests ut : libfillit.a
 .PHONY : all_unit-tests aut
 all_unit-tests aut : libfillit.a
 	make -C unit-tests all
+
+
+
+
+##############
+#MISCELLANEOUS
+
+
+libfillit.a : $(OBJS)
+	ar -rcs $@ $(OBJS)

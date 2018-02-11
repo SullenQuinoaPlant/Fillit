@@ -2,7 +2,8 @@ NAME = fillit.exe
 TARGETS = check_input
 SRC = ./sources
 OBJ = ./objects
-OBJS = $(addprefix $(OBJ)/,$(TARGETS))
+#OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
+OBJS := $($(TARGET):%=$(OBJ)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
