@@ -33,7 +33,7 @@ build_tests : cmocka $(TEST_OBJS)
 cmocka : 
 	ls $(CPATH)
 	ls $(LIBRARY_PATH)
-	if $(CC) $(CFLAGS) boilerplate.c -o test.o; then\
+	if $(CC) $(CFLAGS) boilerplate.c -lcmocka -o test.o; then\
 		rm test.o;\
 		echo "cmocka already installed";\
 	else\
