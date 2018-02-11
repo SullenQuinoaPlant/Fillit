@@ -12,7 +12,7 @@ all : list_objs $(NAME)
 
 .PHONY : list_objs
 list_objs :
-	@echo "objects to be built are : $(OBJS)
+	@echo "objects to be built are : $(OBJS)"
 
 $(NAME) : $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
