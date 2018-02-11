@@ -3,7 +3,9 @@ TARGETS = dummy_main \
 			check_input
 SRC = ./sources
 OBJ = ./objects
-OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
+OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
+#OBJS := $($(addprefix $(OBJ)/,$(TARGETS)):%=%.o)
+#OBJS := $($(addsuffix .o,$(OBJS)):%=%.o)
 #OBJS := $($(TARGETS):%=$(OBJ)/%.o)
 
 CC = gcc
