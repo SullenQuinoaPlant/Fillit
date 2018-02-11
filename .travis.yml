@@ -4,7 +4,7 @@ install:
  - AAA=aaa
  - echo $AAA
  - source .travis/install_cmocka.sh
- - echo LD_LIBRARY_PATH
+ - echo $LD_LIBRARY_PATH
 script:
  - make #-p
  - make unit-tests

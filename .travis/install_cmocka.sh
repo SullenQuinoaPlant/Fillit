@@ -9,6 +9,6 @@ make
 make install
 cd ..
 cp cmocka_download/include/cmocka.h $LD_LIBRARY_PATH
-rm -rf cmocka_download
-rm -rf cmocka_build
-ls $LS_LIBRARY_PATH
+rm -rf cmocka_download -v
+rm -rf cmocka_build -v
+ls $LD_LIBRARY_PATH
