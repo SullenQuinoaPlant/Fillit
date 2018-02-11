@@ -31,8 +31,4 @@ size_t				test_index = 0;
 		test_code\
 	};TEST_ARR[test_index++] = (struct CMUnitTest)cmocka_unit_test(test_name);
 	
-# define T_STOP TEST_ARR[test_index] = (struct CMUnitTest){0, 0, 0, 0};
-
-# define RUN_T _cmocka_run_group_tests(#TEST_ARR, TEST_ARR, test_index, NULL, NULL);
-
 #endif
