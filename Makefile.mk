@@ -28,10 +28,14 @@ all : $(NAME)
 #BUILD :
 
 $(NAME) : $(OBJS)
+	echo $$LIBRARY_PATH
+	echo $$LD_LIBRARY_PATH
+	echo $$CPATH
 	$(CC) $(CFLAGS)\
 		-L $(LIBDIR)/lib -I $(LIBDIR)/include\
 		-lft\
-	 	-o $(NAME) $(OBJS)\
+		-$(OBJS)\
+	 	-o $(NAME) 
 
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
