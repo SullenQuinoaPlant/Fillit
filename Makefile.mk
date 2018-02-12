@@ -8,7 +8,6 @@ TARGETS = \
 SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
-LIBDIR = libs
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -28,13 +27,12 @@ all : $(NAME)
 #BUILD :
 
 $(NAME) : $(OBJS)
-	echo $$LIBRARY_PATH
-	echo $$LD_LIBRARY_PATH
-	echo $$CPATH
+#	echo $$LIBRARY_PATH
+#	echo $$LD_LIBRARY_PATH
+#	echo $$CPATH
 	$(CC) $(CFLAGS)\
-		-L $(LIBDIR)/lib -I $(LIBDIR)/include\
+		$(OBJS)\
 		-lft\
-		-$(OBJS)\
 	 	-o $(NAME) 
 
 $(OBJ)/%.o : $(SRC)/%.c
