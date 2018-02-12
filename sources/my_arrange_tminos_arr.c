@@ -29,6 +29,10 @@ static int	left_shift(t_mino mino, int up)
 void	my_arrange_tminos_arr(t_mino *arr)
 {
 	int		i;
+	int		j;
+	int		k;
+	int		up;
+	int		left;
 
 	i = -1;
 	while (arr[++i].ar[0][0] && (j = -1))

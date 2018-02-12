@@ -12,5 +12,5 @@ install:
  - export LIBRARY_PATH
  - export LD_LIBRARY_PATH=$LIBRARY_PATH
 script:
- - make #-p
- - make unit-tests
+ - make -k #-p
+ - make -k unit-tests
