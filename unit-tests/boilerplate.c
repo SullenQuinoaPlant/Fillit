@@ -11,8 +11,11 @@ int		main(void)
 	T(nop,
 		(void)state;
 	)
-    return (\
-		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,\
-					test_index, 0, 0)\
+
+    return (
+		_cmocka_run_group_tests(
+					"TEST_ARR", TEST_ARR,
+					test_index, 0, 0
+		)
 	);
 }
