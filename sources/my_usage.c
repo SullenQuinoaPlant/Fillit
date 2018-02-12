@@ -10,7 +10,7 @@ char *	messages[MESSAGES] = {\
 	"tetramino file contents invalid"\
 }
 
-void	usage(int i)
+void	my_usage(int i)
 {
 	if (i > MESSAGES)
 		i = 0;
