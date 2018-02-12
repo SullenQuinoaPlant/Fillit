@@ -5,9 +5,33 @@
 
 static int		set_ret_ar(t_mino *ar, const char *input)
 {
-	(void)ar;
-	(void)input;
-	return (0);
+	int		i;
+	int		j;
+	int		k;
+	char	c;
+
+	i = -1;
+	c = '\n';
+	while (c == '\n' && i++ < 26)
+	{
+		j = -1;
+		while (c == '\n' && j++ < 4)
+		{
+			k = -1;
+			while (k++ < 4)
+			{
+				c = *input++;
+				if (c ^ '.' || c ^ '#')
+					return (1);
+				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
+			}
+			c = *input++;
+		}
+		if (j < 4 || c ^ '\n')
+			return (2);
+		c = *input++;
+	}
+	return (c);
 }
 
 static t_mino	*get_input(const char *input)
