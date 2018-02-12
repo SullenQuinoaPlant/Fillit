@@ -5,6 +5,8 @@
 
 int		set_ret_ar(t_mino *ar, const char *input)
 {
+	(void)ar;
+	(void)input;
 	return (0);
 }
 
