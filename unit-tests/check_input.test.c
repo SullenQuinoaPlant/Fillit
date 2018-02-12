@@ -11,15 +11,27 @@ int		main(void)
 	T(nop,
 		(void)state;
 	)
+
 	T(valid_sample_1,
+		t_mino *ret;
+
 		assert_true(\
-			!check_input(\
-				"./check_input_invalid_sample_1"));
+			(ret = check_input(\
+				"./check_input_invalid_sample_1")));
+		if (ret)
+			free(ret);
 	)
+
 	T(invalid_sample_1,
-		assert_false(!check_input(\
-			"./check_input_invalid_sample_1")
+		t_mino *ret;
+
+		assert_false(\
+			(ret = check_input(\
+				"./check_input_invalid_sample_1")
+			)
 		);
+		if (ret)
+			free(ret);
 	)	
     return (\
 		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,\

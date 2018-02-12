@@ -28,19 +28,21 @@ t_mino	*get_input(const char *input)
 				{
 					free(ret_ar);
 					ret_ar = 0;
-					usage();
+					usage(USAGE_BAD_TETRAMINOS);
 				}
 			}
 		}
 		close(index);
 	}
+	else
+		usage(USAGE_BAD_FILENAME);
 	return (ret_ar);
 }
 
 t_mino	*check_input(int ac, char *av[])
 {
 	if (ac ^ 2)
-		usage();
+		usage(USAGE_ARG_COUNT);
 	else
 		return (get_input(av[1]));
 	return (0);

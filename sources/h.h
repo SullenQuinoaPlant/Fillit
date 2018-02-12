@@ -12,4 +12,10 @@ typedef struct	s_tetramino {
 
 }				t_mino;
 
+
+/*usage message codes : */
+# define USAGE_ARG_COUNT 1
+# define USAGE_BAD_FILENAME 2
+# define USAGE_BAD_TETRAMINOS 3
+
 #endif
