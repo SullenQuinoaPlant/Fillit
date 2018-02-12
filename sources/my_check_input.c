@@ -20,11 +20,13 @@ static void		copy_tmino_into_big(unsigned char (*big)[6],\
 
 static int		bad_last_tmino_shape(t_mino *ar, int i)
 {
-	unsigned char	big[6][6] = {0};
+	unsigned char	big[6][6];
 	unsigned char	(*p)[4];
+	int				i;
+	int				j;
 
 	copy_tmino_into_big(big, ar[i].ar);
-	p = &big[1][1];
+	p = (unsigned char (*)[4])&(big[1][1]);
 	i = -1;
 	while (++i < 4 && (j = -1))
 		while (++j < 4)
