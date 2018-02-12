@@ -9,8 +9,14 @@ TEST_OBJS := $(TEST_SRCS:.c=.o)
 #CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
 CMOCKA_DIR := ./cmocka
 
+FILLIT_DIR = ..
+
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
+COMMON_SEARCH_PATHS =\
+		-L $(SRC_DIR) -I $(SRC_DIR)\
+		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
+		-L $(FILLIT_DIR)
 
 BUILD_STAMPS := $(TEST_OBJS:.o=.build.stamp)
 EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
@@ -39,9 +45,7 @@ cmocka :
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	@$(CC) $(CFLAGS)\
-		-L $(SRC_DIR) -I $(SRC_DIR)\
-		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
+	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)
 		-D main=testee_main\
 		-include $(SRC_DIR)/$*.c\
 		$<\
@@ -52,9 +56,7 @@ cmocka :
 		touch $*.test.build.stamp
 
 %.test.o : %.test.c
-	@$(CC) $(CFLAGS)\
-		-L $(SRC_DIR) -I $(SRC_DIR)\
-		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
+	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)
 		$<\
 		-lfillit\
 		-lcmocka\
