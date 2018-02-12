@@ -5,6 +5,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "libft.h"
+
 typedef struct	s_tetramino {
 	unsigned char	ar[4][4];
 

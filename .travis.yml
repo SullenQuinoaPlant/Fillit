@@ -5,6 +5,7 @@ install:
  - LIBRARY_PATH=$INSTALL_HERE/lib
  - CPATH="$INSTALL_HERE/include"
  - source .travis/install_cmocka.sh
+ - source .travis/install_libft.sh
 # - echo "installed :"
 # - ls -R $INSTALL_HERE
  - export CPATH
