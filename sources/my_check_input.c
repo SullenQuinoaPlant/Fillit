@@ -13,13 +13,13 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 
 	i = -1;
 	c = '\n';
-	while (i++ < 26 && c == '\n')
+	while (++i < 26 && c == '\n')
 	{
 		j = -1;
-		while (j++ < 4)
+		while (++j < 4)
 		{
 			k = -1;
-			while (k++ < 4 && ((c = *input++) == '.' || c == '#'))
+			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n')
 				return (1);	

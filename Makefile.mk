@@ -1,8 +1,10 @@
 NAME = fillit.exe
 TARGETS = \
-		my_check_input\
 		dummy_main\
-		my_usage
+		my_arrange_tminos_arr\
+		my_check_input\
+		my_usage\
+
 SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
