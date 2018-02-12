@@ -25,7 +25,7 @@ $(NAME) : $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
 
 $(OBJ)/%.o : $(SRC)/%.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 
 
