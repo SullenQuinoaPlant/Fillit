@@ -8,25 +8,43 @@ OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all : list_objs $(NAME)
 
-.PHONY : list_objs
-list_objs :
-	@echo "objects to be built are : $(OBJS)"
+
+##########
+#DEFAULT :
+
+all : list_objs $(NAME) list_objs 
+
+
+
+
+########
+#BUILD :
 
 $(NAME) : $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
 
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) -o $@ $<
-	ls $(OBJ)
 
+
+
+
+
+################
+#MISCELLANEOUS :
+
+.PHONY : clean
 clean :
 	-rm $(OBJS)
 
+.PHONY : fclean
 fclean : clean
 	-rm $(NAME)
 
+.PHONY : re
 re : fclean all
 
-.PHONY : re fclean clean all
+.PHONY : list_objs
+list_objs :
+	@echo "objects to be built are : $(OBJS)"
