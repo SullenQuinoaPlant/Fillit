@@ -45,7 +45,7 @@ cmocka :
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)
+	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
 		-D main=testee_main\
 		-include $(SRC_DIR)/$*.c\
 		$<\
@@ -56,7 +56,7 @@ cmocka :
 		touch $*.test.build.stamp
 
 %.test.o : %.test.c
-	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)
+	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
 		$<\
 		-lfillit\
 		-lcmocka\
