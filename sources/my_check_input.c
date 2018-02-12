@@ -3,6 +3,7 @@
 /*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
 #define BUFF_SZ 546
 
+
 static int		set_ret_ar(t_mino *ar, const char *input)
 {
 	int		i;
@@ -12,23 +13,17 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 
 	i = -1;
 	c = '\n';
-	while (c == '\n' && i++ < 26)
+	while (i++ < 26 && c == '\n')
 	{
 		j = -1;
-		while (c == '\n' && j++ < 4)
+		while (j++ < 4)
 		{
 			k = -1;
-			while (k++ < 4)
-			{
-				c = *input++;
-				if (c ^ '.' || c ^ '#')
-					return (1);
+			while (k++ < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
-			}
-			c = *input++;
+			if (k < 4 || (c = *input++) ^ '\n')
+				return (1);	
 		}
-		if (j < 4 || c ^ '\n')
-			return (2);
 		c = *input++;
 	}
 	return (c);
