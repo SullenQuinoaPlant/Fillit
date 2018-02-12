@@ -28,8 +28,10 @@ all : $(NAME)
 #BUILD :
 
 $(NAME) : $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)\
-		-L $(LIBDIR)/lib -I $(LIBDIR)/include
+	$(CC) $(CFLAGS)\
+		-L $(LIBDIR)/lib -I $(LIBDIR)/include\
+		-lft\
+	 	-o $(NAME) $(OBJS)\
 
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
