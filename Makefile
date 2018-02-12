@@ -4,6 +4,9 @@ include Makefile.mk
 #######
 #LAZY :
 
+nope :
+	echo nope
+
 %.c :
 	echo yo
 
