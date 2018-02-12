@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-#define MESSAGES 1
+#define MESSAGES 4
 
 char *	messages[MESSAGES] = {\
 	"usage function called",\
