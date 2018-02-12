@@ -46,6 +46,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 	c = '\n';
 	while (++i < 26 && c == '\n')
 	{
+		ar[i].ar[0][0] = 0;
 		j = -1;
 		while (++j < 4)
 		{

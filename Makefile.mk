@@ -8,6 +8,7 @@ TARGETS = \
 SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
+LIBDIR = libs
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -18,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 #DEFAULT :
 
 .PHONY : all
-all : list_objs list_objs $(NAME) list_objs 
+all : $(NAME)
 
 
 
@@ -27,7 +28,8 @@ all : list_objs list_objs $(NAME) list_objs
 #BUILD :
 
 $(NAME) : $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS)\
+		-L $(LIBDIR)/lib -I $(LIBDIR)/include
 
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
