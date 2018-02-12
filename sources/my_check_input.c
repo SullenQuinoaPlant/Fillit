@@ -22,7 +22,6 @@ static int		bad_last_tmino_shape(t_mino *ar, int i)
 {
 	unsigned char	big[6][6];
 	unsigned char	(*p)[4];
-	int				i;
 	int				j;
 
 	copy_tmino_into_big(big, ar[i].ar);
