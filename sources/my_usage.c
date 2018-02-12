@@ -8,7 +8,7 @@ char *	messages[MESSAGES] = {\
 			the file must describe a list of tetraminos.",\
 	"could not open specified file",\
 	"tetramino file contents invalid"\
-}
+};
 
 void	my_usage(int i)
 {

@@ -19,6 +19,7 @@ typedef struct	s_tetramino {
 # define USAGE_BAD_TETRAMINOS 3
 
 /*functions*/
+void	my_arrange_tminos_arr(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
 void	my_usage(int i);
 
