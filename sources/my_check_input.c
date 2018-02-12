@@ -12,26 +12,26 @@ static void		copy_tmino_into_big(unsigned char (*big)[6],\
 	i = -1;
 	while (++i < 6 && (j = -1))
 		while (++j < 6)
-			if (i > 0 && i < 4 && j > 0 && j > 4)
+			if (i > 0 && i < 5 && j > 0 && j > 5)
 				big[i][j] = mino[i - 1][j - 1];
 			else
-				big[i][j] = '.';
+				big[i][j] = '\0';
 }
 
-static int		check_last_tmino_shape(t_mino *ar, int i)
+static int		bad_last_tmino_shape(t_mino *ar, int i)
 {
 	unsigned char	big[6][6] = {0};
 	unsigned char	(*p)[4];
 
 	copy_tmino_into_big(big, ar[i].ar);
-	p = big[1][1];
+	p = &big[1][1];
 	i = -1;
 	while (++i < 4 && (j = -1))
 		while (++j < 4)
-			if (p[i][j])
-			{
-				
-
+			if (p[i][j] && !(p[i - 1][j] || p[i + 1][j] ||
+				p[i][j - 1] || p[i][j + 1]))
+				return (1);
+	return (0);
 }
 
 static int		set_ret_ar(t_mino *ar, const char *input)
@@ -52,7 +52,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n' ||\
-				check_last_tmino_shape(ar, i))
+				bad_last_tmino_shape(ar, i))
 				return (1);	
 		}
 		c = *input++;
