@@ -13,6 +13,7 @@ CFLAGS = -Wall -Wextra -Werror
 ##########
 #DEFAULT :
 
+.PHONY : all
 all : list_objs list_objs $(NAME) list_objs 
 
 

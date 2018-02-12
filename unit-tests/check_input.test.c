@@ -14,11 +14,11 @@ int		main(void)
 	T(valid_sample_1,
 		assert_true(\
 			!check_input(\
-				"./check_input_invalid_sample_1));
+				./check_input_invalid_sample_1));
 	)
 	T(invalid_sample_1,
 		assert_false(!check_input(\
-			"./check_input_invalid_sample_1)
+			./check_input_invalid_sample_1)
 		);
 	)	
     return (\
