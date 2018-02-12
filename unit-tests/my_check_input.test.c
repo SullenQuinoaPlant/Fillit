@@ -16,7 +16,7 @@ int		main(void)
 		t_mino *ret;
 
 		assert_true(\
-			(ret = check_input(\
+			(ret = my_check_input(\
 				"./check_input_valid_sample_1")));
 		if (ret)
 			free(ret);
@@ -25,7 +25,7 @@ int		main(void)
 	T(valid_sample_2,
 		t_mino *ret;
 
-		assert_true((ret = check_input(\
+		assert_true((ret = my_check_input(\
 			"./check_input_valid_sample_2")));
 		if (ret)
 			free(ret);
@@ -34,7 +34,7 @@ int		main(void)
 	T(valid_sample_3,
 		t_mino *ret;
 
-		assert_true((ret = check_input(\
+		assert_true((ret = my_check_input(\
 			"./check_input_valid_sample_3")));
 		if (ret)
 			free(ret);
@@ -44,7 +44,7 @@ int		main(void)
 		t_mino *ret;
 
 		assert_false(\
-			(ret = check_input(\
+			(ret = my_check_input(\
 				"./check_input_invalid_sample_1")
 			)
 		);
