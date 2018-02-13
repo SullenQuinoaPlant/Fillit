@@ -24,7 +24,7 @@ static void	compare_best(t_stack_state state, int *row_ends, int *col_ends)
 static void	here_stack(t_stack_state state, int *row_ends, int *col_ends, t_mino *tminos)
 {
 	if (!tminos)
-		compare_best(state);
+		compare_best(state, row_ends, col_ends);
 	else
 	{
 		;
@@ -44,8 +44,8 @@ char		(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
 			while (++j < MAX_STACK_WIDTH)
 				state.wk_grid[i][j] = '\0';
 		here_stack(state,
-					((int[MAX_STACK_HEIGHT]){0}),
-					((int[MAX_STACK_WIDTH){0}),
+					((int[MAX_STACK_HEIGHT + 1]){0}),
+					((int[MAX_STACK_WIDTH + 1]){0}),
 					tminos);
 	}
 	return (state.ret);
