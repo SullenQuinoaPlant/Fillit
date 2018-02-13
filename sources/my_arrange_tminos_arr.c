@@ -19,7 +19,7 @@ static int	left_shift(t_mino mino, int up)
 	int		j;
 
 	i = -1;
-	while (++i < 3 && (j = up))
+	while (++i < 3 && ((j = up) || 1))
 		while (++j < 4)
 			if (mino.ar[j][i] != '.')
 				return (i);

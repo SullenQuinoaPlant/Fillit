@@ -2,7 +2,7 @@
 #SET PROJECT NAVIGATION VARS :
 
 DEPTH = .
-include make_vars.mk
+include Make_vars.mk
 
 
 ######################
