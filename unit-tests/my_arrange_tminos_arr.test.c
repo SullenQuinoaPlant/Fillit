@@ -20,7 +20,7 @@ int		main(void)
 		printf("hello\n");
 	)
 
-	T(one_tmino, (
+	T(one_tmino, (\
 		t_mino ar[2];
 		t_mino one;
 		t_mino res;
