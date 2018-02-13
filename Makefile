@@ -1,30 +1,20 @@
 include Makefile.mk
 
-
-#######
-#LAZY :
-
-nope :
-	echo nope
-
-%.c :
-	echo yo
-
+include auxilliary/Makefile
 
 
 ########
 #TESTS :
 
-
 #SRCS := $(OBJS:%.o=%.c)
 #export SRCS
 
 .PHONY : unit-tests ut
-unit-tests ut : libfillit.a
+unit-tests ut : libfillit.a libaux.a
 	make -C unit-tests
 
 .PHONY : all_unit-tests aut
-all_unit-tests aut : libfillit.a
+all_unit-tests aut : libfillit.a libaux.a
 	make -C unit-tests all
 
 
@@ -36,3 +26,4 @@ all_unit-tests aut : libfillit.a
 
 libfillit.a : $(OBJS)
 	ar -rcs $@ $(OBJS)
+	mv libfillit.a $(OBJ)

@@ -18,7 +18,7 @@ COMMON_SEARCH_PATHS =\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
 		-L $(FILLIT_DIR)
 COMMON_LIBS =\
-		-lfillit -lft -lcmocka
+		-laux -lfillit -lft -lcmocka
 
 BUILD_STAMPS := $(TEST_OBJS:.o=.build.stamp)
 EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)

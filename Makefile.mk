@@ -9,6 +9,7 @@ SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -27,9 +28,6 @@ all : $(NAME)
 #BUILD :
 
 $(NAME) : $(OBJS)
-#	echo $$LIBRARY_PATH
-#	echo $$LD_LIBRARY_PATH
-#	echo $$CPATH
 	$(CC) $(CFLAGS)\
 		$(OBJS)\
 		-lft\
