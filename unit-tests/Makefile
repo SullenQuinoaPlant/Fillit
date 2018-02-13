@@ -88,9 +88,9 @@ run_tests : $(EXECUTION_STAMPS)
 #		if [ -f $$i ]; then ./$$i; fi;\
 #	done
 #	touch test_execution.stamp
-#
-#$(BUILD_STAMPS) :
-#	@:
+
+$(BUILD_STAMPS) :
+	@:
 
 
 
