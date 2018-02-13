@@ -12,7 +12,7 @@ int		main(void)
 		t_mino 	*ret;
 
 		assert_true(
-			(ret = my_check_input(2, ((str[2]){"", "./check_input_valid_sample_1"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_1"}))));
 		if (ret)
 			free(ret);
 	)
