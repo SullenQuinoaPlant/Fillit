@@ -13,44 +13,45 @@ int		main(void)
 	)
 
 	T(valid_sample_1,
-		t_mino *ret;
+		char* 	str[] = {"", "./check_input_valid_sample_1"};
+		t_mino 	*ret;
 
 		assert_true(
-			(ret = my_check_input(2,
-				"./check_input_valid_sample_1")));
+			(ret = my_check_input(2, str)));
 		if (ret)
 			free(ret);
 	)
 
 	T(valid_sample_2,
-		t_mino *ret;
+		char*	str[] = {"", "./check_input_valid_sample_2"};
+		t_mino	*ret;
 
-		assert_true((ret = my_check_input(2,
-			"./check_input_valid_sample_2")));
+		assert_true(
+			(ret = my_check_input(2, str)));
 		if (ret)
 			free(ret);
 	)
 
 	T(valid_sample_3,
+		char*	str[] = {"", "./check_input_valid_sample_3"};
 		t_mino *ret;
 
-		assert_true((ret = my_check_input(2,
-			"./check_input_valid_sample_3")));
+		assert_true(
+			(ret = my_check_input(2, str)));
 		if (ret)
 			free(ret);
 	)
 
 	T(invalid_sample_1,
+		char*	str[] = {"", "./check_input_invalid_sample_1"};
 		t_mino *ret;
 
 		assert_false(
-			(ret = my_check_input(2,
-				"./check_input_invalid_sample_1")
-			)
-		);
+			(ret = my_check_input(2, str)));
 		if (ret)
 			free(ret);
-	)	
+	)
+
     return (
 		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,
 								test_index, 0, 0
