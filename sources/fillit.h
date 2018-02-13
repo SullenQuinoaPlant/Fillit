@@ -26,6 +26,11 @@ typedef struct	s_tetramino {
 # define MAX_STACK_HEIGHT 20
 
 typedef char (t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
+typedef struct	s_stack_state {
+	t_stack_grid	wk_grid;
+	char			(*ret)[MAX_STACK_WIDTH];
+	int				best;
+}				t_stack_state;
 
 /*functions*/
 void	my_arrange_tminos_arr(t_mino *arr);
