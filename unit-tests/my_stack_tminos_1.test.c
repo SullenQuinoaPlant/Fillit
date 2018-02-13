@@ -8,7 +8,7 @@
 
 int		main(void)
 {
-	T(nop,
+	T(in_progress,
 		assert_true(my_stack_tminos_1(0));
 	)
 

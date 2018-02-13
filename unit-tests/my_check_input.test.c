@@ -8,16 +8,11 @@
 
 int		main(void)
 {
-	T(nop,
-		(void)state;
-	)
-
 	T(valid_sample_1,
-		char* 	str[] = {"", "./check_input_valid_sample_1"};
 		t_mino 	*ret;
 
 		assert_true(
-			(ret = my_check_input(2, str)));
+			(ret = my_check_input(2, ((str[2]){"", "./check_input_valid_sample_1"}))));
 		if (ret)
 			free(ret);
 	)
