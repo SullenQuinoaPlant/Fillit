@@ -1,3 +1,13 @@
+##############################
+#SET PROJECT NAVIGATION VARS :
+
+DEPTH = .
+include make_vars.mk
+
+
+######################
+#INCLUDED  MAKEFILES :
+
 include Makefile.mk
 
 libfillit.a : $(OBJS)
@@ -7,6 +17,7 @@ libfillit.a : $(OBJS)
 
 
 include auxilliary/Makefile
+
 
 
 ########
