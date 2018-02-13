@@ -1,5 +1,5 @@
 DEPTH = ..
-ifndef $(ROOT)
+ifndef ROOT
 	include $(DEPTH)/Make_vars.mk	
 endif
 
