@@ -1,29 +1,31 @@
 SRC_DIR = ../sources
 TEST_SRCS := $(wildcard *.test.c)
-#TEST_SRCS += $(shell \
-#	for i in $(SRCS:.c=.test.c); do\
-#		if [ -f $$i ]; then srcs="$$srcs $$i"; fi;\
-#	done; echo $$srcs;)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
-#CMOCKA_DIR := $(shell echo $$(pwd)/cmocka)
 CMOCKA_DIR := ./cmocka
-
-FILLIT_DIR = ..
+LIBS_DIR = ../libs/lib
+LIBS_H_DIR = ../libs/include
 
 CC = gcc
 CFLAGS = -fno-builtin #-Wall -Wextra -Werror
 COMMON_SEARCH_PATHS =\
-		-L $(SRC_DIR) -I $(SRC_DIR)\
+		-I $(SRC_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
-		-L $(FILLIT_DIR)
+		-L $(LIBS_DIR) -I $(LIBS_H_DIR)
 COMMON_LIBS =\
 		-laux -lfillit -lft -lcmocka
+
+GCC_LD_OPTS =\
+		-Wl,-rpath=$(LIBS_DIR)\
+		-Wl,-rpath=$(CMOCKA_DIR)
 
 BUILD_STAMPS := $(TEST_OBJS:.o=.build.stamp)
 EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 
 
+
+##########
+#DEFAULT :
 
 .PHONY : test
 test : list_tests build_tests run_tests
@@ -43,7 +45,7 @@ cmocka :
 		rm test.o;\
 		echo "cmocka already installed";\
 	else\
-		$(MAKE) -C cmocka/ >/dev/null;\
+		$(MAKE) -C $(CMOCKA_DIR) >/dev/null;\
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
@@ -53,7 +55,7 @@ cmocka :
 		$<\
 		$(COMMON_LIBS)\
 		-o $@\
-		-Wl,-rpath=$(CMOCKA_DIR);\
+		$(GCC_LD_OPTS);
 		touch $*.test.build.stamp
 
 %.test.o : %.test.c
@@ -61,7 +63,7 @@ cmocka :
 		$<\
 		$(COMMON_LIBS)\
 		-o $@\
-		-Wl,-rpath=$(CMOCKA_DIR);\
+		$(GCC_LD_OPTS);
 		touch $*.test.build.stamp
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h

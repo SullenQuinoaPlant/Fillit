@@ -1,5 +1,11 @@
 include Makefile.mk
 
+libfillit.a : $(OBJS)
+	ar -rcs $@ $(OBJS)
+	mv libfillit.a libs/lib 
+
+
+
 include auxilliary/Makefile
 
 
@@ -16,14 +22,3 @@ unit-tests ut : libfillit.a libaux.a
 .PHONY : all_unit-tests aut
 all_unit-tests aut : libfillit.a libaux.a
 	make -C unit-tests all
-
-
-
-
-##############
-#MISCELLANEOUS
-
-
-libfillit.a : $(OBJS)
-	ar -rcs $@ $(OBJS)
-	mv libfillit.a $(OBJ)
