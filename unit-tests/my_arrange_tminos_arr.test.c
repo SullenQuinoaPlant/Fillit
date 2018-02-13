@@ -21,17 +21,19 @@ int		main(void)
 		 * . . . #
 		 * . . . #
 		 */
-		one.ar = ((int[4][4]){
+		(one = {
+			.ar = (int[4][4]){
 			{'.', '.', '.', '.'},
 			{'.', '.', '#', '#'},
 		 	{'.', '.', '.', '#'},
-		 	{'.', '.', '.', '#'}
+		 	{'.', '.', '.', '#'}}
 		});
-		res.ar = ((int[4][4]){
+		(res = {
+			.ar = (int[4][4]){
 			{'#', '#', '.', '.'},
 			{'.', '#', '.', '.'},
 		 	{'.', '#', '.', '.'},
-		 	{'.', '.', '.', '.'}
+		 	{'.', '.', '.', '.'}}
 		});
 
 		memset(ar, 0, sizeof(ar));
@@ -40,6 +42,9 @@ int		main(void)
 		assert_false(memcmp(ar[0].ar, res.ar, sizeof(t_mino)));
 	)
 
+/*This didn't work because of the commas in the array declarations,
+ * not enclosed within parenthesis
+ */
 //	T(one_tmino,
 //		t_mino ar[2];
 //		t_mino one;
