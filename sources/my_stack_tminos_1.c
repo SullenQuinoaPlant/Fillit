@@ -13,12 +13,12 @@ static void	compare_best(t_stack_state state, int *row_ends, int *col_ends)
 	i = -1;
 	while (++i < MAX_STACK_WIDTH)
 		max = row_ends[i] > max ? col_ends[i] : max;
-	if (max >= best)
+	if (max >= state.best)
 		return ;
 	i = -1;
 	while (++i < MAX_STACK_HEIGHT && (j = -1))
 		while (++j < MAX_STACK_WIDTH)
-			ret[i][j] = state.wk_grid[i][j] ? state.wk_grid[i][j] : '.';
+			state.ret[i][j] = state.wk_grid[i][j] ? state.wk_grid[i][j] : '.';
 }
 
 static void	here_stack(t_stack_state state, int *row_ends, int *col_ends, t_mino *tminos)

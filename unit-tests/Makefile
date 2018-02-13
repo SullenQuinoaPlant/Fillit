@@ -17,6 +17,8 @@ COMMON_SEARCH_PATHS =\
 		-L $(SRC_DIR) -I $(SRC_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
 		-L $(FILLIT_DIR)
+COMMON_LIBS =\
+		-lfillit -lft -lcmocka
 
 BUILD_STAMPS := $(TEST_OBJS:.o=.build.stamp)
 EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
@@ -49,8 +51,7 @@ cmocka :
 		-D main=testee_main\
 		-include $(SRC_DIR)/$*.c\
 		$<\
-		-lfillit\
-		-lcmocka\
+		$(COMMON_LIBS)\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
 		touch $*.test.build.stamp
@@ -58,8 +59,7 @@ cmocka :
 %.test.o : %.test.c
 	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
 		$<\
-		-lfillit\
-		-lcmocka\
+		$(COMMON_LIBS)\
 		-o $@\
 		-Wl,-rpath=$(CMOCKA_DIR);\
 		touch $*.test.build.stamp
