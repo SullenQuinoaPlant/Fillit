@@ -34,7 +34,7 @@ int		main(void)
 		t_mino	*ret;
 
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
 		if (ret)
 			free(ret);
 	)
@@ -43,7 +43,7 @@ int		main(void)
 		t_mino *ret;
 
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
 		if (ret)
 			free(ret);
 	)
@@ -52,7 +52,7 @@ int		main(void)
 		t_mino *ret;
 
 		assert_false(
-			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
 		if (ret)
 			free(ret);
 	)
