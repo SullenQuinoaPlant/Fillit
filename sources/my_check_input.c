@@ -60,7 +60,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 }
 
 #include <stdio.h>
-static t_mino	*get_input(const char *input)
+static t_mino	*get_input(const char *input) __attribute__ ((unused))
 {
 	int		fd;
 	char	buff[BUFF_SZ] = {0};
@@ -105,6 +105,7 @@ static t_mino	*get_input(const char *input)
 
 t_mino			*my_check_input(int ac, char *av[])
 {
+	(void)ac;
 	printf("received string : %s\n", av[1]);
 //	if (ac ^ 2)
 //		my_usage(USAGE_ARG_COUNT);
