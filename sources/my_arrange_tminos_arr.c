@@ -35,7 +35,7 @@ void	my_arrange_tminos_arr(t_mino *arr)
 	int		left;
 
 	i = -1;
-	while (arr[++i].ar[0][0] && (j = -1))
+	while (arr[++i].ar[0][0] ^ TMINO_STR_END && (j = -1))
 	{
 		up = up_shift(arr[i]);
 		left = left_shift(arr[i], up);
