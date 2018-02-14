@@ -48,14 +48,14 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 		{
 			k = -1;
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
-				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
+				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n' ||
 				bad_last_tmino_shape(ar, i))
 				return (1);	
 		}
 		c = *input++;
 	}
-	ar[i].ar[0][0] = 0;
+	ar[i].ar[0][0] = TMINO_STR_END;
 	return (c);
 }
 

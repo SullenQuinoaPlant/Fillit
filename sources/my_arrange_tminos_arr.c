@@ -6,9 +6,9 @@ static int	up_shift(t_mino	mino)
 	int		j;
 
 	i = -1;
-	while (++i < 3 && (j = 0))
+	while (++i < 3 && (j = -1))
 		while (++j < 4)
-			if (mino.ar[i][j] != '.')
+			if (mino.ar[i][j])
 				return (i);
 	return (i);
 }
@@ -19,9 +19,9 @@ static int	left_shift(t_mino mino, int up)
 	int		j;
 
 	i = -1;
-	while (++i < 3 && ((j = up) || 1))
+	while (++i < 3 && ((j = up - 1) || 1))
 		while (++j < 4)
-			if (mino.ar[j][i] != '.')
+			if (mino.ar[j][i])
 				return (i);
 	return (i);
 }
