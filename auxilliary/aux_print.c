@@ -10,7 +10,7 @@ void	aux_print_2d_int_arr(int *arr, int d1, int d2)
 	while (++i < d1 && (j = -1))
 	{
 		while (++j < d2)
-			printf("\t%d", arr[i][j]);
+			printf("\t%d", arr[i * d2 + j]);
 		printf("\n");
 	}
 }
