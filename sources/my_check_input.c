@@ -60,7 +60,8 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 }
 
 #include <stdio.h>
-static t_mino	*get_input(const char *input) __attribute__ ((unused))
+static t_mino	*get_input(const char *input) __attribute__ ((unused));
+static t_mino	*get_input(const char *input)
 {
 	int		fd;
 	char	buff[BUFF_SZ] = {0};
