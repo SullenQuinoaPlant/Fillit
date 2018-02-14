@@ -104,8 +104,13 @@ static t_mino	*get_input(const char *input)
 	return (ret_ar);
 }
 
+#define _GNU_SOURCE
 t_mino			*my_check_input(int ac, char *av[])
 {
+	char	*wd;
+	wd = get_current_dir_name();
+	printf("dirname is :%s\n", wd);
+	free(wd);
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
