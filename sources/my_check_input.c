@@ -76,6 +76,7 @@ static t_mino	*get_input(const char *input)
 */
 	if ((fd = open(input, O_RDONLY) ^ -1))
 		if((index = read(fd, buff, BUFF_SZ)) > 0)
+		{
 			if (index < BUFF_SZ)
 				if ((ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 					if (set_ret_ar(ret_ar, buff))
@@ -84,6 +85,7 @@ static t_mino	*get_input(const char *input)
 						ret_ar = 0;
 						my_usage(USAGE_BAD_TETRAMINOS);
 					}
+		}
 		else
 			my_usage(USAGE_BAD_FILE);
 	close(fd);
