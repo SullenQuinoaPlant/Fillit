@@ -36,12 +36,21 @@ int		main(void)
 		 	{'.', '.', '.', '.'}}
 		});
 
+		printf("t_mino ar before init :\n");
+		aux_print_tmino(ar[0]);
+		printf("\n");
+		aux_print_tmino(ar[1]);
 		memset(ar, 0, sizeof(ar));
+		printf("t_mino ar after memset : \n");
+		aux_print_tmino(ar[0]);
+		printf("\n");
+		aux_print_tmino(ar[1]);
 		ar[0] = one;
+		printf("t_mino string:\n");
+		aux_print_tmino_string(ar);
 		my_arrange_tminos_arr(ar);
-		printf("returned string t_mino is :\n");
-		aux_print_tmino(ar[0].ar);
-		assert_false(0);
+		printf("t_mino string after arranging :\n");
+		aux_print_tmino_string(ar);
 		assert_false(memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
 	)
 
