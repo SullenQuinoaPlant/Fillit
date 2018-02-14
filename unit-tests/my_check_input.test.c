@@ -19,6 +19,13 @@ int		main(void)
 		assert_true(index < BUFF_SZ);
 		assert_true(index > 0);
 		close(fd);
+		printf("%s", buff);
+		fd = open("/home/travis/build/SullenQuinoaPlant/Fillit/unit-tests/check_input_valid_sample_1", O_RDONLY);
+		assert_int_not_equal(fd, -1);
+		index = read(fd, buff, BUFF_SZ);
+		assert_true(index < BUFF_SZ);
+		assert_true(index > 0);
+		close(fd);
 		t_mino	*arr;
 		assert_true(arr = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino)));
 		free(arr);
