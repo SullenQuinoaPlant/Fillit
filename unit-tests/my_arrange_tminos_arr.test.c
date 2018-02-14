@@ -62,7 +62,7 @@ int		main(void)
 		t_mino ar[3];
 		t_mino one;
 		t_mino two;
-		t_mino res;
+		t_mino *res_arr;
 
 		(one = (t_mino){
 			.ar = {
@@ -79,28 +79,41 @@ int		main(void)
 		 	{'\0', '\0', '#', '\0'},
 		 	{'\0', '\0', '\0', '\0'}}
 		});
-		printf("two : \n"); aux_print_tmino(two);
-		(res = (t_mino){
-			.ar = {
-			{'#', '#', '\0', '\0'},
-			{'\0', '#', '\0', '\0'},
-		 	{'\0', '#', '\0', '\0'},
-		 	{'\0', '\0', '\0', '\0'}}
-		});
-		printf("res : \n"); aux_print_tmino(res);
-
 		memset(ar, 0, sizeof(ar));
 		ar[0] = one;
 		ar[1] = two;
 		ar[2].ar[0][0] = TMINO_STR_END;
-		printf("t_mino string:\n");
+		printf("tmino input string \n");
 		aux_print_tmino_string(ar);
+
+		(res_arr = (t_mino[3]){
+			(t_mino){
+				.ar = {
+				{'#', '#', '\0', '\0'},
+				{'\0', '#', '\0', '\0'},
+		 		{'\0', '#', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}}
+			},
+			(t_mino){
+				.ar = {
+				{'#', '#', '#', '\0'},
+				{'\0', '#', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}}
+			},
+			(t_mino){
+				.ar = {TMINO_STR_END}
+			}
+		});
+		printf("t_mino res strig:\n");
+		aux_print_tmino_string(res_arr);
+
 		my_arrange_tminos_arr(ar);
 		printf("t_mino string after arranging :\n");
 		aux_print_tmino_string(ar);
 		
 		assert_false(
-			memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
+			memcmp(ar, res_arr, sizeof(ar)));
 	)
 
 	T(max_tminos,

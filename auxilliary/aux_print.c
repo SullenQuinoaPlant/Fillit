@@ -22,6 +22,6 @@ void	aux_print_tmino(t_mino print_this)
 
 void	aux_print_tmino_string(t_mino *str)
 {
-	while ((*str).ar[0][0])
+	while ((*str).ar[0][0] ^ TMINO_STR_END)
 		aux_print_tmino(*str++);
 }
