@@ -75,6 +75,7 @@ static t_mino	*get_input(const char *input)
 	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 */
 	if ((fd = open(input, O_RDONLY) ^ -1))
+	{
 		if((index = read(fd, buff, BUFF_SZ)) > 0)
 		{
 			if (index < BUFF_SZ)
@@ -88,6 +89,7 @@ static t_mino	*get_input(const char *input)
 		}
 		else
 			my_usage(USAGE_BAD_FILE);
+	}
 	close(fd);
 	return (ret_ar);
 }
