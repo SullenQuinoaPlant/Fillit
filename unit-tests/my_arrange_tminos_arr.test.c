@@ -141,6 +141,7 @@ int		main(void)
 		printf("res : \n"); aux_print_tmino(res);
 
 		memset(ar, 0, sizeof(ar));
+		memset(res_arr, 0, sizeof(res_arr));
 		i = -1;
 		while (++i < TMINO_MAX_CT)
 		{
@@ -157,7 +158,8 @@ int		main(void)
 		aux_print_tmino_string(ar);
 		
 		assert_false(
-			memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
+			memcmp(ar, res_arr, sizeof(ar))
+		);
 	)
 
 /*This didn't work because of the commas in the array declarations,
