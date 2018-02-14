@@ -16,5 +16,6 @@ void	aux_print_2d_int_arr(int *arr, int d1, int d2)
 }
 
 void	aux_print_tmino(t_mino print_this)
+{
 	aux_print_2d_int_arr((int*)t_mino.ar, 4, 4);
-
+}
