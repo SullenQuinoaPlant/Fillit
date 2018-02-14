@@ -72,7 +72,7 @@ static t_mino	*get_input(const char *input)
 	index < BUFF_SZ &&
 	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 	{
-		buff[index] = '\0';
+		/*buff[index] = '\0'; see initialization */
 		if (set_ret_ar(ret_ar, buff))
 		{
 			free(ret_ar);

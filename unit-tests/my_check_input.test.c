@@ -14,6 +14,11 @@ int		main(void)
 		int		fd;
 		fd = open("./check_input_valid_sample_1", O_RDONLY);
 		assert_int_not_equal(fd, -1);
+		int index;
+		char	buff[BUFF_SZ] = {0};
+		index = read(fd, buff, BUFF_SZ);
+		assert_true(index < BUFF_SZ);
+		assert_true(index > 0);
 		close(fd);
 		assert_true(
 			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_1"}))));
