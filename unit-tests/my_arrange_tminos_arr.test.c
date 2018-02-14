@@ -9,6 +9,13 @@
 
 int		main(void)
 {
+	T(no_tmino,
+		t_mino ar[1];
+
+		ar[0].ar[0][0] = TMINO_STR_END;
+		my_arrange_tminos_arr(ar);
+	)
+
 	T(one_tmino,
 		t_mino ar[2];
 		t_mino one;
@@ -38,22 +45,61 @@ int		main(void)
 		});
 		printf("res : \n"); aux_print_tmino(res);
 
-		printf("t_mino ar before init :\n");
-		aux_print_tmino(ar[0]);
-		printf("\n");
-		aux_print_tmino(ar[1]);
 		memset(ar, 0, sizeof(ar));
-		printf("t_mino ar after memset : \n");
-		aux_print_tmino(ar[0]);
-		printf("\n");
-		aux_print_tmino(ar[1]);
 		ar[0] = one;
+		ar[1].ar[0][0] = TMINO_STR_END;
 		printf("t_mino string:\n");
 		aux_print_tmino_string(ar);
 		my_arrange_tminos_arr(ar);
 		printf("t_mino string after arranging :\n");
 		aux_print_tmino_string(ar);
-		assert_false(memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
+		
+		assert_false(
+			memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
+	)
+
+	T(two_tmino,
+		t_mino ar[3];
+		t_mino one;
+		t_mino res;
+
+		(one = (t_mino){
+			.ar = {
+			{'\0', '\0', '\0', '\0'},
+			{'\0', '\0', '#', '#'},
+		 	{'\0', '\0', '\0', '#'},
+		 	{'\0', '\0', '\0', '#'}}
+		});
+		printf("one : \n"); aux_print_tmino(one);
+		(two = (t_mino){
+			.ar = {
+			{'\0', '\0', '\0', '\0'},
+			{'\0', '#', '#', '#'},
+		 	{'\0', '\0', '#', '\0'},
+		 	{'\0', '\0', '\0', '\0'}}
+		});
+		printf("two : \n"); aux_print_tmino(two);
+		(res = (t_mino){
+			.ar = {
+			{'#', '#', '\0', '\0'},
+			{'\0', '#', '\0', '\0'},
+		 	{'\0', '#', '\0', '\0'},
+		 	{'\0', '\0', '\0', '\0'}}
+		});
+		printf("res : \n"); aux_print_tmino(res);
+
+		memset(ar, 0, sizeof(ar));
+		ar[0] = one;
+		ar[1] = two;
+		ar[2].ar[0][0] = TMINO_STR_END;
+		printf("t_mino string:\n");
+		aux_print_tmino_string(ar);
+		my_arrange_tminos_arr(ar);
+		printf("t_mino string after arranging :\n");
+		aux_print_tmino_string(ar);
+		
+		assert_false(
+			memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
 	)
 
 /*This didn't work because of the commas in the array declarations,
