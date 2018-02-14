@@ -105,6 +105,7 @@ static t_mino	*get_input(const char *input)
 }
 
 #define _GNU_SOURCE
+#include <unistd.h>
 t_mino			*my_check_input(int ac, char *av[])
 {
 	char	*wd;
