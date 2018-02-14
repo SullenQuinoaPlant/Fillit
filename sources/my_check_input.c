@@ -109,9 +109,15 @@ t_mino			*my_check_input(int ac, char *av[])
 {
 	char	*wd;
 	char	buff[1024];
+	size_t	len;
+
 	wd = getcwd(buff, 1024);
 	if (wd)
-		printf("dirname is :%s\n", wd);
+	{
+		len = strlen(buff);
+		strncat(buff, av[1], 1024 - len);
+		printf("filename is :%s\n", wd);
+	}
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
