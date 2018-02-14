@@ -12,7 +12,7 @@ libaux.a : $(HERE_OBJS)
 	echo $(HERE_OBJS)
 	ar -rcs $@ $(HERE_OBJS)
 	mv $@ $(LIB_DIR)
-	cp auxilliaries.h $(LIB_H_DIR)
+	cp $(D)/auxilliaries.h $(LIB_H_DIR)
 
 $D/%.o : $D/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c $< -o $@
