@@ -39,6 +39,8 @@ int		main(void)
 		memset(ar, 0, sizeof(ar));
 		ar[0] = one;
 		my_arrange_tminos_arr(ar);
+		printf("returned string t_mino is :\n");
+		aux_print_tmino(ar[0].ar);
 		assert_false(0);
 		assert_false(memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
 	)

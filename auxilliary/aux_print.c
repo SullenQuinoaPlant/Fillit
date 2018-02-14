@@ -19,3 +19,9 @@ void	aux_print_tmino(t_mino print_this)
 {
 	aux_print_2d_int_arr((int*)print_this.ar, 4, 4);
 }
+
+void	aux_print_tmino_string(t_mino *list)
+{
+	while ((*list).ar[0][0])
+		aux_print_tmino(*list++);
+}

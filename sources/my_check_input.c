@@ -1,8 +1,5 @@
 #include "fillit.h"
 
-/*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
-#define BUFF_SZ 546
-
 static void		copy_tmino_into_big(unsigned char (*big)[6],\
 									unsigned char (*mino)[4])
 {
@@ -44,21 +41,21 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 
 	i = -1;
 	c = '\n';
-	while (++i < 26 && c == '\n')
+	while (++i < TMINO_MAX_CT && c == '\n')
 	{
-		ar[i].ar[0][0] = 0;
 		j = -1;
 		while (++j < 4)
 		{
 			k = -1;
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? c : 'A' + i;
-			if (k < 4 || (c = *input++) ^ '\n' ||\
+			if (k < 4 || (c = *input++) ^ '\n' ||
 				bad_last_tmino_shape(ar, i))
 				return (1);	
 		}
 		c = *input++;
 	}
+	ar[i].ar[0][0] = 0;
 	return (c);
 }
 
@@ -70,20 +67,22 @@ static t_mino	*get_input(const char *input)
 	t_mino	*ret_ar;
 
 	ret_ar = 0;
-	if ((fd = open(input, O_RDONLY) ^ -1))
+	if ((fd = open(input, O_RDONLY) ^ -1) &&
+	(index = read(fd, buff, BUFF_SZ)) > 0 &&
+	index < BUFF_SZ &&
+	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 	{
-		if((index = read(fd, buff, BUFF_SZ)) > 0 && index < BUFF_SZ)
-			if ((ret_ar = malloc(26 * sizeof(t_mino))))
-				if (set_ret_ar(ret_ar, buff))
-				{
-					free(ret_ar);
-					ret_ar = 0;
-					my_usage(USAGE_BAD_TETRAMINOS);
-				}
-		close(index);
+		buff[index] = '\0';
+		if (set_ret_ar(ret_ar, buff))
+		{
+			free(ret_ar);
+			ret_ar = 0;
+			my_usage(USAGE_BAD_TETRAMINOS);
+		}
+		close(fd);
 	}
 	else
-		my_usage(USAGE_BAD_FILENAME);
+		my_usage(USAGE_BAD_FILE);
 	return (ret_ar);
 }
 

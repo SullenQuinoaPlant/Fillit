@@ -15,15 +15,20 @@ typedef struct	s_tetramino {
 
 /*usage message codes : */
 # define USAGE_ARG_COUNT 1
-# define USAGE_BAD_FILENAME 2
+# define USAGE_BAD_FILE 2
 # define USAGE_BAD_TETRAMINOS 3
 
+# define TMINO_MAX_CT 26 /*MAX_ .. should be changed
+						   if this is changed.*/
 /*t_mino stack maximum dimensions :*/
 /*	high upper limit (could be reduced)
  *	assuming one square block 4 * 4 
  *	per t_mino*/
 # define MAX_STACK_WIDTH 24
 # define MAX_STACK_HEIGHT 20
+
+/*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
+#define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
 
 typedef char (t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
 typedef struct	s_stack_state {
