@@ -25,7 +25,7 @@ int		main(void)
 //		buff[BUFF_SZ - 1] = '\0';
 //		printf("%s", buff);
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "check_input_valid_sample_1"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_1"}))));
 		if (ret)
 			free(ret);
 	)
