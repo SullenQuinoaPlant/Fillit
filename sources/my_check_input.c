@@ -114,8 +114,8 @@ t_mino			*my_check_input(int ac, char *av[])
 		int		fd;
 		fd = open("./check_input_valid_sample_1", O_RDONLY);
 		int index;
-		char	buff[BUFF_SZ] = {0};
 		index = read(fd, buff, BUFF_SZ);
+		buff[index] = '\0';
 		close(fd);
 		printf("%s", buff);
 	wd = getcwd(buff, 1024);
