@@ -67,9 +67,9 @@ static t_mino	*get_input(const char *input)
 	t_mino	*ret_ar;
 
 	ret_ar = 0;
-	if ((fd = open(input, O_RDONLY) ^ -1) &&
-	(index = read(fd, buff, BUFF_SZ)) > 0 &&
-	index < BUFF_SZ &&
+	if ((fd = open(input, O_RDONLY) ^ -1) && ((printf("yo") | 1) &&
+	(index = read(fd, buff, BUFF_SZ)) > 0 && ((printf("yu") | 1) &&
+	index < BUFF_SZ && ((printf("yc") | 1) &&
 	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 	{
 		/*buff[index] = '\0'; see initialization */
