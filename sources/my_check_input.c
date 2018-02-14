@@ -75,6 +75,12 @@ static t_mino	*get_input(const char *input)
 	index < BUFF_SZ && (printf("yc") || 1) &&\
 	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 */
+
+		fd = open("./check_input_valid_sample_1", O_RDONLY);
+		index = read(fd, buff, BUFF_SZ);
+		buff[index] = '\0';
+		close(fd);
+		printf("%s", buff);
 	printf("input is : %s\n", input);
 	if ((fd = open(input, O_RDONLY) != -1))
 	{
