@@ -26,7 +26,7 @@ typedef struct	s_tetramino {
  *	per t_mino*/
 # define MAX_STACK_WIDTH 24
 # define MAX_STACK_HEIGHT 20
-# defnie TMINO_STR_END '\1'
+# define TMINO_STR_END '\1'
 
 /*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
 #define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
