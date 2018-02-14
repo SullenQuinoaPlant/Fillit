@@ -108,6 +108,7 @@ int		main(void)
 		t_mino	one;
 		t_mino	res_arr[TMINO_MAX_CT + 1];
 		t_mino	res;
+		int		i;
 
 		(one = (t_mino){
 			.ar = {
