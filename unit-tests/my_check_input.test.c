@@ -12,7 +12,7 @@ int		main(void)
 		t_mino 	*ret;
 
 		int		fd;
-		fd = open("./check_input_valid_sample_1")
+		fd = open("./check_input_valid_sample_1", O_RDONLY)
 		assert_int_not_equal(fd, -1);
 		close(fd);
 		assert_true(
