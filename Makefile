@@ -13,6 +13,7 @@ include Makefile.mk
 libfillit.a : $(OBJS)
 	ar -rcs $@ $(OBJS)
 	mv libfillit.a libs/lib 
+	cp $(SRC)/fillit.h $(LIB_H_DIR)
 
 
 
