@@ -11,6 +11,10 @@ int		main(void)
 	T(valid_sample_1,
 		t_mino 	*ret;
 
+		int		fd;
+		fd = open("./check_input_valid_sample_1")
+		assert_int_not_equal(fd, -1);
+		close(fd);
 		assert_true(
 			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_1"}))));
 		if (ret)
