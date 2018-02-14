@@ -39,6 +39,7 @@ int		main(void)
 		memset(ar, 0, sizeof(ar));
 		ar[0] = one;
 		my_arrange_tminos_arr(ar);
+		assert_false(0);
 		assert_false(memcmp(ar[0].ar, res.ar, sizeof(t_mino)));
 	)
 
