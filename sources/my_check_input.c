@@ -67,11 +67,13 @@ static t_mino	*get_input(const char *input)
 	ssize_t	index;
 	t_mino	*ret_ar;
 
-	ret_ar = 0;\
-//	if ((fd = open(input, O_RDONLY) ^ -1) && (printf("yo") || 1) &&\
-//	(index = read(fd, buff, BUFF_SZ)) > 0 && (printf("yu") || 1) &&\
-//	index < BUFF_SZ && (printf("yc") || 1) &&\
-//	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
+	ret_ar = 0;
+/*
+	if ((fd = open(input, O_RDONLY) ^ -1) && (printf("yo") || 1) &&\
+	(index = read(fd, buff, BUFF_SZ)) > 0 && (printf("yu") || 1) &&\
+	index < BUFF_SZ && (printf("yc") || 1) &&\
+	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
+*/
 	if ((fd = open(input, O_RDONLY) ^ -1))
 		if((index = read(fd, buff, BUFF_SZ)) > 0)
 			if (index < BUFF_SZ)
