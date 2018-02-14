@@ -5,7 +5,8 @@ endif
 
 D = $(ROOT)/auxilliary
 
-HERE_OBJS := $(patsubst %.c, %.o, $(wildcard $D/*.c))
+HERE_OBJS := $(patsubst %.c, %.o, $(wildcard $(D)/*.c))
+#HERE_OBJS := $(wildcard $(D)/*.c)
 
 
 libaux.a : $(HERE_OBJS)
