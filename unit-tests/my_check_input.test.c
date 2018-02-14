@@ -20,6 +20,11 @@ int		main(void)
 		assert_true(index < BUFF_SZ);
 		assert_true(index > 0);
 		close(fd);
+		t_mino	*arr;
+		assert_true(arr = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino)));
+		free(arr);
+		buff[BUFF_SZ - 1] = '\0';
+		printf("%s", buff);
 		assert_true(
 			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_1"}))));
 		if (ret)
