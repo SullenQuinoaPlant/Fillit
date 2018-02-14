@@ -1,6 +1,5 @@
 #include "fillit.h"
 
-#define MESSAGES 4
 
 char *	messages[MESSAGES] = {
 	"usage function called\n",
@@ -13,6 +12,6 @@ char *	messages[MESSAGES] = {
 void	my_usage(int i)
 {
 	if (i >= MESSAGES)
-		i = 0;
+		i = USAGE_DEFAULT;
 	ft_putstr(messages[i]);
 }

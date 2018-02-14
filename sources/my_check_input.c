@@ -76,16 +76,24 @@ static t_mino	*get_input(const char *input)
 */
 	if ((fd = open(input, O_RDONLY) != -1))
 	{
+		printf("yo");
 		if((index = read(fd, buff, BUFF_SZ)) > 0)
 		{
+			printf("yp");
 			if (index < BUFF_SZ)
+			{
+				printf("yq");
 				if ((ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
+				{
+					printf("yr");
 					if (set_ret_ar(ret_ar, buff))
 					{
 						free(ret_ar);
 						ret_ar = 0;
 						my_usage(USAGE_BAD_TETRAMINOS);
 					}
+				}
+			}
 		}
 		else
 			my_usage(USAGE_BAD_FILE);
@@ -96,6 +104,7 @@ static t_mino	*get_input(const char *input)
 
 t_mino			*my_check_input(int ac, char *av[])
 {
+	printf("received string : %s", av[1]);
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
