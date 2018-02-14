@@ -15,7 +15,7 @@ typedef struct	s_tetramino {
 
 /*usage message codes : */
 # define MESSAGES 4
-# define USAGE_DEFAULT
+# define USAGE_DEFAULT 0
 # define USAGE_ARG_COUNT 1
 # define USAGE_BAD_FILE 2
 # define USAGE_BAD_TETRAMINOS 3
