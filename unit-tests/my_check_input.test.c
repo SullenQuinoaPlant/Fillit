@@ -8,7 +8,7 @@
 
 int		main(void)
 {
-	char * p = ((char*[2]){"", "./check_input_valid_sample_1"});
+	char* *p = ((char*[2]){"", "./check_input_valid_sample_1"});
 	printf("p[1] is : %s", p[1]);
 	T(valid_sample_1,
 		t_mino 	*ret;
