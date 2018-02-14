@@ -40,7 +40,7 @@ int		main(void)
 		ar[0] = one;
 		my_arrange_tminos_arr(ar);
 		assert_false(0);
-		assert_false(memcmp(ar[0].ar, res.ar, sizeof(t_mino)));
+		assert_false(memcmp(ar[0].ar, res.ar, sizeof(char[4][4])));
 	)
 
 /*This didn't work because of the commas in the array declarations,
