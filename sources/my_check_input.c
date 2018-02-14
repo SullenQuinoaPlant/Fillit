@@ -59,6 +59,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 	return (c);
 }
 
+#include <stdio.h>
 static t_mino	*get_input(const char *input)
 {
 	int		fd;
