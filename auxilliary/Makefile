@@ -7,6 +7,7 @@ D = $(ROOT)/auxilliary
 
 HERE_OBJS := $(patsubst %.c, %.o, $(wildcard $(D)/*.c))
 HERE_OBJS := $(wildcard ./auxilliary/*.c)
+HERE_OBJS := $(D)/*.o
 
 
 libaux.a : $(HERE_OBJS)
