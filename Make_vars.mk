@@ -1,4 +1,3 @@
-ROOT = $(DEPTH)
 LIB_DIR = $(ROOT)/libs/lib
 LIB_H_DIR = $(ROOT)/libs/include
 SRC_DIR = $(ROOT)/sources

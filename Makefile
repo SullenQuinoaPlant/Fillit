@@ -1,7 +1,7 @@
 ##############################
 #SET PROJECT NAVIGATION VARS :
 
-DEPTH = .
+ROOT = .
 include Make_vars.mk
 
 

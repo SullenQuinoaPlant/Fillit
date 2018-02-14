@@ -1,13 +1,13 @@
-DEPTH = ..
 ifndef ROOT
-	include $(DEPTH)/Make_vars.mk	
+	ROOT = ..
+	include $(ROOT)/Make_vars.mk	
 endif
 
 D = $(ROOT)/auxilliary
 
 HERE_OBJS := $(patsubst %.c, %.o, $(wildcard $(D)/*.c))
-HERE_OBJS := $(wildcard ./auxilliary/*.c)
-HERE_OBJS := $(D)/*.o
+#HERE_OBJS := $(wildcard ./auxilliary/*.c)
+#HERE_OBJS := $(D)/*.o
 
 
 libaux.a : $(HERE_OBJS)
