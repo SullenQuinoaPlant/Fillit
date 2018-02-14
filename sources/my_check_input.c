@@ -107,7 +107,8 @@ static t_mino	*get_input(const char *input)
 t_mino			*my_check_input(int ac, char *av[])
 {
 	(void)ac;
-	printf("received string : %s\n", av[1]);
+	if (ac = open(av[1], O_RDONLY) != -1)
+		printf("received string : %s\n", av[1]);
 //	if (ac ^ 2)
 //		my_usage(USAGE_ARG_COUNT);
 //	else
