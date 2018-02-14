@@ -74,6 +74,7 @@ static t_mino	*get_input(const char *input)
 	index < BUFF_SZ && (printf("yc") || 1) &&\
 	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 */
+	printf("input is : %s\n", input);
 	if ((fd = open(input, O_RDONLY) != -1))
 	{
 		printf("yo");
@@ -104,7 +105,7 @@ static t_mino	*get_input(const char *input)
 
 t_mino			*my_check_input(int ac, char *av[])
 {
-	printf("received string : %s", av[1]);
+	printf("received string : %s\n", av[1]);
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
