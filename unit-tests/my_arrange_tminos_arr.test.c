@@ -28,6 +28,7 @@ int		main(void)
 		 	{'.', '.', '.', '#'},
 		 	{'.', '.', '.', '#'}}
 		});
+		printf("one : \n"); aux_print_tmino(one);
 		(res = (t_mino){
 			.ar = {
 			{'#', '#', '.', '.'},
@@ -35,6 +36,7 @@ int		main(void)
 		 	{'.', '#', '.', '.'},
 		 	{'.', '.', '.', '.'}}
 		});
+		printf("res : \n"); aux_print_tmino(res);
 
 		printf("t_mino ar before init :\n");
 		aux_print_tmino(ar[0]);
