@@ -26,24 +26,54 @@ static int	left_shift(t_mino mino, int up)
 	return (i);
 }
 
-void	my_arrange_tminos_arr(t_mino *arr)
+static void	shift_tmino(t_mino *mino)
 {
-	int		i;
 	int		j;
 	int		k;
 	int		up;
 	int		left;
 
+	up = up_shift(*mino);
+	left = left_shift(*mino, up);
+	j = -1;
+	while (++j < 4 && (k = -1))
+		while (++k < 4)
+			if (j + up < 4 && k + left < 4)
+				mino->ar[j][k] = mino->ar[j + up][k + left];
+			else
+				mino->ar[j][k] = 0;
+}
+
+static void	set_w_h(t_mino *mino)
+{
+	int		i;
+	int		j;
+	int		clear;
+
+	i = 4;
+	clear = 1;
+	while (clear && --i > 0 && (j = -1))
+		while (clear && ++j < 4)
+			if (mino->ar[i][j])
+				clear = 0;
+	mino->h = i + 1;
+	j = 4;
+	clear = 1;
+	while (clear && --j > 0 && (i = -1))
+		while (clear && ++i < mino->h)
+			if (mino->ar[i][j])
+				clear = 0;
+	mino->w = j + 1;
+}
+
+void		my_arrange_tminos_arr(t_mino *arr)
+{
+	int		i;
+
 	i = -1;
 	while (arr[++i].ar[0][0] ^ TMINO_STR_END && (j = -1))
 	{
-		up = up_shift(arr[i]);
-		left = left_shift(arr[i], up);
-		while (++j < 4 && (k = -1))
-			while (++k < 4)
-				if (j + up < 4 && k + left < 4)
-					arr[i].ar[j][k] = arr[i].ar[j + up][k + left];
-				else
-					arr[i].ar[j][k] = 0;
+		shift_tmino(&arr[i]);
+		set_w_h(&arr[i]);
 	}
 }

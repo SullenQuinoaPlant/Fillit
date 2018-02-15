@@ -59,8 +59,6 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 	return (c);
 }
 
-#include <stdio.h>
-static t_mino	*get_input(const char *input) __attribute__ ((unused));
 static t_mino	*get_input(const char *input)
 {
 	int		fd;
@@ -87,7 +85,6 @@ static t_mino	*get_input(const char *input)
 	return (ret_ar);
 }
 
-#include <unistd.h>
 t_mino			*my_check_input(int ac, char *av[])
 {
 	if (ac ^ 2)

@@ -7,18 +7,7 @@
 
 # include "libft.h"
 
-typedef struct	s_tetramino {
-	unsigned char	ar[4][4];
 
-}				t_mino;
-
-
-/*usage message codes : */
-# define MESSAGES 4
-# define USAGE_DEFAULT 0
-# define USAGE_ARG_COUNT 1
-# define USAGE_BAD_FILE 2
-# define USAGE_BAD_TETRAMINOS 3
 
 # define TMINO_MAX_CT 26 /*MAX_ .. should be changed
 						   if this is changed.*/
@@ -30,19 +19,47 @@ typedef struct	s_tetramino {
 # define MAX_STACK_HEIGHT 20
 # define TMINO_STR_END '\1'
 
+
+/*input processing :*/
 /*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
 #define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
 
+
+/*usage constants :*/
+# define MESSAGES 4
+/*usage message codes :*/
+# define USAGE_DEFAULT 0
+# define USAGE_ARG_COUNT 1
+# define USAGE_BAD_FILE 2
+# define USAGE_BAD_TETRAMINOS 3
+
+
+
+typedef struct	s_tetramino {
+	unsigned char	ar[4][4];
+	int				h;
+	int				w;
+}				t_mino;
+
 typedef char (t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
+
 typedef struct	s_stack_state {
 	t_stack_grid	wk_grid;
 	char			(*ret)[MAX_STACK_WIDTH];
 	int				best;
 }				t_stack_state;
 
+typedef struct	s_stack_values {
+	int				row_ends[MAX_STACK_HEIGHT]; /*last occupied index. */
+	int				col_ends[MAX_STACK_WIDTH]; /*same as above.*/
+	int				max_dim;
+	t_mino			*mino;
+}				t_stack_values;
+
 /*functions*/
 void	my_arrange_tminos_arr(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
+char	(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
 void	my_usage(int i);
 
 
