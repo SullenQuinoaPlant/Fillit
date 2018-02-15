@@ -3,8 +3,9 @@
 
 # include "fillit.h"
 
-void	aux_print_tmino(t_mino print_this);
 void	aux_print_2d_char_arr(char *arr, int d1, int d2);
+void	aux_print_stack_grid(t_p_stack_grid grid);
+void	aux_print_tmino(t_mino print_this);
 void	aux_print_tmino_string(t_mino *string);
 
 #endif

@@ -42,7 +42,8 @@ typedef struct	s_tetramino {
 	int		w;
 }				t_mino;
 
-typedef char (t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
+typedef char	(t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
+typedef char	(*t_p_stack_grid)[MAX_STACK_WIDTH];
 
 typedef struct	s_stack_state {
 	t_stack_grid	wk_grid;

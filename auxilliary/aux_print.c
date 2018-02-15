@@ -25,3 +25,18 @@ void	aux_print_tmino_string(t_mino *str)
 	while ((*str).ar[0][0] ^ TMINO_STR_END)
 		aux_print_tmino(*str++);
 }
+
+void	aux_print_stack_grid(t_p_stack_grid grid)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < MAX_STACK_HEIGHT)
+	{
+		j = -1;
+		while (++j < MAX_STACK_WIDTH)
+			printf("\t%c", grid[i][j]);
+		printf("\n");
+	}
+}
