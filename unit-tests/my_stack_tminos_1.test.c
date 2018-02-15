@@ -6,6 +6,10 @@
 #include "cmocka/my_macro_overlay.h"
 
 
+typedef struct	wrap_t_stac_grid {
+	t_stack_grid	ar;
+}				s_wrap_t_s_g;
+
 void	set_grid(int *p)
 {
 	int		i;
@@ -19,14 +23,16 @@ void	set_grid(int *p)
 int		main(void)
 {
 	T(one_tmino,
-		t_stack_grid ref = {
-			{'A'},
-			{'A'},
-			{'A'},
-			{'A'},
-		}
-		set_grid((int*)ref);
-		aux_print_stack_grid(ref);
+		s_wrap_t_s_g ref = ((s_wrap_t_s_g){
+			.ar = {
+				{'A'},
+				{'A'},
+				{'A'},
+				{'A'},
+			}
+		});
+		set_grid((int*)ref.ar);
+		aux_print_stack_grid(ref.ar);
 			
 		assert_true(1);
 	)

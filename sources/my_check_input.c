@@ -1,7 +1,7 @@
 #include "fillit.h"
 
-static void		copy_tmino_into_big(unsigned char (*big)[6],\
-									unsigned char (*mino)[4])
+static void		copy_tmino_into_big(char (*big)[6],
+									const char (*mino)[4])
 {
 	int		i;
 	int		j;
@@ -15,19 +15,20 @@ static void		copy_tmino_into_big(unsigned char (*big)[6],\
 				big[i][j] = '\0';
 }
 
-static int		bad_last_tmino_shape(t_mino *ar, int i)
+static int		bad_tmino_shape(t_mino *mino)
 {
-	unsigned char	big[6][6];
-	unsigned char	(*p)[4];
-	int				j;
+	char		big[6][6];
+	const char	(*p)[4];
+	int			i;
+	int			j;
 
-	copy_tmino_into_big(big, ar[i].ar);
-	p = (unsigned char (*)[4])&(big[1][1]);
-	i = -1;
-	while (++i < 4 && (j = -1))
-		while (++j < 4)
-			if (p[i][j] && !(p[i - 1][j] || p[i + 1][j] ||
-				p[i][j - 1] || p[i][j + 1]))
+	p = (const char (*)[4])mino->ar;
+	copy_tmino_into_big(big, p);
+	i = 0;
+	while (++i < 5 && (j = 0))
+		while (++j < 5)
+			if (big[i][j] && !(big[i - 1][j] || big[i + 1][j] ||
+				big[i][j - 1] || big[i][j + 1]))
 				return (1);
 	return (0);
 }
@@ -50,8 +51,8 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n' ||
-				bad_last_tmino_shape(ar, i))
-				return (1);	
+				bad_tmino_shape(ar + i))
+				return (1);
 		}
 		c = *input++;
 	}
