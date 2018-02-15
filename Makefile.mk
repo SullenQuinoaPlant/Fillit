@@ -4,6 +4,7 @@ TARGETS = \
 		my_arrange_tminos_arr\
 		my_check_input\
 		my_usage\
+		my_stack_tminos_1
 
 SRC = ./sources
 OBJ = ./objects

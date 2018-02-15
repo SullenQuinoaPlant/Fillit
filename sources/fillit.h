@@ -12,11 +12,12 @@
 # define TMINO_MAX_CT 26 /*MAX_ .. should be changed
 						   if this is changed.*/
 /*t_mino stack maximum dimensions :*/
-/*	high upper limit (could be reduced)
+/*	high upper limit (could probably be reduced)
  *	assuming one square block 4 * 4 
- *	per t_mino*/
-# define MAX_STACK_WIDTH 24
-# define MAX_STACK_HEIGHT 20
+ *	per two t_mino (can fit any combination of two in 
+ *	one square block)*/
+# define MAX_STACK_WIDTH 15
+# define MAX_STACK_HEIGHT 15
 # define TMINO_STR_END '\1'
 
 
@@ -59,7 +60,7 @@ typedef struct	s_stack_values {
 /*functions*/
 void	my_arrange_tminos_arr(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
-char	(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
+char	(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH] __attribute__ ((unused));
 void	my_usage(int i);
 
 
