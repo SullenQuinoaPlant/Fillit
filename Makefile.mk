@@ -9,7 +9,7 @@ SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 
-CSEARCHES = -L ./lib/lib -I ./lib/include
+CSEARCHES = -L ./libs/lib -I ./libs/include
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -37,7 +37,7 @@ $(NAME) : $(OBJS)
 	 	-o $(NAME) 
 
 $(OBJ)/%.o : $(SRC)/%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
 
 

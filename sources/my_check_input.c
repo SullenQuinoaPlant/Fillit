@@ -69,43 +69,20 @@ static t_mino	*get_input(const char *input)
 	t_mino	*ret_ar;
 
 	ret_ar = 0;
-/*
-	if ((fd = open(input, O_RDONLY) ^ -1) && (printf("yo") || 1) &&\
-	(index = read(fd, buff, BUFF_SZ)) > 0 && (printf("yu") || 1) &&\
-	index < BUFF_SZ && (printf("yc") || 1) &&\
-	(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
-*/
-
-		fd = open("./check_input_valid_sample_1", O_RDONLY);
-		index = read(fd, buff, BUFF_SZ);
-		buff[index] = '\0';
-		close(fd);
-		printf("%s", buff);
-	printf("input is : %s\n", input);
-	if ((fd = open(input, O_RDONLY) != -1))
+	if (((fd = open(input, O_RDONLY)) ^ -1) &&
+		(index = read(fd, buff, BUFF_SZ)) > 0 &&
+		index < BUFF_SZ &&
+		(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
 	{
-		printf("yo");
-		if((index = read(fd, buff, BUFF_SZ)) > 0)
+		if (set_ret_ar(ret_ar, buff))
 		{
-			printf("yp");
-			if (index < BUFF_SZ)
-			{
-				printf("yq");
-				if ((ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
-				{
-					printf("yr");
-					if (set_ret_ar(ret_ar, buff))
-					{
-						free(ret_ar);
-						ret_ar = 0;
-						my_usage(USAGE_BAD_TETRAMINOS);
-					}
-				}
-			}
+			free(ret_ar);
+			ret_ar = 0;
+			my_usage(USAGE_BAD_TETRAMINOS);
 		}
-		else
-			my_usage(USAGE_BAD_FILE);
 	}
+	else
+		my_usage(USAGE_BAD_FILE);
 	close(fd);
 	return (ret_ar);
 }
@@ -113,27 +90,9 @@ static t_mino	*get_input(const char *input)
 #include <unistd.h>
 t_mino			*my_check_input(int ac, char *av[])
 {
-	char	*wd;
-	char	buff[1024];
-	size_t	len;
-
-		int		fd;
-		fd = open("./check_input_valid_sample_1", O_RDONLY);
-		int index;
-		index = read(fd, buff, BUFF_SZ);
-		buff[index] = '\0';
-		close(fd);
-		printf("%s", buff);
-	wd = getcwd(buff, 1024);
-	if (wd)
-	{
-		len = strlen(buff);
-		strncat(buff, av[1], 1024 - len);
-		printf("filename is :%s\n", wd);
-	}
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
-		return (get_input(wd));
+		return (get_input(av[1]));
 	return (0);
 }

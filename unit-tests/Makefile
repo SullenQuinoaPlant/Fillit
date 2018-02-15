@@ -42,7 +42,8 @@ build_tests : cmocka $(TEST_OBJS)
 .PHONY : cmocka
 cmocka : 
 	echo "building unit-tests"
-	@if $(CC) $(CFLAGS) boilerplate.c -lcmocka -o test.o; then\
+	@if $(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
+		 boilerplate.c -lcmocka -o test.o; then\
 		rm test.o;\
 		echo "cmocka already installed";\
 	else\

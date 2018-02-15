@@ -10,29 +10,8 @@ int		main(void)
 	T(valid_sample_1,
 		t_mino 	*ret;
 
-//		int		fd;
-//		fd = open("./check_input_valid_sample_1", O_RDONLY);
-//		assert_int_not_equal(fd, -1);
-//		int index;
-//		char	buff[BUFF_SZ] = {0};
-//		index = read(fd, buff, BUFF_SZ);
-//		assert_true(index < BUFF_SZ);
-//		assert_true(index > 0);
-//		close(fd);
-//		printf("%s", buff);
-//		fd = open("/home/travis/build/SullenQuinoaPlant/Fillit/unit-tests/check_input_valid_sample_1", O_RDONLY);
-//		assert_int_not_equal(fd, -1);
-//		index = read(fd, buff, BUFF_SZ);
-//		assert_true(index < BUFF_SZ);
-//		assert_true(index > 0);
-//		close(fd);
-//		t_mino	*arr;
-//		assert_true(arr = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino)));
-//		free(arr);
-//		buff[BUFF_SZ - 1] = '\0';
-//		printf("%s", buff);
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_1"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_1"}))));
 		if (ret)
 			free(ret);
 	)
@@ -41,7 +20,7 @@ int		main(void)
 		t_mino	*ret;
 
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "check_input_valid_sample_2"}))));
 		if (ret)
 			free(ret);
 	)
@@ -50,7 +29,7 @@ int		main(void)
 		t_mino *ret;
 
 		assert_true(
-			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "./check_input_valid_sample_2"}))));
 		if (ret)
 			free(ret);
 	)
@@ -59,10 +38,38 @@ int		main(void)
 		t_mino *ret;
 
 		assert_false(
-			(ret = my_check_input(2, ((char*[2]){"", "/check_input_valid_sample_2"}))));
+			(ret = my_check_input(2, ((char*[2]){"", "./check_input_invalid_sample_1"}))));
 		if (ret)
 			free(ret);
 	)
+
+	T(bad_filename_1,
+		t_mino *ret;
+
+		assert_false(
+			(ret = my_check_input(2, ((char*[2]){"", "does_not_exist"}))));
+		if (ret)
+			free(ret);
+	)
+
+	T(file_too_long,
+		t_mino *ret;
+
+		assert_false(
+			(ret = my_check_input(2, ((char*[2]){"", "check_input_overlength_sample"}))));
+		if (ret)
+			free(ret);
+	)
+
+	T(file_max_length,
+		t_mino *ret;
+
+		assert_true(
+			(ret = my_check_input(2, ((char*[2]){"", "check_input_max_length_sample"}))));
+		if (ret)
+			free(ret);
+	)
+
 
     return (
 		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,
