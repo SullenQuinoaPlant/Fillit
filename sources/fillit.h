@@ -37,9 +37,9 @@
 
 
 typedef struct	s_tetramino {
-	unsigned char	ar[4][4];
-	int				h;
-	int				w;
+	char	ar[4][4];
+	int		h;
+	int		w;
 }				t_mino;
 
 typedef char (t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);

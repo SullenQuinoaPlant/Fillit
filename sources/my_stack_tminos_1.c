@@ -34,10 +34,10 @@ static int	try_tmino_pos(t_stack_state *state,
 							t_stack_values v,
 							int	row, int col)
 {
-	int			i;
-	int			j;
+	int		i;
+	int		j;
 	char	(*p_mino)[4] = v.mino->ar;
-	char		(*p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
+	char	(*p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
 
 	i = -1;
 	while (++i < 4 && (j = -1))
@@ -101,10 +101,10 @@ char		(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
 		state.best = MAX_STACK_HEIGHT - 1;
 		here_stack(&state,
 					&((t_stack_values){
-						(int[MAX_STACK_HEIGHT]){0},
-						(int[MAX_STACK_WIDTH]){0},
-						MAX_STACK_HEIGHT,
-						tminos
+						.row_ends = {0},
+						.col_ends = {0},
+						.max_dim = MAX_STACK_HEIGHT,
+						.mino = tminos
 					})
 		);
 	}
