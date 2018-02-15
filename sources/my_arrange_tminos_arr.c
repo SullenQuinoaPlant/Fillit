@@ -71,7 +71,7 @@ void		my_arrange_tminos_arr(t_mino *arr)
 	int		i;
 
 	i = -1;
-	while (arr[++i].ar[0][0] ^ TMINO_STR_END && (j = -1))
+	while (arr[++i].ar[0][0] ^ TMINO_STR_END)
 	{
 		shift_tmino(&arr[i]);
 		set_w_h(&arr[i]);
