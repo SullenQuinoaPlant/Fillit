@@ -7,7 +7,7 @@ LIBS_DIR = ../libs/lib
 LIBS_H_DIR = ../libs/include
 
 CC = gcc
-CFLAGS = -fno-builtin #-Wall -Wextra -Werror
+CFLAGS = -fno-builtin -g#-Wall -Wextra -Werror
 COMMON_SEARCH_PATHS =\
 		-I $(SRC_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
