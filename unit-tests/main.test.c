@@ -13,31 +13,31 @@ int		main(void)
 	)
 
 	T(no_input,
-		testee_main();
+		testee_main(1, ((char*[2]){"prog_nameh", ""}));
 	)
 
 	T(bad_file_name,
-		testee_main("this_is_not_a_file");
+		testee_main(1, (char*[1]){"this_is_not_a_file"});
 	)
 
 	T(check_input_invalid_sample_1,
-		testee_main("check_input_invalid_sample_1");
+		testee_main(1, (char*[1]){"check_input_invalid_sample_1"});
 	)
 
 	T(check_input_overlength_sample,
-		testee_main("check_input_overlength_sample");
+		testee_main(1, (char*[1]){"check_input_overlength_sample"});
 	)
 
 	T(stack_tminos_1_tmino,
-		testee_main("stack_tminos_1_tmino");
+		testee_main(1, (char*[1]){"stack_tminos_1_tmino"});
 	)
 
 	T(stack_tminos_4_tminos,
-		testee_main("stack_tminos_4_tminos");
+		testee_main(1, (char*[1]){"stack_tminos_4_tminos"});
 	)
 
 	T(check_input_valid_sample_1,
-		testee_main("check_input_valid_sample_1");
+		testee_main(1, (char*[1]){"check_input_valid_sample_1"});
 	)
 
     return (

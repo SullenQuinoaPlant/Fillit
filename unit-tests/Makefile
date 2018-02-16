@@ -3,6 +3,7 @@ TEST_SRCS := $(wildcard *.test.c)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
 CMOCKA_DIR := ./cmocka
+LIBLIBERTY_DIR := ./libliberty
 LIBS_DIR = ../libs/lib
 LIBS_H_DIR = ../libs/include
 
@@ -12,10 +13,12 @@ CFLAGS = -fno-builtin #-Wall -Wextra -Werror
 CFLAGS += $(CFLAGS_MORE)
 COMMON_SEARCH_PATHS =\
 		-I $(SRC_DIR)\
+		-L $(LIBS_DIR) -I $(LIBS_H_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
-		-L $(LIBS_DIR) -I $(LIBS_H_DIR)
+#		-L $(LIBLIBERTY_DIR) -I$(LIBLIBERTY_DIR)
+
 COMMON_LIBS =\
-		-laux -lfillit -lft -lcmocka
+		-laux -lfillit -lft -lcmocka #-liberty
 
 GCC_LD_OPTS =\
 		-Wl,-rpath=$(LIBS_DIR)\
@@ -43,13 +46,22 @@ build_tests : cmocka $(TEST_OBJS)
 
 .PHONY : cmocka
 cmocka : 
-	echo "building unit-tests"
 	@if $(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
-		 boilerplate.c -lcmocka -o test.o; then\
+		 test_cmocka.c -lcmocka -o test.o; then\
 		rm test.o;\
 		echo "cmocka already installed";\
 	else\
 		$(MAKE) -C $(CMOCKA_DIR) >/dev/null;\
+	fi
+
+.PHONY : libliberty #could not find a way to get it short of installing gcc. and that's a mouthful for another day
+libliberty :
+	@if $(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
+		 test_libliberty.c -liberty -o test.o; then\
+		rm test.o;\
+		echo "libliberty already installed";\
+	else\
+		$(MAKE) -C $(LIBLIBERTY_DIR) >/dev/null;\
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
