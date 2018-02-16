@@ -1,6 +1,18 @@
 #include "fillit.h"
 
-static void	compare_best(t_stack_state *state,
+static int	compare_stacks(t_stack_state *s)
+{
+	int		i;
+	int		ret;
+
+	i = -1;
+	while (++i < MAX_STACK_HEIGHT * MAX_STACK_WIDTH)
+		if ((ret = !!(char*)s->wk_grid[i]) != !!(char*)s->ret[i])
+			return (!ret);
+	return (1);
+}
+
+static void	compare_best(t_stack_state *s,
 							t_stack_values *v)
 {
 	int		i;
@@ -9,23 +21,21 @@ static void	compare_best(t_stack_state *state,
 
 	max = v->max_dim;
 	i = -1;
-	/*shouldn't have to search beyond state-> max.
-	 * leaving things as are, to help hunt bugs
-	 */
-	while (++i < MAX_STACK_HEIGHT)
+	while (++i < s->best)
 		max = v->row_ends[i] > max ? v->row_ends[i] : max;
 	i = -1;
-	while (++i < MAX_STACK_WIDTH)
+	while (++i < s->best)
 		max = v->col_ends[i] > max ? v->col_ends[i] : max;
-	if (max >= state->best)
+	if (max > s->best || (max == s->best && compare_stacks(s)))
 		return ;
+	s->best = max;
 	i = -1;
 	while (++i < MAX_STACK_HEIGHT && (j = -1))
 		while (++j < MAX_STACK_WIDTH)
-			if (state->wk_grid[i][j])
-				state->ret[i][j] = state->wk_grid[i][j];
+			1f (s->wk_grid[i][j])
+				s->ret[i][j] = s->wk_grid[i][j];
 			else
-				state->ret[i][j] = '.';
+				s->ret[i][j] = '.';
 }
 
 static void	here_stack(t_stack_state *, t_stack_values *);
@@ -36,8 +46,8 @@ static int	try_tmino_pos(t_stack_state *state,
 {
 	int		i;
 	int		j;
-	char	(*p_mino)[4] = v.mino->ar;
-	char	(*p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
+	char	(* const p_mino)[4] = v.mino->ar;
+	char	(* const p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
 
 	i = -1;
 	while (++i < 4 && (j = -1))
@@ -46,16 +56,14 @@ static int	try_tmino_pos(t_stack_state *state,
 				return (0);
 	i = -1;
 	while (++i < 4 && (j = -1))
-	{
 		while (++j < 4)
-		{
-			p_grid[row + i][col + j] = p_mino[i][j];
-			if (row + i > v.col_ends[col + j])
-				v.col_ends[col + j] = row + i;
-		}
-		if (col + j - 1 > v.row_ends[row + i])
-			v.row_ends[row + i] = col + j;
-	}
+			if ((p_grid[row + i][col + j] = p_mino[i][j]))
+			{
+				if (row + i > v.col_ends[col + j])
+					v.col_ends[col + j] = row + i;
+				if (col + j > v.row_ends[row + i])
+					v.row_ends[row + i] = col + j;
+			}
 	v.mino = (v.mino + 1);
 	here_stack(state, &v);
 	return (1);
@@ -72,15 +80,15 @@ static void	here_stack(t_stack_state *state,
 	else
 	{
 		i = -1;
-		while (++i <= state->best - v->mino->h &&
+		while (++i <= state->best - v->mino->h + 1 &&
 				((j = v->row_ends[i]) || 1))
-			while (++j <= state->best - v->mino->w)
+			while (++j <= state->best - v->mino->w + 1)
 				if (try_tmino_pos(state, *v, i, j))
 					break;
 		i = -1;
-		while (++i <= state->best - v->mino->w &&
+		while (++i <= state->best - v->mino->w + 1 &&
 				((j = v->col_ends[i]) || 1))
-			while (++j < state->best - v->mino->h)
+			while (++j < state->best - v->mino->h + 1)
 				if (try_tmino_pos(state, *v, j, i))
 					break;
 	}
