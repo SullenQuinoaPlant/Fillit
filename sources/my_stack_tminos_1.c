@@ -111,7 +111,7 @@ static void	here_stack(t_stack_state *state,
 	}
 }
 
-char		(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
+char		(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 {
 	t_stack_state	state;
 	int				i;
@@ -132,6 +132,7 @@ char		(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
 						.mino = tminos
 					})
 		);
+		*sz = state.best + 1;
 	}
 	return (state.ret);
 }

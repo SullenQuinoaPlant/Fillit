@@ -61,7 +61,8 @@ typedef struct	s_stack_values {
 /*functions*/
 void	my_arrange_tminos_arr(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
-char	(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH] __attribute__ ((unused));
+void	my_print_stack(t_p_stack_grid to_print, int side);
+char	(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 
 

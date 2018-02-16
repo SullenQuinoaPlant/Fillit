@@ -7,7 +7,9 @@ LIBS_DIR = ../libs/lib
 LIBS_H_DIR = ../libs/include
 
 CC = gcc
-CFLAGS = -fno-builtin -g#-Wall -Wextra -Werror
+CFLAGS_MORE =
+CFLAGS = -fno-builtin #-Wall -Wextra -Werror
+CFLAGS += $(CFLAGS_MORE)
 COMMON_SEARCH_PATHS =\
 		-I $(SRC_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)\
@@ -51,7 +53,7 @@ cmocka :
 	fi
 
 %.test.o : %.test.c $(SRC_DIR)/%.c
-	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
+	$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
 		-D main=testee_main\
 		-include $(SRC_DIR)/$*.c\
 		$<\
