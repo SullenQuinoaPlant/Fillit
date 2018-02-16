@@ -32,13 +32,35 @@ static void	compare_best(t_stack_state *s,
 	i = -1;
 	while (++i < MAX_STACK_HEIGHT && (j = -1))
 		while (++j < MAX_STACK_WIDTH)
-			1f (s->wk_grid[i][j])
+			if (s->wk_grid[i][j])
 				s->ret[i][j] = s->wk_grid[i][j];
 			else
 				s->ret[i][j] = '.';
 }
 
 static void	here_stack(t_stack_state *, t_stack_values *);
+
+static void setup_grid_n_maxs_n_vals(t_stack_state *state,
+							t_stack_values *v,
+							int	row, int col)
+{
+	int		i;
+	int		j;
+	char	(* const p_mino)[4] = v->mino->ar;
+	char	(* const p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
+
+	i = -1;
+	while (++i < 4 && (j = -1))
+		while (++j < 4)
+			if ((p_grid[row + i][col + j] = p_mino[i][j]))
+			{
+				if (row + i > v->col_ends[col + j])
+					v->col_ends[col + j] = row + i;
+				if (col + j > v->row_ends[row + i])
+					v->row_ends[row + i] = col + j;
+			}
+	v->mino = (v->mino + 1);
+}
 
 static int	try_tmino_pos(t_stack_state *state,
 							t_stack_values v,
@@ -54,18 +76,13 @@ static int	try_tmino_pos(t_stack_state *state,
 		while (++j < 4)
 			if (p_mino[i][j] && p_grid[row + i][col + j])
 				return (0);
+	setup_grid_n_maxs_n_vals(state, &v, row, col);
+	here_stack(state, &v);
 	i = -1;
 	while (++i < 4 && (j = -1))
 		while (++j < 4)
-			if ((p_grid[row + i][col + j] = p_mino[i][j]))
-			{
-				if (row + i > v.col_ends[col + j])
-					v.col_ends[col + j] = row + i;
-				if (col + j > v.row_ends[row + i])
-					v.row_ends[row + i] = col + j;
-			}
-	v.mino = (v.mino + 1);
-	here_stack(state, &v);
+			if (p_mino[i][j])
+				p_grid[row + i][col + j] = 0;
 	return (1);
 }
 
@@ -81,13 +98,13 @@ static void	here_stack(t_stack_state *state,
 	{
 		i = -1;
 		while (++i <= state->best - v->mino->h + 1 &&
-				((j = v->row_ends[i]) || 1))
+				((j = v->row_ends[i] - 1) || 1))
 			while (++j <= state->best - v->mino->w + 1)
 				if (try_tmino_pos(state, *v, i, j))
 					break;
 		i = -1;
 		while (++i <= state->best - v->mino->w + 1 &&
-				((j = v->col_ends[i]) || 1))
+				((j = v->col_ends[i] - 1) || 1))
 			while (++j < state->best - v->mino->h + 1)
 				if (try_tmino_pos(state, *v, j, i))
 					break;
@@ -106,12 +123,12 @@ char		(*my_stack_tminos_1(t_mino *tminos))[MAX_STACK_WIDTH]
 		while (++i < MAX_STACK_HEIGHT && (j = -1))
 			while (++j < MAX_STACK_WIDTH)
 				state.wk_grid[i][j] = '\0';
-		state.best = MAX_STACK_HEIGHT - 1;
+		state.best = MAX_STACK_HEIGHT;
 		here_stack(&state,
 					&((t_stack_values){
 						.row_ends = {0},
 						.col_ends = {0},
-						.max_dim = MAX_STACK_HEIGHT,
+						.max_dim = 0,
 						.mino = tminos
 					})
 		);

@@ -2,7 +2,7 @@
 #undef main
 
 #include <stdio.h>
-#define HOW_MANY_TESTS 10
+#define HOW_MANY_TESTS 20
 #include "cmocka/my_macro_overlay.h"
 #include "auxilliaries.h"
 
@@ -48,10 +48,10 @@ int		main(void)
 		(input_arr = (t_mino[2]){
 			(t_mino){
 				.ar = {
-				{'#', '\0', '\0', '\0'},
-				{'#', '\0', '\0', '\0'},
-		 		{'#', '\0', '\0', '\0'},
-		 		{'#', '\0', '\0', '\0'}},
+				{'A', '\0', '\0', '\0'},
+				{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'}},
 				.h = 4,
 				.w = 1
 			},
@@ -71,6 +71,207 @@ int		main(void)
 			fail_msg("res evaluated to NULL \n");
 	)
 
+	T(two_tmino,
+		t_mino	*input_arr;
+		char	(*res)[MAX_STACK_WIDTH];
+		s_wrap_t_s_g ref = ((s_wrap_t_s_g){
+			.ar = {
+				{'A', 'A'},
+				{'A', 'A'},
+				{'A', 'A'},
+				{'A', 'A'},
+			}
+		});
+
+		set_grid((char*)ref.ar);
+		printf("ref grid is :\n");
+		aux_print_stack_grid(ref.ar);
+
+		(input_arr = (t_mino[3]){
+			(t_mino){
+				.ar = {
+				{'A', '\0', '\0', '\0'},
+				{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {
+				{'A', '\0', '\0', '\0'},
+				{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {TMINO_STR_END}
+			}
+		});
+		printf("attemtping to stack\n");
+		if (res = my_stack_tminos_1(input_arr))
+		{
+			printf("res is :\n");
+			aux_print_stack_grid(res);
+			free(res);
+			assert_memory_equal(res, &ref, mem_chunk);
+		}
+		else
+			fail_msg("res evaluated to NULL \n");
+	)
+
+	T(two_tmino_2,
+		t_mino	*input_arr;
+		char	(*res)[MAX_STACK_WIDTH];
+		s_wrap_t_s_g ref = ((s_wrap_t_s_g){
+			.ar = {
+				{'A', 'A', 'A'},
+				{'A', 'A', 'A'},
+				{'A',},
+				{'A',},
+			}
+		});
+
+		set_grid((char*)ref.ar);
+		printf("ref grid is :\n");
+		aux_print_stack_grid(ref.ar);
+
+		(input_arr = (t_mino[3]){
+			(t_mino){
+				.ar = {
+				{'A', '\0', '\0', '\0'},
+				{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {
+				{'A', 'A', '\0', '\0'},
+				{'A', 'A', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {TMINO_STR_END}
+			}
+		});
+		printf("attemtping to stack\n");
+		if (res = my_stack_tminos_1(input_arr))
+		{
+			printf("res is :\n");
+			aux_print_stack_grid(res);
+			free(res);
+			assert_memory_equal(res, &ref, mem_chunk);
+		}
+		else
+			fail_msg("res evaluated to NULL \n");
+	)
+
+	T(two_tmino_3,
+		t_mino	*input_arr;
+		char	(*res)[MAX_STACK_WIDTH];
+		s_wrap_t_s_g ref = ((s_wrap_t_s_g){
+			.ar = {
+				{'A', 'A', 'A'},
+				{'A', 'A', 'A'},
+				{'A',},
+				{'A',},
+			}
+		});
+
+		set_grid((char*)ref.ar);
+		printf("ref grid is :\n");
+		aux_print_stack_grid(ref.ar);
+
+		(input_arr = (t_mino[3]){
+			(t_mino){
+				.ar = {
+				{'A', 'A', '\0', '\0'},
+				{'A', 'A', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {
+				{'A', '\0', '\0', '\0'},
+				{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'},
+		 		{'A', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {TMINO_STR_END}
+			}
+		});
+		printf("attemtping to stack\n");
+		if (res = my_stack_tminos_1(input_arr))
+		{
+			printf("res is :\n");
+			aux_print_stack_grid(res);
+			free(res);
+			assert_memory_equal(res, &ref, mem_chunk);
+		}
+		else
+			fail_msg("res evaluated to NULL \n");
+	)
+
+	T(two_tmino_4,
+		t_mino	*input_arr;
+		char	(*res)[MAX_STACK_WIDTH];
+		s_wrap_t_s_g ref = ((s_wrap_t_s_g){
+			.ar = {
+				{'A', 'A', 'A', 'A'},
+				{'A', 'A', 'A', 'A'},
+			}
+		});
+
+		set_grid((char*)ref.ar);
+		printf("ref grid is :\n");
+		aux_print_stack_grid(ref.ar);
+
+		(input_arr = (t_mino[3]){
+			(t_mino){
+				.ar = {
+				{'A', 'A', 'A', 'A'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {
+				{'A', 'A', 'A', 'A'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'},
+		 		{'\0', '\0', '\0', '\0'}},
+				.h = 4,
+				.w = 1
+			},
+			(t_mino){
+				.ar = {TMINO_STR_END}
+			}
+		});
+		printf("attemtping to stack\n");
+		if (res = my_stack_tminos_1(input_arr))
+		{
+			printf("res is :\n");
+			aux_print_stack_grid(res);
+			free(res);
+			assert_memory_equal(res, &ref, mem_chunk);
+		}
+		else
+			fail_msg("res evaluated to NULL \n");
+	)
     return (
 		_cmocka_run_group_tests(
 					"TEST_ARR", TEST_ARR,
