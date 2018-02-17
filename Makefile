@@ -40,8 +40,8 @@ all_unit-tests aut : libfillit.a libaux.a
 ################
 #CLEAN PROJECT :
 
-.PHONY : fillit
-fillit : 
+.PHONY : clean_fillit
+clean_fillit : 
 	-rm -rf fillit/
 	mkdir fillit
 	cp auteur fillit/
