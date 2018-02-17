@@ -47,6 +47,6 @@ fillit :
 	cp auteur fillit/
 	cp Makefile.mk fillit/Makefile
 	cp -r sources/ fillit/
-	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git libft
+	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git fillit/libft
 	mkdir fillit/objects
 	ls -R -1 fillit/

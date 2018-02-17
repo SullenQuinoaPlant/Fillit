@@ -40,7 +40,7 @@ $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
 libft.a : libft
-	if [ -d libft ]; then
+	-if [ -d libft ]; then
 		make -C libft/
 		cp libft/libft.h .
 		cp libft/libft.a .
