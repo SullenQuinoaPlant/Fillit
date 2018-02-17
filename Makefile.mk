@@ -15,6 +15,9 @@ OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+ifndef ROOT
+	CSEARCHES = -I . -L .
+endif
 
 
 
@@ -30,8 +33,9 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : $(OBJS) libft.a
+$(NAME) : libft.a libft.h $(OBJS)
 	$(CC) $(CFLAGS)\
+		$(CSEARCHES)\
 		$(OBJS)\
 		-lft\
 	 	-o $(NAME) 
@@ -39,12 +43,11 @@ $(NAME) : $(OBJS) libft.a
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
-libft.a : libft
-	-if [ -d libft ]; then\
-		make -C libft/\
-		cp libft/libft.h .\
-		cp libft/libft.a .\
-		rm -rf libft;\
+libft.a libft.h : libft
+	-@if [ -d libft ]; then\
+		make -C libft/;\
+		cp libft/libft.h .;\
+		cp libft/libft.a .;\
 	fi
 
 libft :

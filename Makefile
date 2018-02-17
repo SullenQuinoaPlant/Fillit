@@ -16,7 +16,7 @@ libfillit.a : $(OBJS)
 	cp $(SRC)/fillit.h $(LIB_H_DIR)
 
 
-
+include Make_vars.mk #in case Makefile.mk sets some options we don't want
 include auxilliary/Makefile
 
 
