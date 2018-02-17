@@ -11,8 +11,6 @@ SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 
-#I don't know who has to provide libft
-#CSEARCHES = -L ./libs/lib -I ./libs/include
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -32,7 +30,7 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) libft
 	$(CC) $(CFLAGS)\
 		$(OBJS)\
 		-lft\
@@ -41,8 +39,11 @@ $(NAME) : $(OBJS)
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
-
-
+.PHONY : libft
+libft :
+	make -C libft/
+	cp libft/libft.h .
+	cp libft/libft.a .
 
 
 ################
