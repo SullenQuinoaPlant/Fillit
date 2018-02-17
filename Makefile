@@ -42,3 +42,7 @@ all_unit-tests aut : libfillit.a libaux.a
 
 .PHONY : fillit
 fillit : 
+	-rm -rf fillit/
+	mkdir fillit
+	-cp -r sources/ fillit/
+	-mkdir fillit/objects

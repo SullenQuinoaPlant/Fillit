@@ -11,7 +11,8 @@ SRC = ./sources
 OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 
-CSEARCHES = -L ./libs/lib -I ./libs/include
+#I don't know who has to provide libft
+#CSEARCHES = -L ./libs/lib -I ./libs/include
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -33,7 +34,6 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS)\
-		$(CSEARCHES)\
 		$(OBJS)\
 		-lft\
 	 	-o $(NAME) 
