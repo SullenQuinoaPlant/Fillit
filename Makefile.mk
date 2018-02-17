@@ -44,7 +44,7 @@ libft.a : libft
 		make -C libft/\
 		cp libft/libft.h .\
 		cp libft/libft.a .\
-		rm -rf\
+		rm -rf libft\
 	fi
 
 libft :
