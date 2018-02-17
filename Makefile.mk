@@ -15,10 +15,6 @@ OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-ifndef ROOT
-	CSEARCHES = -I . -L .
-endif
-
 
 
 ##########
@@ -46,7 +42,7 @@ $(OBJ)/%.o : $(SRC)/%.c
 libft.a libft.h : libft
 	-@if [ -d libft ]; then\
 		make -C libft/;\
-		cp libft/libft.h .;\
+		cp libft/libft.h $(SRC);\
 		cp libft/libft.a .;\
 	fi
 
