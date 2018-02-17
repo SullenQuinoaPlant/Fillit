@@ -52,7 +52,7 @@ static void setup_grid_n_maxs_n_vals(t_stack_state *state,
 	i = -1;
 	while (++i < 4 && (j = -1))
 		while (++j < 4)
-			if ((p_grid[row + i][col + j] = p_mino[i][j]))
+			if ((p_grid[row + i][col + j] |= p_mino[i][j]))
 			{
 				if (row + i > v->col_ends[col + j])
 					v->col_ends[col + j] = row + i;

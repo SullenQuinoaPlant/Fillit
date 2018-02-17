@@ -74,13 +74,13 @@ libliberty :
 		$(GCC_LD_OPTS);
 		touch $*.test.build.stamp
 
-%.test.o : %.test.c
-	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
-		$<\
-		$(COMMON_LIBS)\
-		-o $@\
-		$(GCC_LD_OPTS);
-		touch $*.test.build.stamp
+#%.test.o : %.test.c
+#	@$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
+#		$<\
+#		$(COMMON_LIBS)\
+#		-o $@\
+#		$(GCC_LD_OPTS);
+#		touch $*.test.build.stamp
 
 %.test.c : $(CMOCKA_DIR)/my_macro_overlay.h
 
@@ -124,8 +124,6 @@ all : clean test
 clean :
 	-rm *.o
 	-rm *.stamp
-	touch test_execution.stamp
-
 
 
 .PHONY : list_tests

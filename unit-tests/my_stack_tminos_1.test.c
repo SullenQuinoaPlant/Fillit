@@ -24,6 +24,7 @@ int		main(int ac, char *av[])
 {
 	const size_t	mem_chunk =
 		MAX_STACK_WIDTH * MAX_STACK_HEIGHT;
+	int				ret;
 
 	T(nop,
 		assert_true(1);
@@ -60,7 +61,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
@@ -111,7 +112,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
@@ -162,7 +163,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
@@ -213,7 +214,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
@@ -262,7 +263,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
@@ -331,7 +332,7 @@ int		main(int ac, char *av[])
 			}
 		});
 		printf("attemtping to stack\n");
-		if (res = my_stack_tminos_1(input_arr))
+		if (res = my_stack_tminos_1(input_arr, &ret))
 		{
 			printf("res is :\n");
 			aux_print_stack_grid(res);
