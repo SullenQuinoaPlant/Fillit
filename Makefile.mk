@@ -47,6 +47,8 @@ libft.a : libft
 		rm -rf
 	fi
 
+libft :
+	@:
 
 ################
 #MISCELLANEOUS :
