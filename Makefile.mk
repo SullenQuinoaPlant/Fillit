@@ -1,4 +1,4 @@
-NAME = fillit.exe
+NAME = fillit
 TARGETS = \
 		main\
 		my_arrange_tminos_arr\
