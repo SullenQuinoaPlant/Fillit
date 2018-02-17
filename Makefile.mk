@@ -30,7 +30,7 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : $(OBJS) libft
+$(NAME) : $(OBJS) libft.a
 	$(CC) $(CFLAGS)\
 		$(OBJS)\
 		-lft\
@@ -39,11 +39,13 @@ $(NAME) : $(OBJS) libft
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
-.PHONY : libft
-libft :
-	make -C libft/
-	cp libft/libft.h .
-	cp libft/libft.a .
+libft.a : libft
+	if [ -d libft ]; then
+		make -C libft/
+		cp libft/libft.h .
+		cp libft/libft.a .
+		rm -rf
+	fi
 
 
 ################
