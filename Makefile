@@ -42,11 +42,11 @@ all_unit-tests aut : libfillit.a libaux.a
 
 .PHONY : clean_fillit
 clean_fillit : 
-	-rm -rf fillit/
-	mkdir fillit
-	cp auteur fillit/
-	cp Makefile.mk fillit/Makefile
-	cp -r sources/ fillit/
-	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git fillit/libft
-	mkdir fillit/objects
-	ls -R -1 fillit/
+	-rm -rf $@/
+	mkdir $@
+	cp auteur $@/
+	cp Makefile.mk $@/Makefile
+	cp -r sources/ $@/
+	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git $@/libft
+	mkdir $@/objects
+	ls -R -1 $@/
