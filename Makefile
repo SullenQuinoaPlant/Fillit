@@ -44,5 +44,8 @@ all_unit-tests aut : libfillit.a libaux.a
 fillit : 
 	-rm -rf fillit/
 	mkdir fillit
-	-cp -r sources/ fillit/
-	-mkdir fillit/objects
+	cp auteur fillit/
+	cp Makefile.mk fillit/Makefile
+	cp -r sources/ fillit/
+	mkdir fillit/objects
+	ls -R -1
