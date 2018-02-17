@@ -34,3 +34,11 @@ unit-tests ut : libfillit.a libaux.a
 .PHONY : all_unit-tests aut
 all_unit-tests aut : libfillit.a libaux.a
 	make -C unit-tests all
+
+
+
+################
+#CLEAN PROJECT :
+
+.PHONY : fillit
+fillit : 

@@ -344,11 +344,12 @@ int		main(int ac, char *av[])
 	)
 	if (ac > 1)
 	{
+		int		i;
 		int		ret;
 		int		test_num;
 
 		ret = 0;
-		for (int i = 0; i < ac; i++)
+		for (i = 0; i < ac; i++)
 		{
 			if ((test_num = atoi(av[i])) < test_index)
 			{
