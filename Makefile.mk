@@ -44,6 +44,7 @@ $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CINCLUDES) -c -o $@ $<
 
 $(SRC)/%.c : $(LIB_H_DIR)/libft.h
+	@:
 
 $(LIB_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 	if ! [ -d libft ]; then\

@@ -2,6 +2,7 @@ language: c
 os:
  - linux
  - osx
+compiler: gcc
 addons:
  apt:
   packages:
@@ -20,7 +21,7 @@ script:
  - make -k #-p
  - make -k unit-tests
  - make clean_fillit && make -C clean_fillit/
- - ~/42FileChecker/42FileChecker.sh 
+ - sh ~/42FileChecker/42FileChecker.sh 
    --project "fillit" 
    --path "$(pwd)/clean_fillit"
    --no-norminette; cat ~/42FileChecker/.my*
