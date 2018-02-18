@@ -4,4 +4,5 @@ SRC_DIR = $(ROOT)/sources
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-CSEARCHES = -L $(LIB_DIR) -I $(LIB_H_DIR)
+CINCLUDES = -I $(LIB_H_DIR)
+CLOADS = -L $(LIB_DIR)
