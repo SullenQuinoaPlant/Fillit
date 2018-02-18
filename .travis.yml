@@ -17,8 +17,8 @@ install:
 script:
  - make -k #-p
  - make -k unit-tests
- - make fillit
+ - make clean_fillit && make -C clean_fillit/
  - ~/42FileChecker/42FileChecker.sh 
    --project "fillit" 
-   --path "$(pwd)"
+   --path "$(pwd)/clean_fillit"
    --no-norminette; cat ~/42FileChecker/.my*
