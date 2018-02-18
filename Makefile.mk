@@ -49,7 +49,7 @@ $(LIB_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 	if ! [ -d libft ]; then\
 			git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git ./libft;\
 	fi
-	make -C libft/ &&\
+	make -C libft/ make fclean &&\
 	cp libft/libft.h $(LIB_H_DIR) &&\
 	cp libft/libft.a $(LIB_DIR) &&\
 	rm -rf libft;\
@@ -65,6 +65,8 @@ clean :
 .PHONY : fclean
 fclean : clean
 	-rm $(NAME)
+	-rm $(LIB_H_DIR)/*
+	-rm $(LIB_DIR)/*
 
 .PHONY : re
 re : fclean all
