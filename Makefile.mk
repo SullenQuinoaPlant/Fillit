@@ -12,8 +12,13 @@ OBJ = ./objects
 OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 
 
+ifndef ROOT
+	LIB_DIR = ./libs
+	LIB_H_DIR = ./libs
+endif
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+CSEARCHES = -L $(LIB_DIR) -I $(LIB_H_DIR)
 
 
 
@@ -29,7 +34,8 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : libft.a libft.h $(OBJS)
+$(NAME) : $(LIB_DIR)/libft.a $(LIB_H_DIR)/libft.h $(OBJS)
+	@echo $$(pwd)
 	$(CC) $(CFLAGS)\
 		$(CSEARCHES)\
 		$(OBJS)\
@@ -39,15 +45,15 @@ $(NAME) : libft.a libft.h $(OBJS)
 $(OBJ)/%.o : $(SRC)/%.c
 	$(CC) $(CFLAGS) $(CSEARCHES) -c -o $@ $<
 
-libft.a libft.h : libft
-	-@if [ -d libft ]; then\
-		make -C libft/;\
-		cp libft/libft.h $(SRC);\
-		cp libft/libft.a .;\
+$(LIB_DIR)/libft.a $(LIB_H_DIR)/libft.h :
+	if ! [ -d libft ]; then\
+			git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git ./libft;\
 	fi
+	make -C libft/ &&\
+	cp libft/libft.h $(LIB_H_DIR) &&\
+	cp libft/libft.a $(LIB_DIR) &&\
+	rm -rf libft;\
 
-libft :
-	@:
 
 ################
 #MISCELLANEOUS :
