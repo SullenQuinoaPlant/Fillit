@@ -20,5 +20,5 @@ script:
  - make fillit
  - ~/42FileChecker/42FileChecker.sh 
    --project "fillit" 
-   --path "$(pwd)/fillit"
+   --path "$(pwd)"
    --no-norminette; cat ~/42FileChecker/.my*
