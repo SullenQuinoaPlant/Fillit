@@ -41,6 +41,7 @@ $(NAME) : $(LIB_DIR)/libft.a $(OBJS)
 	 	-o $(NAME) 
 
 $(OBJ)/%.o : $(SRC)/%.c
+	@echo "$$(pwd)/$*"
 	$(CC) $(CFLAGS) $(CINCLUDES) -c -o $@ $<
 
 $(SRC)/%.c : $(LIB_H_DIR)/libft.h
