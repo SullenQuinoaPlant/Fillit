@@ -92,7 +92,7 @@ static void	here_stack(t_stack_state *state,
 	int		i;
 	int		j;
 	int		modi;
-	int		modj;
+	int		modj __attribute__ ((unused));
 
 	if (v->mino->ar[0][0] == TMINO_STR_END)
 		compare_best(state, v);
@@ -102,8 +102,10 @@ static void	here_stack(t_stack_state *state,
 		while (++i < (modi = state->best - v->mino->h + 2))
 		{
 			j = -1;
-			while (++j < (modj = state->best - v->mino->w + 2))
-				try_tmino_pos(state, *v, i, (v->row_ends[i] + j) % modj);
+			while (++j < state->best - v->mino->w + 2)
+				try_tmino_pos(state, *v, i, j);
+//			while (++j < (modj = state->best - v->mino->w + 2))
+//				try_tmino_pos(state, *v, i, (v->row_ends[i] + j) % modj);
 		}
 
 	}

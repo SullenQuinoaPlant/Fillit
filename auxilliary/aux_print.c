@@ -36,8 +36,7 @@ void	aux_print_stack_grid(t_p_stack_grid grid)
 	{
 		j = -1;
 		while (++j < MAX_STACK_WIDTH)
-			printf("\t%03d : %c",
-				i * MAX_STACK_WIDTH + j, grid[i][j]);
+			printf("\t : %c");
 		printf("\n");
 	}
 }

@@ -1,39 +1,40 @@
 #include "fillit.h"
 
-static int		copy_tmino_into_big_also_count(char (*big)[6],
-									const char (*mino)[4])
+static int		follow_tmino_shape(t_mino *mino, int i, int j)
 {
-	int		i;
-	int		j;
-	int		count;
+	int		k;
+	int		ii;
+	int		jj;
+	int 	count;
 
-	count = 0;
-	i = -1;
-	while (++i < 4 && (j = -1))
-		while (++j < 4)
-			count += !!(big[i + 1][j + 1] = mino[i][j]);
-	i = -1;
-	while (++i < 6)
-		big[0][i] = (big[i][5] = (big[5][i] = (big[i][0] = 0)));
+	ar[i][j] = 0;
+	count = 1;
+	k = -1;
+	while (++k < 4)
+	{
+		ii = i + ((k % 3) - 1) * ((k + 1) % 2);
+		jj = j + ((k - 2) * (k % 2));
+		if (ar[ii][jj])
+			count += follow_tmino_shape(ar, ii, jj);
+	}
 	return (count);
 }
 
-static int		bad_tmino_shape(t_mino *mino)
+static int		bad_tmino_shape(t_mino * mino)
 {
-	char		big[6][6];
-	const char	(*p)[4];
-	int			i;
-	int			j;
+	char	ar[4][4];
+	int		i;
+	int		j;
 
-	p = (const char (*)[4])mino->ar;
-	if ((i = copy_tmino_into_big_also_count(big, p)) != 4)
-		return (1);
-	i = 0;
-	while (++i < 5 && ((j = 0) || (1)))
-		while (++j < 5)
-			if (big[i][j] && !(big[i - 1][j] || big[i + 1][j] ||\
-				big[i][j - 1] || big[i][j + 1]))
-				return (1);
+	i = -1;
+	while (++i < 4 && (j = -1))
+		while (++j < 4)
+			ar[i][j] = mino->ar[i][j];
+	i = -1;
+	while (++i < 4 && (j = -1))
+		while (++j < 4)
+			if (ar[i][j])
+				return (follow_tmino_shape(ar, i, j) - 4)
 	return (0);
 }
 
