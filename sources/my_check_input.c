@@ -1,18 +1,21 @@
 #include "fillit.h"
 
-static void		copy_tmino_into_big(char (*big)[6],
+static int		copy_tmino_into_big_also_count(char (*big)[6],
 									const char (*mino)[4])
 {
 	int		i;
 	int		j;
+	int		count;
 
+	count = 0;
 	i = -1;
 	while (++i < 6 && (j = -1))
 		while (++j < 6)
-			if (i > 0 && i < 5 && j > 0 && j > 5)
-				big[i][j] = mino[i - 1][j - 1];
+			if (!(i && j && i - 5 && j - 5))
+				big[i][j] = 0;
 			else
-				big[i][j] = '\0';
+				count += (big[i][j] = mino[i - 1][j - 1]);
+	return (count);
 }
 
 static int		bad_tmino_shape(t_mino *mino)
@@ -23,7 +26,8 @@ static int		bad_tmino_shape(t_mino *mino)
 	int			j;
 
 	p = (const char (*)[4])mino->ar;
-	copy_tmino_into_big(big, p);
+	if ((i = copy_tmino_into_big_also_count(big, p)) != 4)
+		return (1);
 	i = 0;
 	while (++i < 5 && (j = 0))
 		while (++j < 5)
@@ -52,7 +56,13 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n' ||
 				bad_tmino_shape(ar + i))
-				return (1);
+				if (bad_tmino_shape(ar + i))
+				{
+					printf("yo auie yo \n AUEAUIEAUIEAUIEAUIEAUIE\n");
+					return (1);
+				}
+				else
+					return (1);
 		}
 		c = *input++;
 	}
