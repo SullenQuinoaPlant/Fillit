@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-static int		follow_tmino_shape(t_mino *mino, int i, int j)
+static int		follow_tmino_shape(char (*ar)[4], int i, int j)
 {
 	int		k;
 	int		ii;
@@ -13,7 +13,9 @@ static int		follow_tmino_shape(t_mino *mino, int i, int j)
 	while (++k < 4)
 	{
 		ii = i + ((k % 3) - 1) * ((k + 1) % 2);
+		ii = ii >= 0 && ii < 4 ? ii : 0;
 		jj = j + ((k - 2) * (k % 2));
+		jj = jj >= 0 && jj < 4 ? jj : 0;
 		if (ar[ii][jj])
 			count += follow_tmino_shape(ar, ii, jj);
 	}
@@ -34,7 +36,7 @@ static int		bad_tmino_shape(t_mino * mino)
 	while (++i < 4 && (j = -1))
 		while (++j < 4)
 			if (ar[i][j])
-				return (follow_tmino_shape(ar, i, j) - 4)
+				return (follow_tmino_shape(ar, i, j) - 4);
 	return (0);
 }
 

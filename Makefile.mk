@@ -19,6 +19,7 @@ ifndef ROOT
 endif
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS_MORE =
 
 
 
@@ -35,7 +36,7 @@ all : $(NAME)
 #BUILD :
 
 $(NAME) : $(LIB_DIR)/libft.a $(OBJS)
-	$(CC) $(CFLAGS)\
+	$(CC) $(CFLAGS) $(CFLAGS_MORE)\
 		$(CLOADS)\
 		$(OBJS)\
 		-lft\
@@ -43,7 +44,7 @@ $(NAME) : $(LIB_DIR)/libft.a $(OBJS)
 
 $(OBJ)/%.o : $(SRC)/%.c
 	@echo "$$(pwd)/$*"
-	$(CC) $(CFLAGS) $(CINCLUDES) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CFLAGS_MORE) $(CINCLUDES) -c -o $@ $<
 
 $(SRC)/%.c : $(LIB_H_DIR)/libft.h
 	@:

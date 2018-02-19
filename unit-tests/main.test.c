@@ -50,6 +50,14 @@ int		main(int ac, char* av[])
 		testee_main(2, (char*[2]){"", "check_input_valid_sample_3"});
 	)
 
+	T(fillit_checker_sample_1,
+		testee_main(2, (char*[2]){"", "fillit_checker_sample_1"});
+	)
+
+	T(fillit_checker_sample_2,
+		testee_main(2, (char*[2]){"", "fillit_checker_sample_2"});
+	)
+
 	T(any,
 		testee_main(2, (char*[2]){"", "any"});
 	)
