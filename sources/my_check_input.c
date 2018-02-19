@@ -14,7 +14,7 @@ static int		copy_tmino_into_big_also_count(char (*big)[6],
 			if (!(i && j && i - 5 && j - 5))
 				big[i][j] = 0;
 			else
-				count += (big[i][j] = mino[i - 1][j - 1]);
+				count += !!(big[i][j] = mino[i - 1][j - 1]);
 	return (count);
 }
 
@@ -37,7 +37,6 @@ static int		bad_tmino_shape(t_mino *mino)
 	return (0);
 }
 
-#include <stdio.h>
 static int		set_ret_ar(t_mino *ar, const char *input)
 {
 	int		i;
@@ -58,15 +57,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 			if (k < 4 || (c = *input++) ^ '\n' ||
 				bad_tmino_shape(ar + i))
 			{
-				if (bad_tmino_shape(ar + i))
-				{
-					printf("yo auie yo \n AUEAUIEAUIEAUIEAUIEAUIE\n");
 					return (1);
-				}
-				else
-				{
-					return (1);
-				}
 			}
 		}
 		c = *input++;
