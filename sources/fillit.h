@@ -16,9 +16,16 @@
  *	assuming one square block 4 * 4 
  *	per two t_mino (can fit any combination of two in 
  *	one square block)*/
-# define MAX_STACK_WIDTH 15
-# define MAX_STACK_HEIGHT 15
+/*15 by 15 is enough because 12 by 16 is enough
+*/
+/*the dimensions are then increased by 3 to allow 
+ * for t_mino comparison on the outer columns and
+ * rows */
+# define MAX_STACK_WIDTH 18
+# define MAX_STACK_HEIGHT 18
 # define TMINO_STR_END '\1'
+/* best is stored as an indice (not length)*/
+# define WORST_BEST 14
 
 
 /*input processing :*/
