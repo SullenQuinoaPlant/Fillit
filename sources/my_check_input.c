@@ -57,6 +57,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n' ||
 				bad_tmino_shape(ar + i))
+			{
 				if (bad_tmino_shape(ar + i))
 				{
 					printf("yo auie yo \n AUEAUIEAUIEAUIEAUIEAUIE\n");
@@ -66,6 +67,7 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 				{
 					return (1);
 				}
+			}
 		}
 		c = *input++;
 	}
