@@ -177,6 +177,37 @@ int		main(void)
 		}
 	)
 
+	T(check_input_bad_tmino_shapes_1,
+		t_mino *ret;
+
+		assert_null(
+			(ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_1"}))));
+		if (ret)
+		{
+			printf("input is :\n");
+			system("check_input_bad_tmino_shapes_1");
+			printf("after processing : \n");
+			aux_print_tmino_string(ret);
+			free(ret);
+		}
+	)
+
+	T(check_input_bad_tmino_shapes_2,
+		t_mino *ret;
+
+		assert_null(
+			(ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_2"}))));
+		if (ret)
+		{
+			printf("input is :\n");
+			system("check_input_bad_tmino_shapes_2");
+			printf("after processing : \n");
+			aux_print_tmino_string(ret);
+			free(ret);
+		}
+	)
+
+
     return (
 		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,
 								test_index, 0, 0
