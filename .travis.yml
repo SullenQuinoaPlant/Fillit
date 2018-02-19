@@ -14,12 +14,14 @@ install:
  - export CPATH
  - export LIBRARY_PATH
  - export LD_LIBRARY_PATH=$LIBRARY_PATH
- - source .travis/install_42filechecker.sh
+# - source .travis/install_42filechecker.sh
+ - source .travis/install_fillit_checker.sh
 script:
  - make -k #-p
  - make -k unit-tests
  - make clean_fillit && make -C clean_fillit/
- - bash ~/42FileChecker/42FileChecker.sh 
-   --project "fillit" 
-   --path "$(pwd)/clean_fillit"
-   --no-norminette; cat ~/42FileChecker/.my*
+ - bash ~/fillit_checker/test.sh
+# - bash ~/42FileChecker/42FileChecker.sh 
+#   --project "fillit" 
+#   --path "$(pwd)/clean_fillit"
+#   --no-norminette; cat ~/42FileChecker/.my*

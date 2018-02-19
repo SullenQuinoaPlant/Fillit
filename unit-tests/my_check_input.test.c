@@ -180,8 +180,7 @@ int		main(void)
 	T(check_input_bad_tmino_shapes_1,
 		t_mino *ret;
 
-		assert_null(
-			(ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_1"}))));
+		ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_1"}));
 		if (ret)
 		{
 			printf("input is :\n");
@@ -190,13 +189,13 @@ int		main(void)
 			aux_print_tmino_string(ret);
 			free(ret);
 		}
+		assert_null(ret);
 	)
 
 	T(check_input_bad_tmino_shapes_2,
 		t_mino *ret;
 
-		assert_null(
-			(ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_2"}))));
+		ret = my_check_input(2, ((char*[2]){"", "check_input_bad_tmino_shapes_2"}));
 		if (ret)
 		{
 			printf("input is :\n");
@@ -205,6 +204,7 @@ int		main(void)
 			aux_print_tmino_string(ret);
 			free(ret);
 		}
+		assert_null(ret);
 	)
 
 
