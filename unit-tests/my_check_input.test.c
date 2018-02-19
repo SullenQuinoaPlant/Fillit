@@ -7,7 +7,7 @@
 
 #include "auxilliaries.h"
 
-int		main(void)
+int		main(int ac, char *av[])
 {
 	T(valid_sample_1,
 		t_mino 	*ret;
@@ -187,7 +187,6 @@ int		main(void)
 			system("cat check_input_bad_tmino_shapes_1");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
-			free(ret);
 		}
 		assert_null(ret);
 	)
@@ -202,9 +201,13 @@ int		main(void)
 			system("cat check_input_bad_tmino_shapes_2");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
-			free(ret);
 		}
 		assert_null(ret);
+		if (ret)
+		{
+			printf("this never happens\n");
+			free(ret);
+		}
 	)
 
 	T(check_input_bad_tmino_shapes_3,
@@ -217,9 +220,10 @@ int		main(void)
 			system("cat check_input_bad_tmino_shapes_3");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
-			free(ret);
 		}
 		assert_null(ret);
+		if (ret)
+			free(ret);
 	)
 
 	T(check_input_bad_tmino_shapes_4,
@@ -232,9 +236,10 @@ int		main(void)
 			system("cat check_input_bad_tmino_shapes_4");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
-			free(ret);
 		}
 		assert_null(ret);
+		if (ret)
+			free(ret);
 	)
 
 	T(check_input_bad_tmino_shapes_5,
@@ -247,15 +252,11 @@ int		main(void)
 			system("cat check_input_bad_tmino_shapes_5");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
-			free(ret);
 		}
 		assert_null(ret);
+		if (ret)
+			free(ret);
 	)
 
-
-    return (
-		_cmocka_run_group_tests("TEST_ARR", TEST_ARR,
-								test_index, 0, 0
-		)
-	);
+	return (run_test_arr(ac, av));
 }

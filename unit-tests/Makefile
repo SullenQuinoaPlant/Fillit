@@ -64,7 +64,7 @@ libliberty :
 		$(MAKE) -C $(LIBLIBERTY_DIR) >/dev/null;\
 	fi
 
-%.test.o : %.test.c $(SRC_DIR)/%.c
+%.test.o : %.test.c $(SRC_DIR)/%.c $(CMOCKA_DIR)/my_macro_overlay.h
 	$(CC) $(CFLAGS) $(COMMON_SEARCH_PATHS)\
 		-D main=testee_main\
 		-include $(SRC_DIR)/$*.c\
@@ -96,8 +96,7 @@ run_tests : $(EXECUTION_STAMPS)
 
 
 %.execution.stamp : %.build.stamp
-	./$*.o
-	touch $@
+	-./$*.o && touch $@
 
 #the following clutters less with stamp files but prevents the concurrent execution of tests
 # (whatever)

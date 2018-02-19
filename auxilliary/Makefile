@@ -15,4 +15,4 @@ libaux.a : $(HERE_OBJS)
 	cp $(D)/auxilliaries.h $(LIB_H_DIR)
 
 $D/%.o : $D/%.c
-	$(CC) $(CFLAGS) $(CSEARCHES) -c $< -o $@
+	$(CC) $(CFLAGS) $(CINCLUDES) -c $< -o $@

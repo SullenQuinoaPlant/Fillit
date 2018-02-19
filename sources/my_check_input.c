@@ -9,12 +9,12 @@ static int		copy_tmino_into_big_also_count(char (*big)[6],
 
 	count = 0;
 	i = -1;
-	while (++i < 6 && (j = -1))
-		while (++j < 6)
-			if (!(i && j && i - 5 && j - 5))
-				big[i][j] = 0;
-			else
-				count += !!(big[i][j] = mino[i - 1][j - 1]);
+	while (++i < 4 && (j = -1))
+		while (++j < 4)
+			count += !!(big[i + 1][j + 1] = mino[i][j]);
+	i = -1;
+	while (++i < 6)
+		big[0][i] = (big[i][5] = (big[5][i] = (big[i][0] = 0)));
 	return (count);
 }
 
@@ -29,7 +29,7 @@ static int		bad_tmino_shape(t_mino *mino)
 	if ((i = copy_tmino_into_big_also_count(big, p)) != 4)
 		return (1);
 	i = 0;
-	while (++i < 5 && (j = 0))
+	while (++i < 5 && ((j = 0) || (1)))
 		while (++j < 5)
 			if (big[i][j] && !(big[i - 1][j] || big[i + 1][j] ||\
 				big[i][j - 1] || big[i][j + 1]))
@@ -46,18 +46,17 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 
 	i = -1;
 	c = '\n';
-	while (++i < TMINO_MAX_CT && c == '\n')
+	while (++i < TMINO_MAX_CT && c == '\n'  && (j = -1))
 	{
-		j = -1;
-		while (++j < 4)
+		while (++j < 4 && (k = -1))
 		{
-			k = -1;
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
-			if (k < 4 || (c = *input++) ^ '\n' ||\
-				bad_tmino_shape(ar + i))
+			if (k < 4 || (c = *input++) ^ '\n')
 				return (1);
 		}
+		if (bad_tmino_shape(ar + i))
+			return (1);
 		c = *input++;
 	}
 	ar[i].ar[0][0] = TMINO_STR_END;

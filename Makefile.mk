@@ -5,6 +5,7 @@ TARGETS = \
 		my_check_input\
 		my_print_stack\
 		my_stack_tminos_1\
+		my_stack_tminos_2\
 		my_usage
 
 SRC = ./sources
@@ -67,8 +68,8 @@ clean :
 .PHONY : fclean
 fclean : clean
 	-rm $(NAME)
-	-rm $(LIB_H_DIR)/*
-	-rm $(LIB_DIR)/*
+	-rm $(LIB_H_DIR)/*.h
+	-rm $(LIB_DIR)/*.a $(LIB_DIR)/*.o
 
 .PHONY : re
 re : fclean all

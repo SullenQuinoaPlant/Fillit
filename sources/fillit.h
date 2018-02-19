@@ -63,6 +63,7 @@ void	my_arrange_tminos_arr(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
 void	my_print_stack(t_p_stack_grid to_print, int side);
 char	(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
+char	(*my_stack_tminos_2(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 
 
