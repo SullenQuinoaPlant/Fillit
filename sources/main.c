@@ -11,7 +11,15 @@ int		main(int ac, char *av[])
 	{
 		my_arrange_tminos_arr(place_these);
 		if ((ret = my_stack_tminos_2(place_these, &ret_sz)))
+		{
 			my_print_stack(ret, ret_sz);
+			free(ret);
+		}
+//		if ((ret = my_stack_tminos_3(place_these, &ret_sz)))
+//		{
+//			my_print_stack(ret, ret_sz);
+//			free(ret);
+//		}
 		free(place_these);
 	}
 	return (!!ret_sz);

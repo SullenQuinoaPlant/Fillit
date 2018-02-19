@@ -3,12 +3,14 @@
 static int	compare_stacks(t_stack_state *s)
 {
 	int		i;
+	int		j;
 	int		ret;
 
 	i = -1;
-	while (++i < MAX_STACK_HEIGHT * MAX_STACK_WIDTH)
-		if ((ret = !!(char*)s->wk_grid[i]) != !!(char*)s->ret[i])
-			return (!ret);
+	while (++i <= s->best && (j = -1))
+		while (++j <= s->best)
+			if ((ret = !!s->wk_grid[i][j]) != !!s->ret[i][j])
+				return (!ret);
 	return (1);
 }
 
@@ -19,23 +21,23 @@ static void	compare_best(t_stack_state *s,
 	int		j;
 	int		max;
 
-	max = v->max_dim;
+	max = 0;
 	i = -1;
 	while (++i < s->best)
 		max = v->row_ends[i] > max ? v->row_ends[i] : max;
 	i = -1;
 	while (++i < s->best)
 		max = v->col_ends[i] > max ? v->col_ends[i] : max;
-	if (max > s->best || (max == s->best && compare_stacks(s)))
+	if (max == s->best && compare_stacks(s))
 		return ;
-	s->best = max;
 	i = -1;
-	while (++i < MAX_STACK_HEIGHT && (j = -1))
-		while (++j < MAX_STACK_WIDTH)
+	while (++i <= s->best && (j = -1))
+		while (++j <= s->best)
 			if (s->wk_grid[i][j])
 				s->ret[i][j] = s->wk_grid[i][j];
 			else
 				s->ret[i][j] = '.';
+	s->best = max;
 }
 
 static void	here_stack(t_stack_state *, t_stack_values *);
@@ -123,7 +125,7 @@ char		(*my_stack_tminos_2(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 		while (++i < MAX_STACK_HEIGHT && (j = -1))
 			while (++j < MAX_STACK_WIDTH)
 				state.wk_grid[i][j] = '\0';
-		state.best = MAX_STACK_HEIGHT;
+		state.best = MAX_STACK_HEIGHT - 1;
 		here_stack(&state,
 					&((t_stack_values){
 						.row_ends = {0},

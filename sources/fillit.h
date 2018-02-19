@@ -54,7 +54,6 @@ typedef struct	s_stack_state {
 typedef struct	s_stack_values {
 	int				row_ends[MAX_STACK_HEIGHT]; /*last occupied index. */
 	int				col_ends[MAX_STACK_WIDTH]; /*same as above.*/
-	int				max_dim;
 	t_mino			*mino;
 }				t_stack_values;
 
@@ -64,6 +63,7 @@ t_mino	*my_check_input(int ac, char *av[]);
 void	my_print_stack(t_p_stack_grid to_print, int side);
 char	(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_2(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
+char	(*my_stack_tminos_3(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 
 
