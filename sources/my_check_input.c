@@ -37,6 +37,7 @@ static int		bad_tmino_shape(t_mino *mino)
 	return (0);
 }
 
+#include <stdio.h>
 static int		set_ret_ar(t_mino *ar, const char *input)
 {
 	int		i;
@@ -62,7 +63,9 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 					return (1);
 				}
 				else
+				{
 					return (1);
+				}
 		}
 		c = *input++;
 	}
