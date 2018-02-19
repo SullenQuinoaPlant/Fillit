@@ -103,8 +103,8 @@ static void	here_stack(t_stack_state *state,
 		i = -1;
 		while (++i < (modi = state->best - v->mino->h + 2) && (j = -1))
 			while (++j < (modj = state->best - v->mino->w + 2))
-				try_tmino_pos(state, *v, i, j);
-//				try_tmino_pos(state, *v, i, (v->row_ends[i] + j) % modj);
+//				try_tmino_pos(state, *v, i, j);
+				try_tmino_pos(state, *v, i, (v->row_ends[i] + j) % modj);
 	}
 }
 

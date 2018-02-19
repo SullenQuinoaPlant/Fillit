@@ -10,7 +10,7 @@ int		main(int ac, char *av[])
 	if ((place_these = my_check_input(ac, av)))
 	{
 		my_arrange_tminos_arr(place_these);
-		if ((ret = my_stack_tminos_2(place_these, &ret_sz)))
+		if ((ret = my_stack_tminos_4(place_these, &ret_sz)))
 		{
 			my_print_stack(ret, ret_sz);
 			free(ret);

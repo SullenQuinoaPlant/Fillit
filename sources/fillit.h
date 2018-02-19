@@ -71,6 +71,7 @@ void	my_print_stack(t_p_stack_grid to_print, int side);
 char	(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_2(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_3(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
+char	(*my_stack_tminos_4(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 
 
