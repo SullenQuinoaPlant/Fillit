@@ -31,7 +31,7 @@ static int		bad_tmino_shape(t_mino *mino)
 	i = 0;
 	while (++i < 5 && (j = 0))
 		while (++j < 5)
-			if (big[i][j] && !(big[i - 1][j] || big[i + 1][j] ||
+			if (big[i][j] && !(big[i - 1][j] || big[i + 1][j] ||\
 				big[i][j - 1] || big[i][j + 1]))
 				return (1);
 	return (0);
@@ -54,11 +54,9 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 			k = -1;
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
 				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
-			if (k < 4 || (c = *input++) ^ '\n' ||
+			if (k < 4 || (c = *input++) ^ '\n' ||\
 				bad_tmino_shape(ar + i))
-			{
-					return (1);
-			}
+				return (1);
 		}
 		c = *input++;
 	}
