@@ -184,7 +184,7 @@ int		main(void)
 		if (ret)
 		{
 			printf("input is :\n");
-			system("check_input_bad_tmino_shapes_1");
+			system("cat check_input_bad_tmino_shapes_1");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -199,7 +199,7 @@ int		main(void)
 		if (ret)
 		{
 			printf("input is :\n");
-			system("check_input_bad_tmino_shapes_2");
+			system("cat check_input_bad_tmino_shapes_2");
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
