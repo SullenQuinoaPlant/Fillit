@@ -16,7 +16,7 @@ static int	compare_stacks(t_stack_state *s)
 
 static void	compare_best(t_stack_state *s)
 {
-	char			c;
+	char			c __attribute__ ((unused));
 	int				i;
 	int				j;
 	int				max;
@@ -34,7 +34,8 @@ static void	compare_best(t_stack_state *s)
 	i = -1;
 	while (++i <= s->best && (j = -1))
 		while (++j <= s->best)
-			s->ret[i][j] = (c = s->wk_grid[i][j]) ? c : '.';
+			s->ret[i][j] = wk_grid[i][j];
+//			s->ret[i][j] = (c = s->wk_grid[i][j]) ? c : '.';
 	s->best = max;
 }
 
@@ -71,7 +72,7 @@ static void	here_stack(t_stack_state *state, t_mino *mino)
 {
 	int		i;
 	int		j;
-	int		modi;
+//	int		modi;
 //	int		modj;
 
 	if (mino->ar[0][0] == TMINO_STR_END)
@@ -80,20 +81,19 @@ static void	here_stack(t_stack_state *state, t_mino *mino)
 	{
 		i = -1;
 		while (++i < state->best + 1)
-		while ((modi = state->best + 1 - ++i) > 0)
 		{
-			if (i + mino->w - 1 < state->best + 1)
+			if (i + mino->w - 1 <= state->best)
 			{
 				j = -1;
-				while (state->best - i + 1 + j + 1 < mino->h)
+				while (i + mino->h - 1 - (j + 1) > state->best)
 					j++;
 				while (++j <= i)
 					try_tmino_pos(state, mino, i - j, i);
 			}
-			if (i && (i + mino->h - 1 < state->best + 1))
+			if (i + mino->h - 1 < state->best + 1)
 			{
-				j = -1;
-				while (state->best - i + 1 + j + 1 < mino->w)
+				j = 0;
+				while (i + mino->w - 1 - (j + 1) > state->best)
 					j++;
 				while (++j <= i)
 					try_tmino_pos(state, mino, i, i - j);
@@ -107,6 +107,7 @@ char		(*my_stack_tminos_4(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 	t_stack_state	state;
 	int				i;
 	int				j;
+	char			*p_c;
 
 	if ((state.ret = malloc(sizeof(t_stack_grid))))
 	{
@@ -119,6 +120,10 @@ char		(*my_stack_tminos_4(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 			}
 		state.best = WORST_BEST; 
 		here_stack(&state, tminos);
+		i = -1;
+		while (++i <= state.best && (j = -1))
+			while (++j <= state.best)
+				*(p_c = &state.ret[i][j]) ? (1) : (*p_c = '.');
 		*sz = state.best + 1;
 	}
 	return (state.ret);
