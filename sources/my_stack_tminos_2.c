@@ -33,10 +33,7 @@ static void	compare_best(t_stack_state *s,
 	i = -1;
 	while (++i <= s->best && (j = -1))
 		while (++j <= s->best)
-			if (s->wk_grid[i][j])
-				s->ret[i][j] = s->wk_grid[i][j];
-			else
-				s->ret[i][j] = '.';
+			s->ret[i][j] = s->wk_grid[i][j];
 	s->best = max;
 }
 
@@ -128,6 +125,11 @@ char		(*my_stack_tminos_2(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 						.mino = tminos
 					})
 		);
+		i = -1;
+		while (++i < state.best && (j = -1))
+			while (++j < state.best)
+				if (!state.ret[i][j])
+					state.ret[i][j] = '.';
 		*sz = state.best + 1;
 	}
 	return (state.ret);
