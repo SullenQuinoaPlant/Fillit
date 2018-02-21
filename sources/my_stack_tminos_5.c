@@ -62,7 +62,8 @@ static int	try_tmino_pos(t_stack_state *state,
 	i = -1;
 	while (++i < 4 && (j = -1))
 		while (++j < 4 - i)
-			p_grid[row + i][col + j] &= ~p_mino[i][j];
+			if (p_mino[i][j])
+				p_grid[row + i][col + j] = 0;
 	return (1);
 }
 
@@ -112,8 +113,9 @@ char		(*my_stack_tminos_5(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 		state.best = WORST_BEST; 
 		here_stack(&state, tminos);
 		i = -1;
-		while (++i <= state.best * state.best && (j = -1))
-			((char*)state.ret)[i] = (c = ((char*)state.ret)[i]) ? c : '.';
+		while (++i <= state.best && (j = -1))
+			while (++j <= state.best)
+				state.ret[i][j] = (c = state.ret[i][j]) ? c : '.';
 		*sz = state.best + 1;
 	}
 	return (state.ret);

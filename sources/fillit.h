@@ -74,6 +74,7 @@ char	(*my_stack_tminos_3(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_4(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_5(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_6(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
+char	(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 
 

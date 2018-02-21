@@ -69,30 +69,36 @@ static int	try_tmino_pos(t_stack_state *state,
 static void	here_stack(t_stack_state *s, t_mino *m)
 {
 	static int	tick;
-	int			*i;
-	int			*j;
-	int			* const pt[2] = tick % 2 ? {i, j} : {j, i};
+	int			i;
+	int			ii;
+	int			j;
+	int			jj;
+	int	* const *pt = tick % 2 ? (int*[2]){&ii, &jj} : (int*[2]){&jj, &ii};
 
 	if (m->ar[0][0] == TMINO_STR_END)
 		return (compare_best(s));
 	else
 	{
-		ij[0] = -1;
-		while (ij[0]++ < WORST_MAX)
+		i = -1;
+		ii = tick++ ? (tick / 2) * 2: -1;
+		while (i++ < WORST_BEST && (j = -1))
 		{
-			++v1
-			*j = -1;
-			while (++j <= i && *p1 + m->h - 1 <= s->best && *p2 + m->w - 1 <= s->best)
-				try_tmino_pos(s, m, *p1, *p2);
-			*j = -1;
-			while (++j < i && *p2 + m->h - 1 <= s->best && *p1 + m->w - 1 <= s->best)
-				try_tmino_pos(s, m, *p2, *p1);
+			ii = (ii + 1) % WORST_BEST;
+			j = -1;
+			while ((jj = ++j) <= ii)
+				if (*pt[0] + m->h - 2 < s->best &&
+					*pt[1] + m->w - 2 < s->best)
+					try_tmino_pos(s, m, *pt[0], *pt[1]);
+			j = -1;
+			while ((jj = ++j) <= ii)
+				if (*pt[1] + m->h - 2 < s->best &&
+					*pt[0] + m->w - 2 < s->best)
+					try_tmino_pos(s, m, *pt[1], *pt[0]);
 		}
-		tick = ~tick;
 	}
 }
 
-char		(*my_stack_tminos_6(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
+char		(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 {
 	t_stack_state	state;
 	int				i;

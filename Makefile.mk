@@ -10,6 +10,7 @@ TARGETS = \
 		my_stack_tminos_4\
 		my_stack_tminos_5\
 		my_stack_tminos_6\
+		my_stack_tminos_7\
 		my_usage
 
 SRC = ./sources
