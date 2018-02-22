@@ -83,14 +83,14 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 		while (++i <= WORST_BEST)
 		{
 			++ii;
-			ii %= WORST_BEST;
+			ii %= WORST_BEST + 1;
 			jj = -1;
 			while (++jj <= ii)
 				if (*pt[0] + m->h <= s->best &&
 					*pt[1] + m->w <= s->best)
 					try_tmino_pos(s, m, *pt[0], *pt[1]);
 			j = -1;
-			while (++jj <= ii)
+			while (++jj < ii)
 				if (*pt[1] + m->h <= s->best &&
 					*pt[0] + m->w <= s->best)
 					try_tmino_pos(s, m, *pt[1], *pt[0]);
