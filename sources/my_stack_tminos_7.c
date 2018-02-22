@@ -79,7 +79,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	else
 	{
 		i = -1;
-		ii = (++tick / 2) + 2;
+		ii = (++tick / 2);
 		while (++i <= WORST_BEST)
 		{
 			ii++;
@@ -120,7 +120,7 @@ char		(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 		i = -1;
 		while (++i <= state.best && (j = -1))
 			while (++j <= state.best)
-				state.ret[i][j] = (c = ((char*)state.ret)[i]) ? c : '.';
+				state.ret[i][j] = (c = state.ret[i][j]) ? c : '.';
 		*sz = state.best + 1;
 	}
 	return (state.ret);
