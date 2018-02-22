@@ -89,7 +89,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 				if (*pt[0] + m->h <= s->best &&
 					*pt[1] + m->w <= s->best)
 					try_tmino_pos(s, m, *pt[0], *pt[1]);
-			j = -1;
+			jj = -1;
 			while (++jj < ii)
 				if (*pt[1] + m->h <= s->best &&
 					*pt[0] + m->w <= s->best)
@@ -118,8 +118,9 @@ char		(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 		state.best = WORST_BEST; 
 		here_stack(&state, tminos);
 		i = -1;
-		while (++i <= MAX_STACK_HEIGHT * MAX_STACK_WIDTH)
-			((char*)state.ret)[i] = (c = ((char*)state.ret)[i]) ? c : '.';
+		while (++i <= state.best && (j = -1))
+			while (++j <= state.best)
+				state.ret[i][j] = (c = ((char*)state.ret)[i]) ? c : '.';
 		*sz = state.best + 1;
 	}
 	return (state.ret);
