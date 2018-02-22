@@ -79,7 +79,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	else
 	{
 		i = -1;
-		ii = ++tick;
+		ii = ++tick / 2;
 		while (++i <= WORST_BEST)
 		{
 			ii++;
