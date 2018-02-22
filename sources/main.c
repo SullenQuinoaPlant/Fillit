@@ -46,7 +46,7 @@ int		main(int ac, char *av[])
 //			ft_putchar('\n');
 //			free(ret);
 //		}
-		free(place_these);
-	}
+//		free(place_these);
+//	}
 	return (!!ret_sz);
 }
