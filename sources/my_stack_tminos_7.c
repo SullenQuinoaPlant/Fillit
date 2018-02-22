@@ -9,8 +9,8 @@ static int	compare_stacks(t_stack_state *s)
 	i = -1;
 	while (++i <= s->best && (j = -1))
 		while (++j <= s->best)
-			if ((ret = !!s->wk_grid[i][j]) != !!s->ret[i][j])
-				return (!ret);
+			if ((ret = !s->wk_grid[i][j]) != !s->ret[i][j])
+				return (ret);
 	return (1);
 }
 
@@ -71,7 +71,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	static int	tick;
 	int			i;
 	int			ii;
-	int			j;
+	int			j __attribute__ ((unused));
 	int			jj;
 	int	* const *pt = tick % 2 ? (int*[2]){&ii, &jj} : (int*[2]){&jj, &ii};
 
@@ -80,19 +80,20 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	else
 	{
 		i = -1;
-		ii = tick++ ? (tick / 2) * 2: -1;
-		while (i++ < WORST_BEST && (j = -1))
+		ii = (++tick / 2) + 3;
+		while (++i <= WORST_BEST)
 		{
-			ii = (ii + 1) % WORST_BEST;
-			j = -1;
-			while ((jj = ++j) <= ii)
-				if (*pt[0] + m->h - 2 < s->best &&
-					*pt[1] + m->w - 2 < s->best)
+			++ii;
+			ii %= WORST_BEST;
+			jj = -1;
+			while (++jj <= ii)
+				if (*pt[0] + m->h <= s->best &&
+					*pt[1] + m->w <= s->best)
 					try_tmino_pos(s, m, *pt[0], *pt[1]);
 			j = -1;
-			while ((jj = ++j) <= ii)
-				if (*pt[1] + m->h - 2 < s->best &&
-					*pt[0] + m->w - 2 < s->best)
+			while (++jj <= ii)
+				if (*pt[1] + m->h <= s->best &&
+					*pt[0] + m->w <= s->best)
 					try_tmino_pos(s, m, *pt[1], *pt[0]);
 		}
 	}

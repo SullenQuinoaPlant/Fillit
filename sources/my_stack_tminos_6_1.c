@@ -9,8 +9,8 @@ static int	compare_stacks(t_stack_state *s)
 	i = -1;
 	while (++i <= s->best && (j = -1))
 		while (++j <= s->best)
-			if ((ret = !!s->wk_grid[i][j]) != !!s->ret[i][j])
-				return (!ret);
+			if ((ret = !s->wk_grid[i][j]) != !s->ret[i][j])
+				return (ret);
 	return (1);
 }
 
@@ -49,18 +49,18 @@ static int	try_tmino_pos(t_stack_state *state,
 	char	(* const p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
 
 	i = -1;
-	while (i++ < mino->h && (j = -1))
-		while (j++ < mino->w)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			if (p_mino[i][j] && p_grid[row + i][col + j])
 				return (0);
 	i = -1;
-	while (i++ < mino->h && (j = -1))
-		while (j++ < mino->w)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			p_grid[row + i][col + j] |= p_mino[i][j];
 	here_stack(state, mino + 1);
 	i = -1;
-	while (i++ < mino->h && (j = -1))
-		while (j++ < mino->w)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			p_grid[row + i][col + j] &= ~p_mino[i][j];
 	return (1);
 }

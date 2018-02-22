@@ -16,6 +16,12 @@ int		main(int ac, char *av[])
 			ft_putchar('\n');
 			free(ret);
 		}
+		if ((ret = my_stack_tminos_7(place_these, &ret_sz)))
+		{
+			my_print_stack(ret, ret_sz);
+			ft_putchar('\n');
+			free(ret);
+		}
 		free(place_these);
 	}
 
