@@ -23,14 +23,15 @@
  * rows */
 # define MAX_STACK_WIDTH 18
 # define MAX_STACK_HEIGHT 18
-# define TMINO_STR_END '\1'
+# define INVALID_POS 0x80
 /* best is stored as an indice (not length)*/
 # define WORST_BEST 14
 
 
 /*input processing :*/
 /*BUFF_SZ is 26 * 4 * 5 + 25(empty lines) + 1 (file too long)*/
-#define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
+# define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
+# define TMINO_STR_END '\1'
 
 
 /*usage constants :*/
@@ -66,6 +67,7 @@ typedef struct	s_stack_values {
 
 /*functions*/
 void	my_arrange_tminos_arr(t_mino *arr);
+void	my_arrange_tminos_arr_1(t_mino *arr);
 t_mino	*my_check_input(int ac, char *av[]);
 void	my_print_stack(t_p_stack_grid to_print, int side);
 char	(*my_stack_tminos_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
@@ -74,6 +76,7 @@ char	(*my_stack_tminos_3(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_4(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_5(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_6(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
+char	(*my_stack_tminos_6_1(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 char	(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH];
 void	my_usage(int i);
 

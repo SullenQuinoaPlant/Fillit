@@ -2,6 +2,7 @@ NAME = fillit
 TARGETS = \
 		main\
 		my_arrange_tminos_arr\
+		my_arrange_tminos_arr_1\
 		my_check_input\
 		my_print_stack\
 		my_stack_tminos_1\
@@ -10,6 +11,7 @@ TARGETS = \
 		my_stack_tminos_4\
 		my_stack_tminos_5\
 		my_stack_tminos_6\
+		my_stack_tminos_6_1\
 		my_stack_tminos_7\
 		my_usage
 

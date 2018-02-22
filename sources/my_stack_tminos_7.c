@@ -111,7 +111,7 @@ char		(*my_stack_tminos_7(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 		while (++i < MAX_STACK_HEIGHT && (j = -1))
 			while (++j < MAX_STACK_WIDTH)
 			{
-				c = i <= WORST_BEST && j <= WORST_BEST ? '\0' : 1;
+				c = i <= WORST_BEST && j <= WORST_BEST ? '\0' : INVALID_POS;
 				state.ret[i][j] = c;
 				state.wk_grid[i][j] = c;
 			}
