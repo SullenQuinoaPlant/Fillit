@@ -49,19 +49,18 @@ static int	try_tmino_pos(t_stack_state *state,
 	char	(* const p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
 
 	i = -1;
-	while (++i < mino->h && (j = -1))
-		while (++j < mino->w)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			if (p_mino[i][j] && p_grid[row + i][col + j])
 				return (0);
 	i = -1;
-	while (++i < mino->h && (j = -1))
-		while (++j < mino->w)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			p_grid[row + i][col + j] |= p_mino[i][j];
-	mino += 1;
-	here_stack(state, mino);
+	here_stack(state, mino + 1);
 	i = -1;
-	while (++i < 4 && (j = -1))
-		while (++j < 4 - i)
+	while (++i <= mino->h && (j = -1))
+		while (++j <= mino->w)
 			p_grid[row + i][col + j] &= ~p_mino[i][j];
 	return (1);
 }
