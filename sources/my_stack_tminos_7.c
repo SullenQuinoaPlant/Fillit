@@ -80,7 +80,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	{
 		i = -1;
 		ii = ++tick / 2 + 5;
-		while (++i <= WORST_BEST s->max <= s->best)
+		while (++i <= WORST_BEST)
 		{
 			ii++;
 			ii %= (WORST_BEST + 1);
