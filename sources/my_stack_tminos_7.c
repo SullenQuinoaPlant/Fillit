@@ -79,11 +79,14 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	else
 	{
 		i = -1;
-		ii = (++tick / 2) + 3;
+		ii = (++tick / 2) + 2;
 		while (++i <= WORST_BEST)
 		{
-			++ii;
-			ii %= WORST_BEST + 1;
+			ii++;
+			ii %= (WORST_BEST + 1);
+
+ft_putstr("tick is :");ft_putnbr(tick);ft_putstr("\n");
+ft_putstr("ii is :");ft_putnbr(ii);ft_putstr("\n");
 			jj = -1;
 			while (++jj <= ii)
 				if (*pt[0] + m->h <= s->best &&
