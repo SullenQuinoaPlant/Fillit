@@ -23,6 +23,7 @@ OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
 ifndef ROOT
 	LIB_DIR = ./libs
 	LIB_H_DIR = ./libs
+	CINCLUDES = -I ./$(LIB_H_DIR)
 endif
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -46,6 +47,7 @@ $(NAME) : $(LIB_DIR)/libft.a $(OBJS)
 	$(CC) $(CFLAGS) $(CFLAGS_MORE)\
 		$(CLOADS)\
 		$(OBJS)\
+		-L ./$(LIB_DIR)\
 		-lft\
 	 	-o $(NAME) 
 
