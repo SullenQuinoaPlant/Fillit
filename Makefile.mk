@@ -1,34 +1,7 @@
-NAME = fillit
-TARGETS = \
-		main\
-		my_arrange_tminos_arr\
-		my_arrange_tminos_arr_1\
-		my_check_input\
-		my_print_stack\
-		my_stack_tminos_1\
-		my_stack_tminos_2\
-		my_stack_tminos_3\
-		my_stack_tminos_4\
-		my_stack_tminos_5\
-		my_stack_tminos_6\
-		my_stack_tminos_6_1\
-		my_stack_tminos_7\
-		my_usage
-
-SRC = ./sources
-OBJ = ./objects
-OBJS := $(patsubst %,$(OBJ)/%.o,$(TARGETS))
-
-
 ifndef ROOT
-	LIB_DIR = ./libs
-	LIB_H_DIR = ./libs
+	ROOT = .
+	include make_vars.mk
 endif
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-CFLAGS_MORE =
-
-
 
 ##########
 #DEFAULT :
@@ -37,33 +10,23 @@ CFLAGS_MORE =
 all : $(NAME)
 
 
-
-
 ########
 #BUILD :
 
-$(NAME) : $(LIB_DIR)/libft.a $(OBJS)
-	$(CC) $(CFLAGS) $(CFLAGS_MORE)\
-		$(CLOADS)\
+$(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
+	$(CC) $(CFLAGS)\
+		-L $(LIB_OBJ_DIR)\
 		$(OBJS)\
 		-lft\
 	 	-o $(NAME) 
 
-$(OBJ)/%.o : $(SRC)/%.c
-	@echo "$$(pwd)/$*"
-	$(CC) $(CFLAGS) $(CFLAGS_MORE) $(CINCLUDES) -c -o $@ $<
-
-$(SRC)/%.c : $(LIB_H_DIR)/libft.h
-	@:
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS)\
+		-I $(LIB_D_DIR)\
+		-c -o $@ $<
 
 $(LIB_DIR)/libft.a $(LIB_H_DIR)/libft.h :
-	if ! [ -d libft ]; then\
-			git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git ./libft;\
-	fi
-	make -C libft/ all clean &&\
-	cp libft/libft.h $(LIB_H_DIR) &&\
-	cp libft/libft.a $(LIB_DIR) &&\
-	rm -rf libft;\
+	$(MAKE) -C $(LIB_DIR) libft
 
 
 ################
@@ -76,8 +39,6 @@ clean :
 .PHONY : fclean
 fclean : clean
 	-rm $(NAME)
-	-rm $(LIB_H_DIR)/*.h
-	-rm $(LIB_DIR)/*.a $(LIB_DIR)/*.o
 
 .PHONY : re
 re : fclean all
