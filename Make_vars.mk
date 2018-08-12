@@ -9,7 +9,7 @@ OBJ_DIR = $(ROOT)/objects
 CC = gcc
 CFLAGS_MORE =
 CFLAGS = -Wall -Wextra -Werror
-CFLAGS += CFLAGS_MORE
+CFLAGS += $(CFLAGS_MORE)
 
 TARGETS = \
 		main\

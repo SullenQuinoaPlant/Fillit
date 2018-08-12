@@ -4,7 +4,7 @@ TEST_OBJS := $(TEST_SRCS:.c=.o)
 
 CMOCKA_DIR := ./cmocka
 LIBLIBERTY_DIR := ./libliberty
-LIBS_DIR = ../libs/lib
+LIBS_DIR = ../libs/objects
 LIBS_H_DIR = ../libs/include
 
 CC = gcc

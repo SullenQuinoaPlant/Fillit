@@ -22,7 +22,7 @@ $(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS)\
-		-I $(LIB_D_DIR)\
+		-I $(LIB_H_DIR)\
 		-c -o $@ $<
 
 $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :

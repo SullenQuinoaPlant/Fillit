@@ -7,15 +7,11 @@
 
 include $(ROOT)/Make_vars.mk
 
-
-######################
-#INCLUDED  MAKEFILES :
-
 include $(ROOT)/Makefile.mk
 
 libfillit.a : $(OBJS)
 	ar -rcs $@ $(OBJS)
-	mv libfillit.a $(LIBS_OBJ_DIR)/
+	mv libfillit.a $(LIB_OBJ_DIR)/
 	cp $(SRC_DIR)/fillit.h $(LIB_H_DIR)/
 
 
