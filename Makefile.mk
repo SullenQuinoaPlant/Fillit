@@ -17,6 +17,7 @@ $(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
 	$(CC) $(CFLAGS)\
 		-L $(LIB_OBJ_DIR)\
 		$(OBJS)\
+		-L ./$(LIB_DIR)\
 		-lft\
 	 	-o $(NAME) 
 
