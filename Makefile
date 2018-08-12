@@ -1,23 +1,25 @@
 ##############################
 #SET PROJECT NAVIGATION VARS :
 
-ROOT = .
-include Make_vars.mk
+#ifndef ROOT
+	ROOT = .
+#endif
+
+include $(ROOT)/Make_vars.mk
 
 
 ######################
 #INCLUDED  MAKEFILES :
 
-include Makefile.mk
+include $(ROOT)/Makefile.mk
 
 libfillit.a : $(OBJS)
 	ar -rcs $@ $(OBJS)
-	mv libfillit.a libs/lib 
-	cp $(SRC)/fillit.h $(LIB_H_DIR)
+	mv libfillit.a $(LIBS_OBJ_DIR)/
+	cp $(SRC_DIR)/fillit.h $(LIB_H_DIR)/
 
 
-include Make_vars.mk #in case Makefile.mk sets some options we don't want
-include auxilliary/Makefile
+include $(ROOT)/auxilliary/Makefile
 
 
 

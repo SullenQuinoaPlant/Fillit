@@ -4,3 +4,4 @@
 *.a
 libs/
 clean_fillit/
+profile*
