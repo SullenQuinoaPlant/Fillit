@@ -9,19 +9,19 @@ int		main(int ac, char *av[])
 	ret_sz = 0;
 	if ((place_these = my_check_input(ac, av)))
 	{
-		my_arrange_tminos_arr_1(place_these);
-//		if ((ret = my_stack_tminos_6_1(place_these, &ret_sz)))
-//		{
-//			my_print_stack(ret, ret_sz);
-//			ft_putchar('\n');
-//			free(ret);
-//		}
-		if ((ret = my_stack_tminos_7(place_these, &ret_sz)))
+		my_arrange_tminos_arr(place_these);
+		if ((ret = my_stack_tminos_6(place_these, &ret_sz)))
 		{
 			my_print_stack(ret, ret_sz);
 			ft_putchar('\n');
 			free(ret);
 		}
+//		if ((ret = my_stack_tminos_7(place_these, &ret_sz)))
+//		{
+//			my_print_stack(ret, ret_sz);
+//			ft_putchar('\n');
+//			free(ret);
+//		}
 		free(place_these);
 	}
 
