@@ -6,9 +6,13 @@ static int	compare_stacks(t_stack_state *s)
 	int		j;
 	int		ret;
 
-	i = -1;
-	while (++i <= s->best && (j = -1))
-		while (++j <= i)
+	i = s->best + 1;
+	k = -1;
+	while (i--)
+	{
+		k++;
+		j = -1;
+		while (++j <= k)
 		{
 			ret = !s->wk_grid[i - j][j];
 			if (ret != !s->ret[i - j][j])
