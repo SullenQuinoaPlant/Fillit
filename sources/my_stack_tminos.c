@@ -4,16 +4,13 @@ static int	not_better_stack(t_stack_state *s)
 {
 	int		i;
 	int		j;
-	int		k;
 	int		ret;
 
 	i = s->best + 1;
-	k = -1;
 	while (i--)
 	{
-		k++;
-		j = -1;
-		while (++j <= k)
+		j = s->best + 1;
+		while (j--)
 		{
 			ret = !s->ret[i - j][j];
 			if (ret != !s->wk_grid[i - j][j])
