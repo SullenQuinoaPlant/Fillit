@@ -19,7 +19,7 @@ static void	compare_best(t_stack_state *s)
 	int				i;
 	int				j;
 	int				max;
-	t_p_stack_grid	wk_grid;
+	t_tsg_ptr	wk_grid;
 
 	wk_grid = s->wk_grid;
 	max = 0;

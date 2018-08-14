@@ -1,7 +1,7 @@
 #include "fillit.h"
 
 
-void	my_print_stack(t_p_stack_grid grid, int side)
+void	my_print_stack(t_tsg_ptr grid, int side)
 {
 	int		i;
 	int		j;
