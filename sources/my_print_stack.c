@@ -1,6 +1,5 @@
 #include "fillit.h"
 
-
 void	my_print_stack(t_tsg_ptr grid, int side)
 {
 	int		i;
