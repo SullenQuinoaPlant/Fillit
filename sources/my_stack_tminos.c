@@ -19,6 +19,7 @@ static int	compare_stacks(t_stack_state *s)
 			if (ret != !s->ret[i - j][j])
 				return (ret);
 		}
+	}
 	return (1);
 }
 
