@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-static int	not_better_stack(t_stack_state *s)
+static int	better_score(t_stack_state *s)
 {
 	int		i;
 	int		j;
