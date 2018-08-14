@@ -56,14 +56,14 @@ static void	set_w_h(t_mino *mino)
 		while (clear && ++j < 4)
 			if (mino->ar[i][j])
 				clear = 0;
-	mino->h = i + 1;
+	mino->h = i;
 	j = 4;
 	clear = 1;
 	while (clear && --j > 0 && (i = -1))
-		while (clear && ++i < mino->h)
+		while (clear && i++ < mino->h)
 			if (mino->ar[i][j])
 				clear = 0;
-	mino->w = j + 1;
+	mino->w = j;
 }
 
 void		my_arrange_tminos_arr(t_mino *arr)
