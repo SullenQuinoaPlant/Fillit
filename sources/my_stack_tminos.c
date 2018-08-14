@@ -16,7 +16,7 @@ static int	not_better_stack(t_stack_state *s)
 		while (++j <= k)
 		{
 			ret = !s->ret[i - j][j];
-			if (ret != !wk_grid[i - j][j])
+			if (ret != !s->wk_grid[i - j][j])
 				return (ret);
 		}
 	}
