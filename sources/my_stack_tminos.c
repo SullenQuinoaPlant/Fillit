@@ -10,9 +10,13 @@ static int	better_score(t_stack_state *s)
 	while (i--)
 	{
 		j = s->best + 1;
+		while (j-- > i)
+			if (s->wk_grid[i][j])
+				score -= j;
+		j++;
 		while (j--)
-			if (!s->wk_grid[i][j])
-				score += i + j;
+			if (s->wk_grid[i][j])
+				score += j;
 	}
 	if (score > s->score)
 	{
@@ -117,7 +121,7 @@ t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 				state.wk_grid[i][j] = c;
 			}
 		state.best = WORST_BEST; 
-		state.score = 0;
+		state.score = -2147483648;
 		here_stack(&state, tminos);
 		*sz = state.best + 1;
 	}
