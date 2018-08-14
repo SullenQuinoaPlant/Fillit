@@ -4,6 +4,7 @@ static int	compare_stacks(t_stack_state *s)
 {
 	int		i;
 	int		j;
+	int		k;
 	int		ret;
 
 	i = s->best + 1;
