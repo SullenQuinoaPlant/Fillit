@@ -2,8 +2,8 @@
 
 int		main(int ac, char *av[])
 {
-	t_mino			*place_these;
-	int				ret_sz;
+	t_mino		*place_these;
+	int			ret_sz;
 	t_tsg_ptr	ret;
 
 	ret_sz = 0;

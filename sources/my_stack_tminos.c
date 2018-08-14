@@ -4,20 +4,22 @@ static int	not_better_stack(t_stack_state *s)
 {
 	int		i;
 	int		j;
-	int		ret;
+	int		score;
 
 	i = s->best + 1;
 	while (i--)
 	{
 		j = s->best + 1;
 		while (j--)
-		{
-			ret = !s->ret[i - j][j];
-			if (ret != !s->wk_grid[i - j][j])
-				return (ret);
-		}
+			if (!s->wk_grid[i][j])
+				score += i + j;
 	}
-	return (1);
+	if (score > s->score)
+	{
+		s->score = score;
+		return (1);
+	}
+	return (0);
 }
 
 static void	compare_best(t_stack_state *s)
@@ -34,7 +36,7 @@ static void	compare_best(t_stack_state *s)
 		while (j++ < i)
 			if (wk_grid[i][j] || wk_grid[j][i])
 				max = i;
-	if (max == s->best && not_better_stack(s))
+	if (max == s->best && !better_score(s))
 		return ;
 	i = -1;
 	while (++i <= s->best && (j = -1))
@@ -97,7 +99,7 @@ static void	here_stack(t_stack_state *s, t_mino *m)
 	}
 }
 
-char		(*my_stack_tminos(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
+t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 {
 	t_stack_state	state;
 	int				i;
@@ -115,10 +117,8 @@ char		(*my_stack_tminos(t_mino *tminos, int *sz))[MAX_STACK_WIDTH]
 				state.wk_grid[i][j] = c;
 			}
 		state.best = WORST_BEST; 
+		state.score = 0;
 		here_stack(&state, tminos);
-		i = -1;
-		while (++i <= MAX_STACK_HEIGHT * MAX_STACK_WIDTH)
-			((char*)state.ret)[i] = (c = ((char*)state.ret)[i]) ? c : '.';
 		*sz = state.best + 1;
 	}
 	return (state.ret);
