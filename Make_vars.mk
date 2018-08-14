@@ -14,7 +14,7 @@ CFLAGS += $(CFLAGS_MORE)
 TARGETS = \
 		main\
 		my_arrange_tminos_arr\
-		my_arrange_tminos_arr_1\
+		my_arrange_tminos_arr\
 		my_check_input\
 		my_print_stack\
 		my_stack_tminos\
