@@ -44,7 +44,7 @@ static void	compare_best(t_stack_state *s)
 	s->best = max;
 }
 
-static void	here_stack(t_stack_state *, t_mino *, int tick);
+static void	here_stack(t_stack_state *, int tick);
 
 static int	try_tmino_pos(t_stack_state *state,
 							int	row, int col, int tick)
