@@ -46,24 +46,26 @@ static void	compare_best(t_stack_state *s)
 
 static void	here_stack(t_stack_state *, int tick);
 
-static int	try_tmino_pos(t_stack_state *state,
+static int	try_tmino_pos(t_stack_state *s,
 							int	row, int col, int tick)
 {
 	int		i;
 	int		j;
-	char	(* const p_mino)[4] = mino->ar;
-	char	(* const p_grid)[MAX_STACK_WIDTH] = state->wk_grid;
+	char	(* const p_mino)[4] = s->tminos->ar;
+	char	(* const p_grid)[MAX_STACK_WIDTH] = s->wk_grid;
 
 	i = -1;
-	while (++i <= mino->h && (j = -1))
-		while (++j <= mino->w)
+	while (++i <= s->tminos->h && (j = -1))
+		while (++j <= s->tminos->w)
 			if (p_mino[i][j] && p_grid[row + i][col + j])
 				return (0);
 	i = -1;
-	while (++i <= mino->h && (j = -1))
-		while (++j <= mino->w)
+	while (++i <= s->tminos->h && (j = -1))
+		while (++j <= s->tminos->w)
 			p_grid[row + i][col + j] |= p_mino[i][j];
-	here_stack(state, mino + 1, !tick);
+	s->tminos++;
+	here_stack(s, !tick);
+	s->tminos--;
 	i = -1;
 	while (++i <= mino->h && (j = -1))
 		while (++j <= mino->w)
