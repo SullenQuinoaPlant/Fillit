@@ -44,7 +44,7 @@ static void	compare_best(t_stack_state *s)
 	s->best = max;
 }
 
-static void	here_stack(t_stack_state *, t_mino *);
+static void	here_stack(t_stack_state *, t_mino *, int tick);
 
 static int	try_tmino_pos(t_stack_state *state,
 							t_mino *mino,
@@ -64,7 +64,7 @@ static int	try_tmino_pos(t_stack_state *state,
 	while (++i <= mino->h && (j = -1))
 		while (++j <= mino->w)
 			p_grid[row + i][col + j] |= p_mino[i][j];
-	here_stack(state, mino + 1);
+	here_stack(state, mino + 1, (col & 1) != (col & 1));
 	i = -1;
 	while (++i <= mino->h && (j = -1))
 		while (++j <= mino->w)
@@ -72,13 +72,12 @@ static int	try_tmino_pos(t_stack_state *state,
 	return (1);
 }
 
-static void	here_stack(t_stack_state *s, t_mino *m)
+static void	here_stack(t_stack_state *s, t_mino *m, int tick)
 {
-	static int	tick;
 	int			i;
 	int			j;
-	int			* const p1 = tick % 2 ? &i : &j;
-	int			* const p2 = p1 == &i ? &j : &i;
+	int			* const p1 = tick ? &i : &j;
+	int			* const p2 = tick ? &j : &i;
 
 	if (m->ar[0][0] == TMINO_STR_END)
 		compare_best(s);
@@ -116,7 +115,7 @@ t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 				state.wk_grid[i][j] = c;
 			}
 		state.best = WORST_BEST; 
-		here_stack(&state, tminos);
+		here_stack(&state, tminos, 0);
 		*sz = state.best + 1;
 	}
 	return (state.ret);
