@@ -67,8 +67,8 @@ static int	try_tmino_pos(t_stack_state *s,
 	here_stack(s, !tick);
 	s->tminos--;
 	i = -1;
-	while (++i <= mino->h && (j = -1))
-		while (++j <= mino->w)
+	while (++i <= s->tminos->h && (j = -1))
+		while (++j <= s->tminos->w)
 			p_grid[row + i][col + j] &= ~p_mino[i][j];
 	return (1);
 }
