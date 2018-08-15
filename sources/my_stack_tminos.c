@@ -1,26 +1,5 @@
 #include "fillit.h"
 
-static int	better_grid(t_stack_state *s)
-{
-	int		const best = s->best;
-	int		i;
-	int		j;
-	int		r;
-
-	i = -1;
-	while (++i < best)
-	{
-		j = -1;
-		while (++j < best)
-		{
-			r = !s->wk_grid[i][j];
-			if (r != !s->ret[i][j])
-				return (!r);
-		}
-	}
-	return (0);
-}
-
 static void	compare_best(t_stack_state *s)
 {
 	int				i;
@@ -35,7 +14,7 @@ static void	compare_best(t_stack_state *s)
 		while (j++ < i)
 			if (wk_grid[i][j] || wk_grid[j][i])
 				max = i;
-	if (max == s->best && !better_grid(s))
+	if (max == s->best)
 		return ;
 	i = -1;
 	while (++i <= s->best && (j = -1))
