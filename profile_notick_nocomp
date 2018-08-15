@@ -3,21 +3,21 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls   s/call   s/call  name    
- 53.03     32.35    32.35                             here_stack
- 12.67     40.08     7.73                             __libc_csu_init
-  9.46     45.85     5.77        1     5.77     5.81  my_stack_tminos
-  7.39     50.36     4.51 1141327792     0.00     0.00  try_tmino_pos
-  6.82     54.52     4.16                             ft_putstr
-  5.31     57.76     3.24                             ft_putchar
-  3.00     59.59     1.83        1     1.83     7.64  _fini
-  2.30     60.99     1.40                             my_usage
-  0.02     61.00     0.01  8924456     0.00     0.00  compare_best
-  0.00     61.00     0.00       37     0.00     0.00  bad_tmino_shape
-  0.00     61.00     0.00       18     0.00     0.00  set_w_h
-  0.00     61.00     0.00        9     0.00     0.00  follow_tmino_shape
-  0.00     61.00     0.00        9     0.00     0.00  set_ret_ar
-  0.00     61.00     0.00        1     0.00     0.00  get_input
-  0.00     61.00     0.00        1     0.00     0.00  my_print_stack
+ 71.94     36.82    36.82 1149084532     0.00     0.00  try_tmino_pos
+ 25.64     49.94    13.12 51451289     0.00     0.00  here_stack
+  2.37     51.16     1.22 14153116     0.00     0.00  compare_best
+  0.04     51.17     0.02        1     0.02    51.17  my_stack_tminos
+  0.01     51.18     0.01        1     0.01     0.01  my_print_stack
+  0.00     51.18     0.00        9     0.00     0.00  bad_tmino_shape
+  0.00     51.18     0.00        9     0.00     0.00  follow_tmino_shape
+  0.00     51.18     0.00        9     0.00     0.00  left_shift
+  0.00     51.18     0.00        9     0.00     0.00  set_w_h
+  0.00     51.18     0.00        9     0.00     0.00  shift_tmino
+  0.00     51.18     0.00        9     0.00     0.00  up_shift
+  0.00     51.18     0.00        1     0.00     0.00  get_input
+  0.00     51.18     0.00        1     0.00     0.00  my_arrange_tminos_arr
+  0.00     51.18     0.00        1     0.00     0.00  my_check_input
+  0.00     51.18     0.00        1     0.00     0.00  set_ret_ar
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -55,80 +55,79 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) for 0.02% of 61.00 seconds
+granularity: each sample hit covers 4 byte(s) for 0.02% of 51.18 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]     53.0   32.35    0.00                 here_stack [1]
+[1]    100.0    0.00   51.18                 main [1]
+                0.02   51.16       1/1           my_stack_tminos [2]
+                0.01    0.00       1/1           my_print_stack [7]
+                0.00    0.00       1/1           my_check_input [16]
+                0.00    0.00       1/1           my_arrange_tminos_arr [15]
 -----------------------------------------------
-                                                 <spontaneous>
-[2]     15.7    7.73    1.83                 __libc_csu_init [2]
-                1.83    0.00 462106163/1141327792     try_tmino_pos [6]
+                0.02   51.16       1/1           main [1]
+[2]    100.0    0.02   51.16       1         my_stack_tminos [2]
+               49.94    1.22       1/1           here_stack <cycle 1> [5]
 -----------------------------------------------
-                                                 <spontaneous>
-[3]     12.5    0.00    7.64                 shift_tmino [3]
-                1.83    5.81       1/1           _fini [4]
-                0.00    0.00       2/8924456     compare_best [10]
-                0.00    0.00       1/37          bad_tmino_shape [11]
+[3]    100.0   49.94    1.22       1+1200535820 <cycle 1 as a whole> [3]
+               36.82    0.00 1149084532             try_tmino_pos <cycle 1> [4]
+               13.12    1.22 51451289             here_stack <cycle 1> [5]
 -----------------------------------------------
-                1.83    5.81       1/1           shift_tmino [3]
-[4]     12.5    1.83    5.81       1         _fini [4]
-                5.77    0.04       1/1           my_stack_tminos [5]
+                             1149084532             here_stack <cycle 1> [5]
+[4]     71.9   36.82    0.00 1149084532         try_tmino_pos <cycle 1> [4]
+                             51451288             here_stack <cycle 1> [5]
 -----------------------------------------------
-                             45952219             my_stack_tminos [5]
-                5.77    0.04       1/1           _fini [4]
-[5]      9.5    5.77    0.04       1+45952219 my_stack_tminos [5]
-                0.04    0.00 8924456/1141327792     try_tmino_pos [6]
-                             45952219             my_stack_tminos [5]
+                             51451288             try_tmino_pos <cycle 1> [4]
+               49.94    1.22       1/1           my_stack_tminos [2]
+[5]     28.0   13.12    1.22 51451289         here_stack <cycle 1> [5]
+                1.22    0.00 14153116/14153116     compare_best [6]
+                             1149084532             try_tmino_pos <cycle 1> [4]
 -----------------------------------------------
-                0.04    0.00 8924456/1141327792     my_stack_tminos [5]
-                1.83    0.00 462106163/1141327792     __libc_csu_init [2]
-                2.65    0.01 670297173/1141327792     my_usage [8]
-[6]      7.4    4.51    0.01 1141327792         try_tmino_pos [6]
-                0.01    0.00 8924454/8924456     compare_best [10]
+                1.22    0.00 14153116/14153116     here_stack <cycle 1> [5]
+[6]      2.4    1.22    0.00 14153116         compare_best [6]
 -----------------------------------------------
-                                                 <spontaneous>
-[7]      6.8    4.16    0.00                 ft_putstr [7]
+                0.01    0.00       1/1           main [1]
+[7]      0.0    0.01    0.00       1         my_print_stack [7]
 -----------------------------------------------
-                                                 <spontaneous>
-[8]      6.6    1.40    2.65                 my_usage [8]
-                2.65    0.01 670297173/1141327792     try_tmino_pos [6]
+                0.00    0.00       9/9           set_ret_ar [17]
+[8]      0.0    0.00    0.00       9         bad_tmino_shape [8]
+                0.00    0.00       9/9           follow_tmino_shape [9]
 -----------------------------------------------
-                                                 <spontaneous>
-[9]      5.3    3.24    0.00                 ft_putchar [9]
+                                  27             follow_tmino_shape [9]
+                0.00    0.00       9/9           bad_tmino_shape [8]
+[9]      0.0    0.00    0.00       9+27      follow_tmino_shape [9]
+                                  27             follow_tmino_shape [9]
 -----------------------------------------------
-                0.00    0.00       2/8924456     shift_tmino [3]
-                0.01    0.00 8924454/8924456     try_tmino_pos [6]
-[10]     0.0    0.01    0.00 8924456         compare_best [10]
-                0.00    0.00       1/1           my_print_stack [16]
+                0.00    0.00       9/9           shift_tmino [12]
+[10]     0.0    0.00    0.00       9         left_shift [10]
 -----------------------------------------------
-                0.00    0.00       1/37          shift_tmino [3]
-                0.00    0.00       9/37          get_input [15]
-                0.00    0.00      27/37          set_ret_ar [14]
-[11]     0.0    0.00    0.00      37         bad_tmino_shape [11]
-                0.00    0.00       9/18          set_w_h [12]
-                0.00    0.00       9/9           follow_tmino_shape [13]
+                0.00    0.00       9/9           my_arrange_tminos_arr [15]
+[11]     0.0    0.00    0.00       9         set_w_h [11]
 -----------------------------------------------
-                                   9             set_w_h [12]
-                0.00    0.00       9/18          my_arrange_tminos_arr [23]
-                0.00    0.00       9/18          bad_tmino_shape [11]
-[12]     0.0    0.00    0.00      18+9       set_w_h [12]
-                                   9             set_w_h [12]
+                0.00    0.00       9/9           my_arrange_tminos_arr [15]
+[12]     0.0    0.00    0.00       9         shift_tmino [12]
+                0.00    0.00       9/9           up_shift [13]
+                0.00    0.00       9/9           left_shift [10]
 -----------------------------------------------
-                0.00    0.00       9/9           bad_tmino_shape [11]
-[13]     0.0    0.00    0.00       9         follow_tmino_shape [13]
+                0.00    0.00       9/9           shift_tmino [12]
+[13]     0.0    0.00    0.00       9         up_shift [13]
 -----------------------------------------------
-                0.00    0.00       9/9           get_input [15]
-[14]     0.0    0.00    0.00       9         set_ret_ar [14]
-                0.00    0.00      27/37          bad_tmino_shape [11]
+                0.00    0.00       1/1           my_check_input [16]
+[14]     0.0    0.00    0.00       1         get_input [14]
+                0.00    0.00       1/1           set_ret_ar [17]
 -----------------------------------------------
-                0.00    0.00       1/1           better_grid [17]
-[15]     0.0    0.00    0.00       1         get_input [15]
-                0.00    0.00       9/37          bad_tmino_shape [11]
-                0.00    0.00       9/9           set_ret_ar [14]
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         my_arrange_tminos_arr [15]
+                0.00    0.00       9/9           shift_tmino [12]
+                0.00    0.00       9/9           set_w_h [11]
 -----------------------------------------------
-                0.00    0.00       1/1           compare_best [10]
-[16]     0.0    0.00    0.00       1         my_print_stack [16]
+                0.00    0.00       1/1           main [1]
+[16]     0.0    0.00    0.00       1         my_check_input [16]
+                0.00    0.00       1/1           get_input [14]
+-----------------------------------------------
+                0.00    0.00       1/1           get_input [14]
+[17]     0.0    0.00    0.00       1         set_ret_ar [17]
+                0.00    0.00       9/9           bad_tmino_shape [8]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -221,8 +220,9 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [2] __libc_csu_init         [9] ft_putchar              [5] my_stack_tminos
-   [4] _fini                   [7] ft_putstr               [8] my_usage
-  [11] bad_tmino_shape        [15] get_input              [14] set_ret_ar
-  [10] compare_best            [1] here_stack             [12] set_w_h
-  [13] follow_tmino_shape     [16] my_print_stack          [6] try_tmino_pos
+   [8] bad_tmino_shape        [15] my_arrange_tminos_arr  [12] shift_tmino
+   [6] compare_best           [16] my_check_input          [4] try_tmino_pos
+   [9] follow_tmino_shape      [7] my_print_stack         [13] up_shift
+  [14] get_input               [2] my_stack_tminos         [3] <cycle 1>
+   [5] here_stack             [17] set_ret_ar
+  [10] left_shift             [11] set_w_h
