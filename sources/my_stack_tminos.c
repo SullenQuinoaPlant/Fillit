@@ -80,21 +80,23 @@ static void	here_stack(t_stack_state *s, int tick)
 	int			* const p1 = tick ? &i : &j;
 	int			* const p2 = tick ? &j : &i;
 
+	i = -1;
 	if (s->tminos->ar[0][0] == TMINO_STR_END)
 		compare_best(s);
 	else
-	{
-		i = -1;
 		while (++i < s->best + 1)
 		{
 			j = -1;
-			while (++j <= i && *p1 + m->h <= s->best && *p2 + m->w <= s->best)
+			while (++j <= i &&
+				*p1 + s->tminos->h <= s->best &&
+				*p2 + s->tminos->w <= s->best)
 				try_tmino_pos(s, *p1, *p2, tick);
 			j = -1;
-			while (++j < i && *p2 + m->h <= s->best && *p1 + m->w <= s->best)
+			while (++j < i &&
+				*p2 + s->tminos->h <= s->best &&
+				*p1 + s->tminos->w <= s->best)
 				try_tmino_pos(s, *p2, *p1, tick);
 		}
-	}
 }
 
 t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
