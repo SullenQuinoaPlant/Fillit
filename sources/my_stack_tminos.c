@@ -74,43 +74,26 @@ static int	try_tmino_pos(t_stack_state *s,
 
 static void	here_stack(t_stack_state *s,
 				int h, int w, t_mino *tmino)
-//{
-//	int			i;
-//	int			j;
-//
-//	i = -1;
-//	if (tmino->ar[0][0] == TMINO_STR_END)
-//		compare_best(s);
-//	else
-//		while (++i < s->best + 1)
-//		{
-//			j = -1;
-//			while (++j <= i &&
-//				i + h <= s->best &&
-//				j + w <= s->best)
-//				try_tmino_pos(s, i, j, tmino);
-//			j = -1;
-//			while (++j < i &&
-//				j + h <= s->best &&
-//				i + w <= s->best)
-//				try_tmino_pos(s, j, i, tmino);
-//		}
-//}
 {
 	int			i;
 	int			j;
+	int			best;
 
 	i = -1;
+	best = s->best;
 	if (tmino->ar[0][0] == TMINO_STR_END)
 		compare_best(s);
 	else
 		while (++i < s->best + 1)
 		{
 			j = -1;
-			while (++j <= s->best &&
-				i + h <= s->best &&
-				j + w <= s->best)
+			while (++j <= best &&
+				i + h <= best &&
+				j + w <= best)
+			{
 				try_tmino_pos(s, i, j, tmino);
+				best = s->best;
+			}
 		}
 }
 
