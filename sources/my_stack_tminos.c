@@ -13,7 +13,7 @@ static int	better_grid(t_stack_state *s)
 		j = -1;
 		while (++j < best)
 		{
-			r = !wk_grid[i][j]);
+			r = !s->wk_grid[i][j];
 			if (r != !s->ret[i][j])
 				return (!r);
 		}
