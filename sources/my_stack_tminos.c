@@ -82,7 +82,7 @@ static void	here_stack(t_stack_state *s,
 	int			* const p2 = s->tick ? &j : &i;
 
 	i = -1;
-	if (s->tminos->ar[0][0] == TMINO_STR_END)
+	if (tmino->ar[0][0] == TMINO_STR_END)
 		compare_best(s);
 	else
 		while (++i < s->best + 1)
