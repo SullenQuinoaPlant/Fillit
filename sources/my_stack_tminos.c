@@ -1,27 +1,22 @@
 #include "fillit.h"
 
-static int	better_score(t_stack_state *s)
+static int	better_grid(t_stack_state *s)
 {
+	int		const best = s->best;
 	int		i;
 	int		j;
-	int		score;
+	int		r;
 
-	i = s->best + 1;
-	while (i--)
+	i = -1;
+	while (++i < best)
 	{
-		j = s->best + 1;
-		while (j-- > i)
-			if (s->wk_grid[i][j])
-				score -= j;
-		j++;
-		while (j--)
-			if (s->wk_grid[i][j])
-				score += j;
-	}
-	if (score > s->score)
-	{
-		s->score = score;
-		return (1);
+		j = -1;
+		while (++j < best)
+		{
+			r = !wk_grid[i][j]);
+			if (r != !s->ret[i][j])
+				return (!r);
+		}
 	}
 	return (0);
 }
@@ -40,7 +35,7 @@ static void	compare_best(t_stack_state *s)
 		while (j++ < i)
 			if (wk_grid[i][j] || wk_grid[j][i])
 				max = i;
-	if (max == s->best && !better_score(s))
+	if (max == s->best && !better_grid(s))
 		return ;
 	i = -1;
 	while (++i <= s->best && (j = -1))
@@ -121,7 +116,6 @@ t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 				state.wk_grid[i][j] = c;
 			}
 		state.best = WORST_BEST; 
-		state.score = -2147483648;
 		here_stack(&state, tminos);
 		*sz = state.best + 1;
 	}
