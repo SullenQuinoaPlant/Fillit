@@ -80,7 +80,7 @@ static void	here_stack(t_stack_state *s, int tick)
 	int			* const p1 = tick ? &i : &j;
 	int			* const p2 = tick ? &j : &i;
 
-	if (m->ar[0][0] == TMINO_STR_END)
+	if (s->tminos->ar[0][0] == TMINO_STR_END)
 		compare_best(s);
 	else
 	{
@@ -116,7 +116,7 @@ t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 			}
 		state.tminos = tminos;
 		state.best = WORST_BEST; 
-		here_stack(&state, tminos, 0);
+		here_stack(&state, 0);
 		*sz = state.best + 1;
 	}
 	return (state.ret);
