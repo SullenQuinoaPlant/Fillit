@@ -1,0 +1,228 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 53.03     32.35    32.35                             here_stack
+ 12.67     40.08     7.73                             __libc_csu_init
+  9.46     45.85     5.77        1     5.77     5.81  my_stack_tminos
+  7.39     50.36     4.51 1141327792     0.00     0.00  try_tmino_pos
+  6.82     54.52     4.16                             ft_putstr
+  5.31     57.76     3.24                             ft_putchar
+  3.00     59.59     1.83        1     1.83     7.64  _fini
+  2.30     60.99     1.40                             my_usage
+  0.02     61.00     0.01  8924456     0.00     0.00  compare_best
+  0.00     61.00     0.00       37     0.00     0.00  bad_tmino_shape
+  0.00     61.00     0.00       18     0.00     0.00  set_w_h
+  0.00     61.00     0.00        9     0.00     0.00  follow_tmino_shape
+  0.00     61.00     0.00        9     0.00     0.00  set_ret_ar
+  0.00     61.00     0.00        1     0.00     0.00  get_input
+  0.00     61.00     0.00        1     0.00     0.00  my_print_stack
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.02% of 61.00 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     53.0   32.35    0.00                 here_stack [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     15.7    7.73    1.83                 __libc_csu_init [2]
+                1.83    0.00 462106163/1141327792     try_tmino_pos [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     12.5    0.00    7.64                 shift_tmino [3]
+                1.83    5.81       1/1           _fini [4]
+                0.00    0.00       2/8924456     compare_best [10]
+                0.00    0.00       1/37          bad_tmino_shape [11]
+-----------------------------------------------
+                1.83    5.81       1/1           shift_tmino [3]
+[4]     12.5    1.83    5.81       1         _fini [4]
+                5.77    0.04       1/1           my_stack_tminos [5]
+-----------------------------------------------
+                             45952219             my_stack_tminos [5]
+                5.77    0.04       1/1           _fini [4]
+[5]      9.5    5.77    0.04       1+45952219 my_stack_tminos [5]
+                0.04    0.00 8924456/1141327792     try_tmino_pos [6]
+                             45952219             my_stack_tminos [5]
+-----------------------------------------------
+                0.04    0.00 8924456/1141327792     my_stack_tminos [5]
+                1.83    0.00 462106163/1141327792     __libc_csu_init [2]
+                2.65    0.01 670297173/1141327792     my_usage [8]
+[6]      7.4    4.51    0.01 1141327792         try_tmino_pos [6]
+                0.01    0.00 8924454/8924456     compare_best [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      6.8    4.16    0.00                 ft_putstr [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      6.6    1.40    2.65                 my_usage [8]
+                2.65    0.01 670297173/1141327792     try_tmino_pos [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      5.3    3.24    0.00                 ft_putchar [9]
+-----------------------------------------------
+                0.00    0.00       2/8924456     shift_tmino [3]
+                0.01    0.00 8924454/8924456     try_tmino_pos [6]
+[10]     0.0    0.01    0.00 8924456         compare_best [10]
+                0.00    0.00       1/1           my_print_stack [16]
+-----------------------------------------------
+                0.00    0.00       1/37          shift_tmino [3]
+                0.00    0.00       9/37          get_input [15]
+                0.00    0.00      27/37          set_ret_ar [14]
+[11]     0.0    0.00    0.00      37         bad_tmino_shape [11]
+                0.00    0.00       9/18          set_w_h [12]
+                0.00    0.00       9/9           follow_tmino_shape [13]
+-----------------------------------------------
+                                   9             set_w_h [12]
+                0.00    0.00       9/18          my_arrange_tminos_arr [23]
+                0.00    0.00       9/18          bad_tmino_shape [11]
+[12]     0.0    0.00    0.00      18+9       set_w_h [12]
+                                   9             set_w_h [12]
+-----------------------------------------------
+                0.00    0.00       9/9           bad_tmino_shape [11]
+[13]     0.0    0.00    0.00       9         follow_tmino_shape [13]
+-----------------------------------------------
+                0.00    0.00       9/9           get_input [15]
+[14]     0.0    0.00    0.00       9         set_ret_ar [14]
+                0.00    0.00      27/37          bad_tmino_shape [11]
+-----------------------------------------------
+                0.00    0.00       1/1           better_grid [17]
+[15]     0.0    0.00    0.00       1         get_input [15]
+                0.00    0.00       9/37          bad_tmino_shape [11]
+                0.00    0.00       9/9           set_ret_ar [14]
+-----------------------------------------------
+                0.00    0.00       1/1           compare_best [10]
+[16]     0.0    0.00    0.00       1         my_print_stack [16]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [2] __libc_csu_init         [9] ft_putchar              [5] my_stack_tminos
+   [4] _fini                   [7] ft_putstr               [8] my_usage
+  [11] bad_tmino_shape        [15] get_input              [14] set_ret_ar
+  [10] compare_best            [1] here_stack             [12] set_w_h
+  [13] follow_tmino_shape     [16] my_print_stack          [6] try_tmino_pos
