@@ -59,7 +59,6 @@ typedef struct	s_stack_state {
 	t_stack_grid	wk_grid;
 	char			(*ret)[MAX_STACK_WIDTH];
 	int				best;
-	int				tick;
 }				t_stack_state;
 
 /*row_ends and col_ends store indexes*/

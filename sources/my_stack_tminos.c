@@ -64,7 +64,6 @@ static int	try_tmino_pos(t_stack_state *s,
 	while (++i <= tmino->h && (j = -1))
 		while (++j <= tmino->w)
 			p_grid[row + i][col + j] |= p_mino[i][j];
-	s->tick = !s->tick;
 	here_stack(s, (tmino + 1)->h, (tmino +1)->w, tmino + 1);
 	i = -1;
 	while (++i <= tmino->h && (j = -1))
@@ -78,8 +77,6 @@ static void	here_stack(t_stack_state *s,
 {
 	int			i;
 	int			j;
-	int			* const p1 = s->tick ? &i : &j;
-	int			* const p2 = s->tick ? &j : &i;
 
 	i = -1;
 	if (tmino->ar[0][0] == TMINO_STR_END)
@@ -89,16 +86,15 @@ static void	here_stack(t_stack_state *s,
 		{
 			j = -1;
 			while (++j <= i &&
-				*p1 + h <= s->best &&
-				*p2 + w <= s->best)
-				try_tmino_pos(s, *p1, *p2, tmino);
+				i + h <= s->best &&
+				j + w <= s->best)
+				try_tmino_pos(s, i, j, tmino);
 			j = -1;
 			while (++j < i &&
-				*p2 + h <= s->best &&
-				*p1 + w <= s->best)
-				try_tmino_pos(s, *p2, *p1, tmino);
+				j + h <= s->best &&
+				i + w <= s->best)
+				try_tmino_pos(s, j, i, tmino);
 		}
-	s->tick = !s->tick;
 }
 
 t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
@@ -119,7 +115,6 @@ t_tsg_ptr	my_stack_tminos(t_mino *tminos, int *sz)
 				state.wk_grid[i][j] = c;
 			}
 		state.best = WORST_BEST; 
-		state.tick = 0;
 		here_stack(&state, tminos->h, tminos->w, tminos);
 		*sz = state.best + 1;
 	}
