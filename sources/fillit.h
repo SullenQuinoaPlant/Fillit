@@ -56,10 +56,10 @@ typedef char	(t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH]);
 typedef char	(*t_tsg_ptr)[MAX_STACK_WIDTH];
 
 typedef struct	s_stack_state {
-	t_mino			*tminos;
 	t_stack_grid	wk_grid;
 	char			(*ret)[MAX_STACK_WIDTH];
 	int				best;
+	int				tick;
 }				t_stack_state;
 
 /*row_ends and col_ends store indexes*/
