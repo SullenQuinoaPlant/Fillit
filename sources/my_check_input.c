@@ -93,10 +93,11 @@ int
 		my_usage(USAGE_BAD_FILE);
 	if (fd != -1)
 		close(fd);
+	return (r);
 }
 
-t_mino
-	*my_check_input(
+int
+	my_check_input(
 		int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
