@@ -1,6 +1,6 @@
 ifndef ROOT
 	ROOT = .
-	include make_vars.mk
+	include Make_vars.mk
 endif
 
 ##########
