@@ -7,9 +7,9 @@
 
 # include "libft.h"
 
-
-# define TMINO_MAX_CT 26 /*MAX_ .. should be changed
-						   if this is changed.*/
+/*MAX_ .. should be changed if this is changed.*/
+# define TMINO_MAX_CT 26
+						   
 /*t_mino stack maximum dimensions :*/
 /*	high upper limit (could probably be reduced)
  *	assuming one square block 4 * 4 
@@ -30,7 +30,7 @@
 /*input processing :*/
 /*BUFF_SZ is :
 ** 26 * 4 * 5 (tminos)
-** + 25(empty lines)
+** + 25 (empty lines)
 ** + 1 (file too long)*/
 # define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
 # define TMINO_STR_END '\1'
@@ -57,16 +57,9 @@ typedef char	(*t_tsg_ptr)[MAX_STACK_WIDTH];
 
 typedef struct	s_stack_state {
 	t_stack_grid	wk_grid;
-	char			(*ret)[MAX_STACK_WIDTH];
+	t_stack_grid	*ret;
 	int				best;
 }				t_stack_state;
-
-/*row_ends and col_ends store indexes*/
-typedef struct	s_stack_values {
-	int				row_ends[MAX_STACK_HEIGHT];
-	int				col_ends[MAX_STACK_WIDTH];
-	t_mino			*mino;
-}				t_stack_values;
 
 /*functions*/
 void		my_arrange_tminos_arr(t_mino *arr);
