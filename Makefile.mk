@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 		-c -o $@ $<
 
 $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :
-	$(MAKE) -C $(LIB_DIR) libft
+	$(MAKE) -C $(LIB_DIR)
 
 
 ################
