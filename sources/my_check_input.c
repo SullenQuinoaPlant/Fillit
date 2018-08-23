@@ -40,7 +40,10 @@ static int		bad_tmino_shape(t_mino * mino)
 	return (0);
 }
 
-static int		set_ret_ar(t_mino *ar, const char *input)
+static
+int
+	set_ret_ar(
+		const char *input, t_mino *ar)
 {
 	int		i;
 	int		j;
@@ -66,7 +69,10 @@ static int		set_ret_ar(t_mino *ar, const char *input)
 	return (c);
 }
 
-static t_mino	*get_input(const char *input)
+static
+t_mino *
+	get_input(
+		const char *input, tmino *ret_ar)
 {
 	int		fd;
 	char	buff[BUFF_SZ] = {0};
@@ -76,15 +82,10 @@ static t_mino	*get_input(const char *input)
 	ret_ar = 0;
 	if (((fd = open(input, O_RDONLY)) ^ -1) &&
 		(index = read(fd, buff, BUFF_SZ)) > 0 &&
-		index < BUFF_SZ &&
-		(ret_ar = malloc((TMINO_MAX_CT + 1) * sizeof(t_mino))))
+		index < BUFF_SZ)
 	{
-		if (set_ret_ar(ret_ar, buff))
-		{
-			free(ret_ar);
-			ret_ar = 0;
+		if (set_ret_ar(buff, ret_ar))
 			my_usage(USAGE_BAD_TETRAMINOS);
-		}
 	}
 	else
 		my_usage(USAGE_BAD_FILE);
@@ -92,11 +93,13 @@ static t_mino	*get_input(const char *input)
 	return (ret_ar);
 }
 
-t_mino			*my_check_input(int ac, char *av[])
+t_mino
+	*my_check_input(
+		int ac, char *av[], t_mino *tminos)
 {
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
-		return (get_input(av[1]));
+		return (get_input(av[1], tminos));
 	return (0);
 }
