@@ -57,7 +57,7 @@ typedef char	(*t_tsg_ptr)[MAX_STACK_WIDTH];
 
 typedef struct	s_stack_state {
 	t_stack_grid	wk_grid;
-	t_tsg_ptr		*ret;
+	t_tsg_ptr		ret;
 	int				best;
 }				t_stack_state;
 
