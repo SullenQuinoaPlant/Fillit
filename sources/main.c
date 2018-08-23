@@ -3,7 +3,6 @@
 int		main(int ac, char *av[])
 {
 	t_mino		place_these[TMINO_MAX_CT + 1];
-	t_mino		*place_these;
 	int			ret_sz;
 	t_tsg_ptr	ret;
 

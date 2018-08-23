@@ -63,7 +63,9 @@ typedef struct	s_stack_state {
 
 /*functions*/
 void		my_arrange_tminos_arr(t_mino *arr);
-t_mino		*my_check_input(int ac, char *av[]);
+t_mino *
+	my_check_input(
+		int ac, char *av[], t_mino *ret_ar);
 void		my_print_stack(t_tsg_ptr to_print, int side);
 t_tsg_ptr	my_stack_tminos(t_mino *ts, int *sz);
 void		my_usage(int i);

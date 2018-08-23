@@ -95,11 +95,11 @@ t_mino *
 
 t_mino
 	*my_check_input(
-		int ac, char *av[], t_mino *tminos)
+		int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
 		my_usage(USAGE_ARG_COUNT);
 	else
-		return (get_input(av[1], tminos));
+		return (get_input(av[1], ret_ar));
 	return (0);
 }
