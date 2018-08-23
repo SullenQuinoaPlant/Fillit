@@ -70,27 +70,29 @@ int
 }
 
 static
-t_mino *
+int
 	get_input(
 		const char *input, t_mino *ret_ar)
 {
-	int		fd;
+	int	r;
+	int	fd;
 	char	buff[BUFF_SZ] = {0};
 	ssize_t	index;
-	t_mino	*ret_ar;
 
-	ret_ar = 0;
+	r = 0;
 	if (((fd = open(input, O_RDONLY)) ^ -1) &&
 		(index = read(fd, buff, BUFF_SZ)) > 0 &&
 		index < BUFF_SZ)
 	{
 		if (set_ret_ar(buff, ret_ar))
 			my_usage(USAGE_BAD_TETRAMINOS);
+		else
+			r = 1;
 	}
 	else
 		my_usage(USAGE_BAD_FILE);
-	close(fd);
-	return (ret_ar);
+	if (fd != -1)
+		close(fd);
 }
 
 t_mino
