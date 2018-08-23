@@ -1,6 +1,3 @@
-##############################
-#SET PROJECT NAVIGATION VARS :
-
 #ifndef ROOT
 	ROOT = .
 #endif
