@@ -72,7 +72,7 @@ int
 static
 t_mino *
 	get_input(
-		const char *input, tmino *ret_ar)
+		const char *input, t_mino *ret_ar)
 {
 	int		fd;
 	char	buff[BUFF_SZ] = {0};
