@@ -41,6 +41,7 @@ clean_fillit :
 	mkdir $@
 	cp auteur $@/
 	cp Makefile.mk $@/Makefile
+	cp Make_vars.mk $@/
 	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git $@/libft
 	mkdir $@/objects
 	mkdir $@/sources
