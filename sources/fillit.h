@@ -4,27 +4,12 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # include "libft.h"
 
-/*MAX_ .. should be changed if this is changed.*/
+/*everything should be changed if this is changed.*/
 # define TMINO_MAX_CT 26
-						   
-/*t_mino stack maximum dimensions :*/
-/*	high upper limit (could probably be reduced)
- *	assuming one square block 4 * 4 
- *	per two t_mino (can fit any combination of two in 
- *	one square block)*/
-/*15 by 15 is enough because 12 by 16 is enough
-*/
-/*the dimensions are then increased by 3 to allow 
- * for t_mino comparison on the outer columns and
- * rows */
-# define MAX_STACK_WIDTH 18
-# define MAX_STACK_HEIGHT 18
-# define INVALID_POS 0x80
-/* best is stored as an index (not length)*/
-# define WORST_BEST 14
 
 
 /*input processing :*/
@@ -36,29 +21,38 @@
 # define TMINO_STR_END '\1'
 
 
-/*usage constants :*/
-# define MESSAGES 4
-/*usage message codes :*/
-# define USAGE_DEFAULT 0
-# define USAGE_ARG_COUNT 1
-# define USAGE_BAD_FILE 2
-# define USAGE_BAD_TETRAMINOS 3
-
-
+typedef strut	s_pos {
+	int	i;
+	int	j;
+}				t_s_pos;
 
 typedef struct	s_tetramino {
-	char	ar[4][4];
-	int		h;
-	int		w;
+	uint64_t	minobits;
+	int			h;
+	int			w;
 }				t_mino;
 
-typedef char	t_stack_grid[MAX_STACK_HEIGHT][MAX_STACK_WIDTH];
-typedef char	(*t_tsg_ptr)[MAX_STACK_WIDTH];
+/*t_mino stack maximum dimensions :*/
+/*	high upper limit (could probably be reduced)
+ *	assuming one square block 4 * 4 
+ *	per two t_mino (can fit any combination of two in 
+ *	one square block)*/
+
+# define GRID_WIDTH 16 / 16
+# define GRID_HEIGHT 16 + 4 /*padding*/
+
+typedef
+uint16_t	t_stack_grid[GRID_HEIGHT];
+
+/* best is stored as an index (not length)*/
+# define WORST_BEST 14
 
 typedef struct	s_stack_state {
+	t_mino			*tminos;
 	t_stack_grid	wk_grid;
-	t_tsg_ptr		ret;
+	t_s_pos			wk_pos[TMINO_MAX_CT];
 	int				best;
+	t_s_pos			*ret_pos;
 }				t_stack_state;
 
 /*functions*/
@@ -77,5 +71,13 @@ t_tsg_ptr
 void
 	my_usage(
 		int i);
+
+/*usage constants :*/
+# define MESSAGES 4
+/*usage message codes :*/
+# define USAGE_DEFAULT 0
+# define USAGE_ARG_COUNT 1
+# define USAGE_BAD_FILE 2
+# define USAGE_BAD_TETRAMINOS 3
 
 #endif

@@ -2,20 +2,16 @@
 
 int		main(int ac, char *av[])
 {
-	t_mino		place_these[TMINO_MAX_CT + 1];
-	int			ret_sz;
-	t_tsg_ptr	ret;
+	t_mino		tminos[TMINO_MAX_CT + 1];
+	t_s_pos		positions[TMINO_MAX_CT];
+	int			side;
 
-	ret_sz = 0;
-	if ((my_check_input(ac, av, place_these)))
+	side = 0;
+	if ((check_input(ac, av, tminos)))
 	{
-		my_arrange_tminos_arr(place_these);
-		if ((ret = my_stack_tminos(place_these, &ret_sz)))
-		{
-			my_print_stack(ret, ret_sz);
-			ft_putchar('\n');
-			free(ret);
-		}
+		arrange_tminos(tminos);
+		if ((side = stack_tminos(place_these, positions)))
+			print_stack(side, positions);
 	}
-	return (!!ret_sz);
+	return (!!side);
 }
