@@ -78,5 +78,4 @@ void
 	my_usage(
 		int i);
 
-
 #endif
