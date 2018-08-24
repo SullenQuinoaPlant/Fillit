@@ -42,7 +42,7 @@ static int		bad_tmino_shape(t_mino * mino)
 
 static
 int
-	set_ret_ar(
+	set_tmino_ar(
 		const char *input, t_mino *ar)
 {
 	int		i;
@@ -84,7 +84,7 @@ int
 		(index = read(fd, buff, BUFF_SZ)) > 0 &&
 		index < BUFF_SZ)
 	{
-		if (set_ret_ar(buff, ret_ar))
+		if (set_tmino_ar(buff, ret_ar))
 			my_usage(USAGE_BAD_TETRAMINOS);
 		else
 			r = 1;
