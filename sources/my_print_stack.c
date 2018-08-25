@@ -19,7 +19,7 @@ void
 	}
 }
 
-void
+int
 	print_stack(
 		int side, t_s_pos *pos, t_mino *minos)
 {
@@ -29,7 +29,7 @@ void
 
 	if (!(out = malloc(sz)))
 	{
-		usage(USAGE_SYS_ER);
+		usage(USAGE_SYS_ERR);
 		return (0);
 	}
 	ft_memset(out, '.', sz - 2);
@@ -37,9 +37,10 @@ void
 	i = 0;
 	while (i < side)
 	{
-		paste_mino(side, pos[i], mino[i], out);
+		paste_mino(side, pos + i, minos + i, out);
 		out[++i * side] = '\n';
 	}
 	ft_putstr(out);
 	free(out);
+	return (1);
 }

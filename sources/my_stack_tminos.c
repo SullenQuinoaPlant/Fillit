@@ -8,7 +8,7 @@ static void	compare_best(t_stack_state *s)
 	int			stop;
 
 	i = s->best;
-	prod = 0x1 << i - 1;
+	prod = 0x1 << (i - 1);
 	stop = 2;
 	while (i > stop && !s->wk_grid[i])
 	{
@@ -37,7 +37,7 @@ void
 	uint64_t	mino_bits;
 	uint64_t	grid_piece;
 
-	ft_memcpy(&grid_piece, s->wk_grid[0], sizeof(uint64_t));
+	ft_memcpy(&grid_piece, s->wk_grid, sizeof(uint64_t));
 	i = -1;
 	if (!(mino_bits = s->tminos[r++].bits))
 		compare_best(s);
@@ -50,7 +50,7 @@ void
 				if (!(mino_bits & grid_piece))
 				{
 					s->wk_pos[r - 1] = (t_s_pos){i, j};
-					recurse(s, s->minos[r].h, s->minos[r].w, r);
+					recurse(s, s->tminos[r].h, s->tminos[r].w, r);
 				}
 			mino_bits <<= 1;
 		}
@@ -73,6 +73,6 @@ int
 		state.ret_pos[i] = (t_s_pos){-1, -1};
 		state.wk_pos[i] = (t_s_pos){-1, -1};
 	}
-	recurse(&state, tminos->h, tminos->w, tminos);
+	recurse(&state, tminos->h, tminos->w, 0);
 	return (state.best + 1);
 }

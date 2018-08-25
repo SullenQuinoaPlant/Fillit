@@ -65,7 +65,7 @@ int
 	check_input(
 		int ac, char *av[], t_mino *ret_ar);
 
-void
+int
 	print_stack(
 		int side, t_s_pos *mino_pos, t_mino *minos);
 
@@ -84,6 +84,6 @@ void
 # define USAGE_ARG_COUNT 1
 # define USAGE_BAD_FILE 2
 # define USAGE_BAD_TETRAMINOS 3
-# define USAGE_SYS_ERR
+# define USAGE_SYS_ERR 4
 
 #endif

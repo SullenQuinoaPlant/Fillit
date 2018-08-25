@@ -1,7 +1,7 @@
 #include "fillit.h"
 
 static
-t_sts
+int
 	follow_tmino_shape(
 		char (*ar)[4], int i, int j, uint64_t *minobits)
 {
@@ -21,7 +21,7 @@ t_sts
 		jj = j + ((k - 2) * (k % 2));
 		jj = jj >= 0 && jj < 4 ? jj : 0;
 		if (ar[ii][jj])
-			count += follow_tmino_shape(ar, ii, jj, bits);
+			count += follow_tmino_shape(ar, ii, jj, minobits);
 	}
 	return (count);
 }
@@ -35,7 +35,7 @@ static int		bad_tmino(t_mino * mino)
 	ft_memcpy(ar, mino->ar, sizeof(mino->ar));
 	j = -1;
 	while (++j < 4)
-		if (ar[0][j] && follow_tmino_shape(ar, 0, j, mino->bits) == 4)
+		if (ar[0][j] && follow_tmino_shape(ar, 0, j, &mino->bits) == 4)
 			return (0);
 	return (1);
 }
