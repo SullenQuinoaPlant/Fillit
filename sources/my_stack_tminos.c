@@ -7,10 +7,10 @@ static void	compare_best(t_stack_state *s)
 	uint16_t	prod;
 	int			stop;
 
-	i = s->best;
+	i = s->best + 1;
 	prod = 0x1 << (i - 1);
 	stop = 2;
-	while (i > stop && !s->wk_grid[i])
+	while (--i > stop && !s->wk_grid[i])
 	{
 		j = -1;
 		while (++j <= i)
