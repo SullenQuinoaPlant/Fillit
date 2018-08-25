@@ -1,13 +1,17 @@
 #include "fillit.h"
 
-static int		follow_tmino_shape(char (*ar)[4], int i, int j)
+static
+t_sts
+	follow_tmino_shape(
+		char (*ar)[4], int i, int j, uint64_t *minobits)
 {
-	int		k;
-	int		ii;
-	int		jj;
-	int 	count;
+	int			k;
+	int			ii;
+	int			jj;
+	int			count;
 
 	ar[i][j] = 0;
+	*minobits |= 1 << (i * 16 + j);
 	count = 1;
 	k = -1;
 	while (++k < 4)
@@ -17,27 +21,23 @@ static int		follow_tmino_shape(char (*ar)[4], int i, int j)
 		jj = j + ((k - 2) * (k % 2));
 		jj = jj >= 0 && jj < 4 ? jj : 0;
 		if (ar[ii][jj])
-			count += follow_tmino_shape(ar, ii, jj);
+			count += follow_tmino_shape(ar, ii, jj, bits);
 	}
 	return (count);
 }
 
-static int		bad_tmino_shape(t_mino * mino)
+static int		bad_tmino(t_mino * mino)
 {
 	char	ar[4][4];
-	int		i;
 	int		j;
 
-	i = -1;
-	while (++i < 4 && (j = -1))
-		while (++j < 4)
-			ar[i][j] = mino->ar[i][j];
-	i = -1;
-	while (++i < 4 && (j = -1))
-		while (++j < 4)
-			if (ar[i][j])
-				return (follow_tmino_shape(ar, i, j) - 4);
-	return (0);
+	arrange_tmino(mino);
+	ft_memcpy(ar, mino->ar, sizeof(mino->ar));
+	j = -1;
+	while (++j < 4)
+		if (ar[0][j] && follow_tmino_shape(ar, 0, j, mino->bits) == 4)
+			return (0);
+	return (1);
 }
 
 static
@@ -61,12 +61,12 @@ int
 			if (k < 4 || (c = *input++) ^ '\n')
 				return (1);
 		}
-		if (bad_tmino_shape(ar + i))
+		if (bad_tmino(ar + i))
 			return (1);
 		c = *input++;
 	}
-	ar[i].ar[0][0] = TMINO_STR_END;
-	return (c);
+	ar[i].bits = 0;
+	return (i);
 }
 
 static
@@ -74,20 +74,18 @@ int
 	get_input(
 		const char *input, t_mino *ret_ar)
 {
-	int	r;
-	int	fd;
+	int		r;
+	int		fd;
 	char	buff[BUFF_SZ] = {0};
 	ssize_t	index;
 
 	r = 0;
-	if (((fd = open(input, O_RDONLY)) ^ -1) &&
+	if (((fd = open(input, O_RDONLY)) != -1) &&
 		(index = read(fd, buff, BUFF_SZ)) > 0 &&
 		index < BUFF_SZ)
 	{
-		if (set_tmino_ar(buff, ret_ar))
+		if (!(r = set_tmino_ar(buff, ret_ar)))
 			my_usage(USAGE_BAD_TETRAMINOS);
-		else
-			r = 1;
 	}
 	else
 		my_usage(USAGE_BAD_FILE);
@@ -97,7 +95,7 @@ int
 }
 
 int
-	my_check_input(
+	check_input(
 		int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)

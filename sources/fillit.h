@@ -27,7 +27,8 @@ typedef strut	s_pos {
 }				t_s_pos;
 
 typedef struct	s_tetramino {
-	uint64_t	minobits;
+	char		ar[4][4];
+	uint64_t	bits;
 	int			h;
 	int			w;
 }				t_mino;
@@ -57,19 +58,23 @@ typedef struct	s_stack_state {
 
 /*functions*/
 void
-	my_arrange_tminos_arr(
-		t_mino *arr);
+	arrange_tmino(
+		t_mino *mino);
+
 int
-	my_check_input(
+	check_input(
 		int ac, char *av[], t_mino *ret_ar);
+
 void
-	my_print_stack(
-		t_tsg_ptr to_print, int side);
+	print_stack(
+		int side, t_s_pos *mino_pos, t_mino *minos);
+
 t_tsg_ptr
-	my_stack_tminos(
-		t_mino *ts, int *sz);
+	stack_tminos(
+		t_mino *tminos, t_s_pos *ret_ar);
+
 void
-	my_usage(
+	usage(
 		int i);
 
 /*usage constants :*/

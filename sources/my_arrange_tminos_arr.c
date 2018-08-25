@@ -66,14 +66,10 @@ static void	set_w_h(t_mino *mino)
 	mino->w = j;
 }
 
-void		my_arrange_tminos_arr(t_mino *arr)
+void
+	arrange_tmino(
+		t_mino *mino)
 {
-	int		i;
-
-	i = -1;
-	while (arr[++i].ar[0][0] ^ TMINO_STR_END)
-	{
-		shift_tmino(&arr[i]);
-		set_w_h(&arr[i]);
-	}
+	shift_tmino(mino);
+	set_w_h(mino);
 }

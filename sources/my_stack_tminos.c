@@ -39,7 +39,7 @@ void
 
 	ft_memcpy(&grid_piece, s->wk_grid[0], sizeof(uint64_t));
 	i = -1;
-	if (!(mino_bits = s->tminos[r++].minobits))
+	if (!(mino_bits = s->tminos[r++].bits))
 		compare_best(s);
 	else
 		while (++i + h <= s->best)
