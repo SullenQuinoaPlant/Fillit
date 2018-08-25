@@ -8,13 +8,13 @@ static void	compare_best(t_stack_state *s)
 	int			stop;
 
 	i = s->best + 1;
-	prod = 0x1 << (i - 1);
-	stop = 2;
-	while (--i > stop && !s->wk_grid[i])
+	stop = 1;
+	while (--i > stop && !s->wk_grid[i + 1])
 	{
+		prod = 0x1 << i;
 		j = -1;
-		while (++j <= i)
-			if (s->wk_grid[j] & prod)
+		while (++j < i)
+			if (s->wk_grid[j + 1] & prod)
 				stop = i;
 	}
 	if (stop < s->best)
@@ -65,7 +65,7 @@ static
 void
 	recurse(
 		t_stack_state *s,
-		int h, int w, int r)
+		int h, int w, int rk)
 {
 	int			i;
 	int			j;
@@ -74,7 +74,7 @@ void
 
 	ft_memcpy(&grid_piece, s->wk_grid, sizeof(uint64_t));
 	i = -1;
-	if (!(mino_bits = s->tminos[r++].bits))
+	if (!(mino_bits = s->tminos[rk++].bits))
 		compare_best(s);
 	else
 		while (++i + h <= s->best && (j = -1))
@@ -84,9 +84,9 @@ void
 				if (!(mino_bits & grid_piece))
 				{
 					s->wk_pos[r - 1] = (t_s_pos){i, j};
-					set_grid(mino_bits, s->wk_grid + i);
-					recurse(s, s->tminos[r].h, s->tminos[r].w, r);
-					unset_grid(mino_bits, s->wk_grid + i);
+					set_grid(mino_bits, s->wk_grid + i + 1);
+					recurse(s, s->tminos[rk].h, s->tminos[rk].w, rk);
+					unset_grid(mino_bits, s->wk_grid + i + 1);
 				}
 			mino_bits <<= 1;
 		}
@@ -105,10 +105,7 @@ int
 	state.ret_pos = ret;
 	i = -1;
 	while (++i < TMINO_MAX_CT)
-	{
-		state.ret_pos[i] = (t_s_pos){-1, -1};
 		state.wk_pos[i] = (t_s_pos){-1, -1};
-	}
 	recurse(&state, tminos->h, tminos->w, 0);
 	return (state.best + 1);
 }
