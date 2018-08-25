@@ -46,7 +46,7 @@ void
 static
 void
 	unset_grid(
-		uint64_t unset, uint64_t *here)
+		uint64_t unset, uint16_t *here)
 {
 	uint16_t	chk;
 	int			i;
@@ -79,7 +79,7 @@ void
 	else
 		while (++i + h <= s->best && (j = -1))
 		{
-			grid_piece = (grid_piece >> 16) | (s->wk_grid[i + 3] << 48);
+			grid_piece = (grid_piece >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
 			while (++j + w <= s->best)
 				if (!(mino_bits & grid_piece))
 				{
