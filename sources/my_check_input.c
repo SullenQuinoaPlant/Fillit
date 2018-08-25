@@ -66,7 +66,7 @@ int
 		c = *input++;
 	}
 	ret_ar[i].bits = 0;
-	return (i);
+	return (!c);
 }
 
 static
