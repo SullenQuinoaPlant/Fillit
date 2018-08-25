@@ -21,7 +21,7 @@
 # define TMINO_STR_END '\1'
 
 
-typedef strut	s_pos {
+typedef struct	s_pos {
 	int	i;
 	int	j;
 }				t_s_pos;
@@ -69,7 +69,7 @@ void
 	print_stack(
 		int side, t_s_pos *mino_pos, t_mino *minos);
 
-t_tsg_ptr
+int
 	stack_tminos(
 		t_mino *tminos, t_s_pos *ret_ar);
 
