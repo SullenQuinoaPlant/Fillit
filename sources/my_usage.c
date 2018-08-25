@@ -6,7 +6,7 @@ char *	messages[MESSAGES] = {
 	"fillit.exe requires exactly one filename as input.\n\
 			the file must describe a list of tetraminos.\n",
 	"could not open specified file or file was too long\n",
-	"tetramino file contents invalid\n"
+	"tetramino file contents invalid\n",
 	"system error\n"
 };
 
