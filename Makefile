@@ -45,7 +45,7 @@ clean_fillit :
 	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git $@/libft
 	mkdir $@/objects
 	mkdir $@/sources
-	cp -r sources/*.h $@
-	cp -r sources/*.c $@
+	cp -r sources/*.h $@/sources
+	cp -r sources/*.c $@/sources
 	mkdir $@/libs
 	ls -R -1 $@/
