@@ -43,7 +43,7 @@ static int		bad_tmino(t_mino * mino)
 static
 int
 	set_tmino_ar(
-		const char *input, t_mino *ar)
+		const char *input, t_mino *ret_ar)
 {
 	int		i;
 	int		j;
@@ -57,15 +57,15 @@ int
 		while (++j < 4 && (k = -1))
 		{
 			while (++k < 4 && ((c = *input++) == '.' || c == '#'))
-				ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
+				ret_ar[i].ar[j][k] = c == '.' ? 0 : 'A' + i;
 			if (k < 4 || (c = *input++) ^ '\n')
-				return (1);
+				return (0);
 		}
-		if (bad_tmino(ar + i))
-			return (1);
+		if (bad_tmino(ret_ar + i))
+			return (0);
 		c = *input++;
 	}
-	ar[i].bits = 0;
+	ret_ar[i].bits = 0;
 	return (i);
 }
 
