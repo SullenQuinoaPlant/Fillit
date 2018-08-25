@@ -78,11 +78,12 @@ void
 		int i);
 
 /*usage constants :*/
-# define MESSAGES 4
+# define MESSAGES 5
 /*usage message codes :*/
 # define USAGE_DEFAULT 0
 # define USAGE_ARG_COUNT 1
 # define USAGE_BAD_FILE 2
 # define USAGE_BAD_TETRAMINOS 3
+# define USAGE_SYS_ERR
 
 #endif

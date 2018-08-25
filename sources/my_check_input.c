@@ -85,10 +85,10 @@ int
 		index < BUFF_SZ)
 	{
 		if (!(r = set_tmino_ar(buff, ret_ar)))
-			my_usage(USAGE_BAD_TETRAMINOS);
+			usage(USAGE_BAD_TETRAMINOS);
 	}
 	else
-		my_usage(USAGE_BAD_FILE);
+		usage(USAGE_BAD_FILE);
 	if (fd != -1)
 		close(fd);
 	return (r);
@@ -99,7 +99,7 @@ int
 		int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
-		my_usage(USAGE_ARG_COUNT);
+		usage(USAGE_ARG_COUNT);
 	else
 		return (get_input(av[1], ret_ar));
 	return (0);

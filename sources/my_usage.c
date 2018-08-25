@@ -7,9 +7,10 @@ char *	messages[MESSAGES] = {
 			the file must describe a list of tetraminos.\n",
 	"could not open specified file or file was too long\n",
 	"tetramino file contents invalid\n"
+	"system error\n"
 };
 
-void	my_usage(int i)
+void	usage(int i)
 {
 	if (i >= MESSAGES)
 		i = USAGE_DEFAULT;

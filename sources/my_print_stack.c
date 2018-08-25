@@ -28,7 +28,10 @@ void
 	int		i;
 
 	if (!(out = malloc(sz)))
+	{
+		usage(USAGE_SYS_ER);
 		return (0);
+	}
 	ft_memset(out, '.', sz - 2);
 	out[sz - 1] = 0;
 	i = 0;
@@ -38,4 +41,5 @@ void
 		out[++i * side] = '\n';
 	}
 	ft_putstr(out);
+	free(out);
 }
