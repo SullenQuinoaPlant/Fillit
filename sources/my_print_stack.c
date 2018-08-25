@@ -2,20 +2,25 @@
 
 static
 void
-	paste_mino(
+	paste_minos(
 		int side, t_s_pos *pos, t_mino *mino, char *out)
 {
 	int		i;
 	int		j;
 	char	c;
 
-	i = -1;
-	while (++i < 4)
+	while (mino->bits)
 	{
-		j = -1;
-		while (++j < 4)
-			if ((c = mino->ar[i][j]))
-				out[(pos->i + i) * (side + 1) + pos->j + j] = c;
+		i = -1;
+		while (++i < 4)
+		{
+			j = -1;
+			while (++j < 4)
+				if ((c = mino->ar[i][j]))
+					out[(pos->i + i) * (side + 1) + pos->j + j] = c;
+		}
+		mino++;
+		pos++;
 	}
 }
 
@@ -36,10 +41,8 @@ int
 	out[sz - 1] = 0;
 	i = 0;
 	while (i < side)
-	{
-		paste_mino(side, pos + i, minos + i, out);
 		out[++i * side] = '\n';
-	}
+	paste_minos(side, pos + i, minos + i, out);
 	ft_putstr(out);
 	free(out);
 	return (1);
