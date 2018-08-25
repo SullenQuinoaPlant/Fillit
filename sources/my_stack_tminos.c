@@ -28,6 +28,41 @@ static void	compare_best(t_stack_state *s)
 
 static
 void
+	set_grid(
+		uint64_t set, uint16_t *here)
+{
+	uint16_t	chk;
+	int			i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		chk = (uint16_t)set;
+		set >>= 16;
+		*here++ |= chk;
+	}
+}
+
+static
+void
+	unset_grid(
+		uint64_t unset, uint64_t *here)
+{
+	uint16_t	chk;
+	int			i;
+
+	unset = ~unset;
+	i = -1;
+	while (++i < 4)
+	{
+		chk = (uint16_t)unset;
+		unset >>= 16;
+		*here++ &= chk;
+	}
+}
+
+static
+void
 	recurse(
 		t_stack_state *s,
 		int h, int w, int r)
@@ -42,15 +77,16 @@ void
 	if (!(mino_bits = s->tminos[r++].bits))
 		compare_best(s);
 	else
-		while (++i + h <= s->best)
+		while (++i + h <= s->best && (j = -1))
 		{
-			grid_piece = (grid_piece >> 16) | s->wk_grid[i + 3];
-			j = -1;
+			grid_piece = (grid_piece >> 16) | (s->wk_grid[i + 3] << 48);
 			while (++j + w <= s->best)
 				if (!(mino_bits & grid_piece))
 				{
 					s->wk_pos[r - 1] = (t_s_pos){i, j};
+					set_grid(mino_bits, s->wk_grid + i);
 					recurse(s, s->tminos[r].h, s->tminos[r].w, r);
+					unset_grid(mino_bits, s->wk_grid + i);
 				}
 			mino_bits <<= 1;
 		}
