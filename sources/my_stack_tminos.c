@@ -83,7 +83,7 @@ void
 			while (++j + w <= s->best)
 				if (!(mino_bits & grid_piece))
 				{
-					s->wk_pos[r - 1] = (t_s_pos){i, j};
+					s->wk_pos[rk - 1] = (t_s_pos){i, j};
 					set_grid(mino_bits, s->wk_grid + i + 1);
 					recurse(s, s->tminos[rk].h, s->tminos[rk].w, rk);
 					unset_grid(mino_bits, s->wk_grid + i + 1);
