@@ -10,16 +10,20 @@ int
 	int			stop;
 
 	i = s->best;
+	prod = 0x1 << i;
 	stop = 1;
-	while (!s->wk_grid[i--] && i > stop)
-	{
-		prod = 0x1 << i;
-		j = -1;
-		while (++j < i)
-			if (s->wk_grid[j + 1] & prod)
-				stop = i;
-	}
-	s->best = i;
+	while (--i > stop)
+		if (s->wk_grid[i + 1])
+			stop = i;
+		else
+		{
+			prod >>= 1;
+			j = -1;
+			while (++j < i)
+				if (s->wk_grid[j + 1] & prod)
+					stop = i;
+		}
+	s->best = stop;
 	j = -1;
 	while (++j < TMINO_MAX_CT)
 		s->ret_pos[j] = s->wk_pos[j];
