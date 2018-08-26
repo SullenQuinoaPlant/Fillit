@@ -13,10 +13,11 @@ CFLAGS += $(CFLAGS_MORE)
 
 TARGETS = \
 		main\
-		my_arrange_tminos_arr\
-		my_check_input\
-		my_print_stack\
-		my_stack_tminos\
-		my_usage
+		arrange_tminos_arr\
+		check_input\
+		compare_best\
+		print_stack\
+		stack_tminos\
+		usage
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
