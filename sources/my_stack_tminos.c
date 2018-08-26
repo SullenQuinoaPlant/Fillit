@@ -11,11 +11,11 @@ int
 
 	i = s->best;
 	stop = 1;
-	while (--i > stop && !s->wk_grid[i + 1])
+	while (!s->wk_grid[i--] && i > stop)
 	{
 		prod = 0x1 << i;
 		j = -1;
-		while (j++ < i)
+		while (++j < i)
 			if (s->wk_grid[j + 1] & prod)
 				stop = i;
 	}
