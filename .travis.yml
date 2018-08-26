@@ -7,21 +7,12 @@ addons:
    - libbsd-dev
 install:
  - INSTALL_HERE=$(pwd)/libs
- - LIBRARY_PATH=$INSTALL_HERE/lib
- - CPATH="$INSTALL_HERE/include"
  - source .travis/install_cmocka.sh
- - source .travis/install_libft.sh
- - export CPATH
- - export LIBRARY_PATH
  - export LD_LIBRARY_PATH=$LIBRARY_PATH
-# - source .travis/install_42filechecker.sh
  - source .travis/install_fillit_checker.sh
+ - make -C libs/ libft
 script:
  - make -k #-p
  - make -k unit-tests
  - make clean_fillit && make -C clean_fillit/
  - cd clean_fillit/ && bash ~/fillit_checker/test.sh .
-# - bash ~/42FileChecker/42FileChecker.sh 
-#   --project "fillit" 
-#   --path "$(pwd)/clean_fillit"
-#   --no-norminette; cat ~/42FileChecker/.my*
