@@ -9,7 +9,7 @@ int
 	uint16_t	prod;
 	int			stop;
 
-	i = s->best;
+	i = s->best + 1;
 	prod = 0x1 << i;
 	stop = 1;
 	while (--i > stop)
