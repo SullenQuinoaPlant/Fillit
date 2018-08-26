@@ -18,7 +18,6 @@
 ** + 25 (empty lines)
 ** + 1 (file too long)*/
 # define BUFF_SZ TMINO_MAX_CT * 4 * 5 + TMINO_MAX_CT - 1 + 1
-# define TMINO_STR_END '\1'
 
 
 typedef struct	s_pos {

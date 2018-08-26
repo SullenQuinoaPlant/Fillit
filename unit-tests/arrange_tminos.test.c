@@ -9,13 +9,24 @@
 #include "auxilliaries.h"
 
 
+#define TMINO_STR_END '\1'
+
+static
+void
+	test_arrange_tminos(
+		t_mino *str)
+{
+	while (str->ar[0][0] != TMINO_STR_END)
+		arrange_tmino(str++);
+}
+
 int		main(void)
 {
 	T(no_tmino,
 		t_mino ar[1];
 
 		ar[0].ar[0][0] = TMINO_STR_END;
-		my_arrange_tminos_arr(ar);
+		test_arrange_tminos(ar);
 	)
 
 	T(one_tmino,
@@ -56,7 +67,7 @@ int		main(void)
 		ar[1].ar[0][0] = TMINO_STR_END;
 //		printf("t_mino string:\n");
 //		aux_print_tmino_string(ar);
-		my_arrange_tminos_arr(ar);
+		test_arrange_tminos(ar);
 //		printf("t_mino string after arranging :\n");
 //		aux_print_tmino_string(ar);
 		
@@ -122,7 +133,7 @@ int		main(void)
 //		printf("t_mino res strig:\n");
 //		aux_print_tmino_string(res_arr);
 
-		my_arrange_tminos_arr(ar);
+		test_arrange_tminos(ar);
 //		printf("t_mino string after arranging :\n");
 //		aux_print_tmino_string(ar);
 		
@@ -171,7 +182,7 @@ int		main(void)
 
 //		printf("t_mino string:\n");
 //		aux_print_tmino_string(ar);
-		my_arrange_tminos_arr(ar);
+		test_arrange_tminos(ar);
 //		printf("t_mino string after arranging :\n");
 //		aux_print_tmino_string(ar);
 		
@@ -210,7 +221,7 @@ int		main(void)
 //
 //		memset(ar, 0, sizeof(ar));
 //		ar[0] = one;
-//		my_arrange_tminos_arr(ar);
+//		test_arrange_tminos(ar);
 //		assert_false(memcmp(ar[0].ar, res.ar, sizeof(t_mino)));
 //	)
 
@@ -223,7 +234,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat stack_tminos_1_tmino");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -239,7 +250,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat stack_tminos_2_tminos");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -255,7 +266,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat stack_tminos_4_tminos");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -271,7 +282,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat stack_tminos_4_tminos_2");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -287,7 +298,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat check_input_valid_sample_1");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -303,7 +314,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat check_input_valid_sample_2");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);
@@ -319,7 +330,7 @@ int		main(void)
 		{
 			printf("input is :\n");
 			system("cat check_input_valid_sample_3");
-			my_arrange_tminos_arr(ret);
+			test_arrange_tminos(ret);
 			printf("after processing : \n");
 			aux_print_tmino_string(ret);
 			free(ret);

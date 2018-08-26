@@ -3,6 +3,7 @@ TEST_SRCS := $(wildcard *.test.c)
 TEST_OBJS := $(TEST_SRCS:.c=.o)
 
 CMOCKA_DIR := ./cmocka
+LIBS = ../libs
 LIBS_DIR = ../libs/objects
 LIBS_H_DIR = ../libs/include
 
@@ -12,6 +13,7 @@ CFLAGS = -fno-builtin #-Wall -Wextra -Werror
 CFLAGS += $(CFLAGS_MORE)
 COMMON_SEARCH_PATHS =\
 		-I $(SRC_DIR)\
+		-L $(LIBS) -I $(LIBS)\
 		-L $(LIBS_DIR) -I $(LIBS_H_DIR)\
 		-L $(CMOCKA_DIR) -I $(CMOCKA_DIR)
 
