@@ -13,7 +13,7 @@ CFLAGS += $(CFLAGS_MORE)
 
 TARGETS = \
 		main\
-		arrange_tminos_arr\
+		arrange_tminos\
 		check_input\
 		compare_best\
 		print_stack\
