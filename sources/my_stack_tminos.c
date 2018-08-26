@@ -1,6 +1,8 @@
 #include "fillit.h"
 
-static void	compare_best(t_stack_state *s)
+static
+int
+	compare_best(t_stack_state *s)
 {
 	int			i;
 	int			j;
@@ -24,6 +26,7 @@ static void	compare_best(t_stack_state *s)
 		while (++j < TMINO_MAX_CT)
 			s->ret_pos[j] = s->wk_pos[j];
 	}
+	return (1);
 }
 
 static
@@ -72,24 +75,27 @@ void
 	uint64_t	mino_bits;
 	uint64_t	grid;
 
+	if (!(mino_bits = s->tminos[rk].bits) && compare_best(s))
+		return;
 	ft_memcpy(&grid, s->wk_grid, sizeof(uint64_t));
 	i = -1;
-	if (!(mino_bits = s->tminos[rk++].bits))
-		compare_best(s);
-	else
-		while (++i + h < s->best && (j = -1))
+	while (++i + h < s->best)
+	{
+		grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
+		j = -1;
+		while (++j + w < s->best)
 		{
-			grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
-			while (++j + w < s->best)
-				if (!(mino_bits & grid))
-				{
-					s->wk_pos[rk - 1] = (t_s_pos){i, j};
-					set_grid(mino_bits, s->wk_grid + i + 1);
-					recurse(s, s->tminos[rk].h, s->tminos[rk].w, rk);
-					unset_grid(mino_bits, s->wk_grid + i + 1);
-				}
+			if (!(mino_bits & grid))
+			{
+				s->wk_pos[rk] = (t_s_pos){i, j};
+				set_grid(mino_bits, s->wk_grid + i + 1);
+				recurse(s, s->tminos[++rk].h, s->tminos[rk].w, rk--);
+				unset_grid(mino_bits, s->wk_grid + i + 1);
+			}
 			mino_bits <<= 1;
 		}
+		mino_bits = s->tminos[rk].bits;
+	}
 }
 
 int
