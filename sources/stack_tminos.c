@@ -52,7 +52,7 @@ void
 	i = -1;
 	while (++i + h < s->best)
 	{
-		grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
+		grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 4] << 48);
 		j = -1;
 		while (++j + w < s->best)
 		{
