@@ -11,7 +11,7 @@ int
 	int			count;
 
 	ar[i][j] = 0;
-	*minobits |= 1 << (i * 16 + j);
+	*minobits |= ((uint64_t)1) << (i * 16 + j);
 	count = 1;
 	k = -1;
 	while (++k < 4)
@@ -33,6 +33,7 @@ static int		bad_tmino(t_mino * mino)
 
 	arrange_tmino(mino);
 	ft_memcpy(ar, mino->ar, sizeof(mino->ar));
+	mino->bits = 0;
 	j = -1;
 	while (++j < 4)
 		if (ar[0][j] && follow_tmino_shape(ar, 0, j, &mino->bits) == 4)
