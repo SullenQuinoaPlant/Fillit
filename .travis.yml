@@ -13,6 +13,6 @@ install:
  - make -C libs/ libft
 script:
  - make -k #-p
- - make -k unit-tests
+ #- make -k unit-tests
  - make clean_fillit && make -C clean_fillit/
  - cd clean_fillit/ && bash ~/fillit_checker/test.sh .
