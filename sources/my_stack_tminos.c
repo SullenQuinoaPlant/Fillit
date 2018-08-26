@@ -11,7 +11,7 @@ int
 
 	i = s->best;
 	stop = 1;
-	while (--i > stop && !s->wk_grid[i])
+	while (--i > stop && !s->wk_grid[i + 1])
 	{
 		prod = 0x1 << i;
 		j = -1;
