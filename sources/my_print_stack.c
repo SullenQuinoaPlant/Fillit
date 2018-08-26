@@ -40,9 +40,9 @@ int
 	ft_memset(out, '.', sz - 2);
 	out[sz - 1] = 0;
 	i = 0;
-	while (i < side)
-		out[++i * side] = '\n';
-	paste_minos(side, pos + i, minos + i, out);
+	while (i++ < side)
+		out[i * side] = '\n';
+	paste_minos(side, pos, minos, out);
 	ft_putstr(out);
 	free(out);
 	return (1);
