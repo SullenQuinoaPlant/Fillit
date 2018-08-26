@@ -19,24 +19,21 @@ int
 	int			i;
 	int			j;
 	uint16_t	prod;
-	int			stop;
 
 	i = s->best + 1;
-	prod = 0x1 << i;
 	stop = 1;
-	while (--i > stop)
+	prod = 0x1 << s->best;
+	while (--i)
+	{
 		if (s->wk_grid[i + 1])
-			stop = i;
-		else
-		{
-			prod >>= 1;
-			j = -1;
-			while (++j < i)
-				if (s->wk_grid[j + 1] & prod)
-					stop = i;
-		}
+			break;
+		j = -1;
+		while (++j < i)
+			if (s->wk_grid[j + 1] & prod)
+				break;
+		prod >>= 1;
+	}
 	if (stop < s->best)
 		set_best(s, stop);
 	return (1);
 }
-

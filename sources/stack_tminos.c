@@ -54,7 +54,7 @@ void
 	{
 		grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
 		j = -1;
-		while (++j + w < s->best && i + h < s->best)
+		while (++j + w < s->best)
 		{
 			if (!(mino_bits & grid))
 			{
