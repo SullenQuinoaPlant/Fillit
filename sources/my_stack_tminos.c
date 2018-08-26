@@ -9,9 +9,9 @@ int
 	uint16_t	prod;
 	int			stop;
 
-	i = s->best + 1;
+	i = s->best;
 	stop = 1;
-	while (--i > stop && !s->wk_grid[i + 1])
+	while (--i > stop && !s->wk_grid[i])
 	{
 		prod = 0x1 << i;
 		j = -1;
@@ -19,13 +19,10 @@ int
 			if (s->wk_grid[j + 1] & prod)
 				stop = i;
 	}
-	if (i < s->best)
-	{
-		s->best = i;
-		j = -1;
-		while (++j < TMINO_MAX_CT)
-			s->ret_pos[j] = s->wk_pos[j];
-	}
+	s->best = i + 1;
+	j = -1;
+	while (++j < TMINO_MAX_CT)
+		s->ret_pos[j] = s->wk_pos[j];
 	return (1);
 }
 
