@@ -66,6 +66,10 @@ int
 		int ac, char *av[], t_mino *ret_ar);
 
 int
+	compare_best(
+		t_stack_state *s);
+
+int
 	print_stack(
 		int side, t_s_pos *mino_pos, t_mino *minos);
 

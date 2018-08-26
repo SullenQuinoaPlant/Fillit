@@ -1,36 +1,6 @@
 #include "fillit.h"
 
 static
-int
-	compare_best(t_stack_state *s)
-{
-	int			i;
-	int			j;
-	uint16_t	prod;
-	int			stop;
-
-	i = s->best + 1;
-	prod = 0x1 << i;
-	stop = 1;
-	while (--i > stop)
-		if (s->wk_grid[i + 1])
-			stop = i;
-		else
-		{
-			prod >>= 1;
-			j = -1;
-			while (++j < i)
-				if (s->wk_grid[j + 1] & prod)
-					stop = i;
-		}
-	s->best = stop;
-	j = -1;
-	while (++j < TMINO_MAX_CT)
-		s->ret_pos[j] = s->wk_pos[j];
-	return (1);
-}
-
-static
 void
 	set_grid(
 		uint64_t set, uint16_t *here)
