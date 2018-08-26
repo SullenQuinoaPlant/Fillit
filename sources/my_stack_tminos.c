@@ -19,7 +19,7 @@ int
 			if (s->wk_grid[j + 1] & prod)
 				stop = i;
 	}
-	s->best = i + 1;
+	s->best = i;
 	j = -1;
 	while (++j < TMINO_MAX_CT)
 		s->ret_pos[j] = s->wk_pos[j];
