@@ -41,7 +41,7 @@ int
 	out[sz - 1] = 0;
 	i = 0;
 	while (i++ < side)
-		out[i * side] = '\n';
+		out[i * (side + 1) - 1] = '\n';
 	paste_minos(side, pos, minos, out);
 	ft_putstr(out);
 	free(out);
