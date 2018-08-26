@@ -70,18 +70,18 @@ void
 	int			i;
 	int			j;
 	uint64_t	mino_bits;
-	uint64_t	grid_piece;
+	uint64_t	grid;
 
-	ft_memcpy(&grid_piece, s->wk_grid, sizeof(uint64_t));
+	ft_memcpy(&grid, s->wk_grid, sizeof(uint64_t));
 	i = -1;
 	if (!(mino_bits = s->tminos[rk++].bits))
 		compare_best(s);
 	else
-		while (++i + h <= s->best && (j = -1))
+		while (++i + h < s->best && (j = -1))
 		{
-			grid_piece = (grid_piece >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
-			while (++j + w <= s->best)
-				if (!(mino_bits & grid_piece))
+			grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 3] << 48);
+			while (++j + w < s->best)
+				if (!(mino_bits & grid))
 				{
 					s->wk_pos[rk - 1] = (t_s_pos){i, j};
 					set_grid(mino_bits, s->wk_grid + i + 1);
