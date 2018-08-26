@@ -35,7 +35,7 @@ int
 					stop = i;
 		prod >>= 1;
 	}
-	if (i < s->best)
-		set_best(s, i);
+	if (stop < s->best)
+		set_best(s, stop);
 	return (1);
 }
