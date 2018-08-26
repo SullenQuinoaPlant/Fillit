@@ -89,7 +89,7 @@ void
 			{
 				s->wk_pos[rk] = (t_s_pos){i, j};
 				set_grid(mino_bits, s->wk_grid + i + 1);
-				recurse(s, s->tminos[++rk].h, s->tminos[rk].w, rk--);
+				recurse(s, s->tminos[rk + 1].h, s->tminos[rk + 1].w, rk + 1);
 				unset_grid(mino_bits, s->wk_grid + i + 1);
 			}
 			mino_bits <<= 1;
