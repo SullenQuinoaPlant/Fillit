@@ -26,13 +26,12 @@ int
 	prod = 0x1 << s->best;
 	while (--i > stop)
 	{
-		j = i;
-		if (s->wk_grid[i + 1])
+		j = -1;
+		while (++j < i)
+			if (s->wk_grid[j + 1] & prod)
+				break;
+		if (j != i || s->wk_grid[i + 1])
 			stop = i;
-		else
-			while (--j > stop)
-				if (s->wk_grid[j + 1] & prod)
-					stop = i;
 		prod >>= 1;
 	}
 	if (stop < s->best)
