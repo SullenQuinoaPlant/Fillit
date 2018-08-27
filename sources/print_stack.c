@@ -6,20 +6,17 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:27 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:45:29 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 03:52:30 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static
-void
-	paste_minos(
-		int side, t_s_pos *pos, t_mino *mino, char *out)
+static void			paste_minos(int side, t_s_pos *pos, t_mino *mino, char *out)
 {
-	int		i;
-	int		j;
-	char	c;
+	int				i;
+	int				j;
+	char			c;
 
 	while (mino->bits)
 	{
@@ -36,13 +33,11 @@ void
 	}
 }
 
-int
-	print_stack(
-		int side, t_s_pos *pos, t_mino *minos)
+int					print_stack(int side, t_s_pos *pos, t_mino *minos)
 {
-	size_t	const sz = side * (side + 1) + 1;
-	char	*out;
-	int		i;
+	size_t const	sz = side * (side + 1) + 1;
+	char			*out;
+	int				i;
 
 	if (!(out = malloc(sz)))
 	{
