@@ -81,12 +81,13 @@ void
 		int i);
 
 /*usage constants :*/
-# define MESSAGES 5
+# define MESSAGES 6
 /*usage message codes :*/
+# define USAGE_SIMPLE 5
 # define USAGE_DEFAULT 0
-# define USAGE_ARG_COUNT 1
-# define USAGE_BAD_FILE 2
-# define USAGE_BAD_TETRAMINOS 3
-# define USAGE_SYS_ERR 4
+# define USAGE_ARG_COUNT USAGE_SIMPLE
+# define USAGE_BAD_FILE USAGE_SIMPLE
+# define USAGE_BAD_TETRAMINOS USAGE_SIMPLE
+# define USAGE_SYS_ERR USAGE_SIMPLE
 
 #endif
