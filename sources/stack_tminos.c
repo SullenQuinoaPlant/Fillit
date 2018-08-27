@@ -6,19 +6,16 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:40 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:57:23 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 03:39:32 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static
-void
-	set_grid(
-		uint64_t set, uint16_t *here)
+static void			set_grid(uint64_t set, uint16_t *here)
 {
-	uint16_t	chk;
-	int			i;
+	uint16_t		chk;
+	int				i;
 
 	i = -1;
 	while (++i < 4)
@@ -29,13 +26,10 @@ void
 	}
 }
 
-static
-void
-	unset_grid(
-		uint64_t unset, uint16_t *here)
+static void			unset_grid(uint64_t unset, uint16_t *here)
 {
-	uint16_t	chk;
-	int			i;
+	uint16_t		chk;
+	int				i;
 
 	unset = ~unset;
 	i = -1;
@@ -47,19 +41,15 @@ void
 	}
 }
 
-static
-void
-	recurse(
-		t_stack_state *s,
-		int h, int w, int rk)
+static void			recurse(t_stack_state *s, int h, int w, int rk)
 {
-	int			i;
-	int			j;
-	uint64_t	mino_bits;
-	uint64_t	grid;
+	int				i;
+	int				j;
+	uint64_t		mino_bits;
+	uint64_t		grid;
 
 	if (!(mino_bits = s->tminos[rk].bits) && compare_best(s))
-		return;
+		return ;
 	ft_memcpy(&grid, s->wk_grid, sizeof(uint64_t));
 	i = -1;
 	while (++i + h < s->best)
@@ -81,16 +71,14 @@ void
 	}
 }
 
-int
-	stack_tminos(
-		t_mino *tminos, t_s_pos *ret)
+int					stack_tminos(t_mino *tminos, t_s_pos *ret)
 {
 	t_stack_state	state;
 	int				i;
 
 	state.tminos = tminos;
 	ft_memset((void*)state.wk_grid, 0, sizeof(t_stack_grid));
-	state.best = WORST_BEST; 
+	state.best = WORST_BEST;
 	state.ret_pos = ret;
 	i = -1;
 	while (++i < TMINO_MAX_CT)
