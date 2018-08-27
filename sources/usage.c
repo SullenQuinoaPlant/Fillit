@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:53 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:48:44 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 03:07:33 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *	messages[MESSAGES] = {
 	"could not open specified file or file was too long\n",
 	"tetramino file contents invalid\n",
 	"system error\n",
-	"error"
+	"error\n"
 };
 
 void	usage(int i)
