@@ -21,3 +21,6 @@ TARGETS = \
 		usage
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
+
+CLEANABLE = $(OBJS)
+FCLEANABLE = $(NAME)

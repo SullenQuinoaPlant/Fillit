@@ -1,5 +1,6 @@
 NAME = fillit
 
+ROOT = .
 LIB_DIR = $(ROOT)/libft
 LIB_OBJ_DIR = $(LIB_DIR)/
 LIB_H_DIR = $(LIB_DIR)/
@@ -21,3 +22,6 @@ TARGETS = \
 		usage
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
+
+CLEANABLE = $(OBJS) $(LIB_DIR)/*.o
+FCLEANABLE = $(NAME) $(LIB_DIR)/libft.a

@@ -40,12 +40,13 @@ clean_fillit :
 	-rm -rf $@/
 	mkdir $@
 	cp auteur $@/
-	cp Makefile.mk $@/Makefile
-	cp Make_vars_release.mk $@/Make_vars.mk
+	cp Make_vars_release.mk $@/Makefile
+	cat Makefile.mk >> $@/Makefile
 	git clone -b the_lib --single-branch https://github.com/SullenQuinoaPlant/Libft.git $@/libft
+	rm -rf $@/libft/.git*
+	rm $@/libft/auteur
 	mkdir $@/objects
 	mkdir $@/sources
 	cp -r sources/*.h $@/sources
 	cp -r sources/*.c $@/sources
-	mkdir $@/libs
 	ls -R -1 $@/

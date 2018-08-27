@@ -1,8 +1,3 @@
-ifndef ROOT
-	ROOT = .
-	include Make_vars.mk
-endif
-
 ##########
 #DEFAULT :
 
@@ -28,6 +23,10 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 
 $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 	$(MAKE) -C $(LIB_DIR)
+	-rm $(LIB_DIR)/was_liba
+	-rm $(LIB_DIR)/was_libso
+	-rm $(LIB_DIR)/is_liba
+	-rm $(LIB_DIR)/is_libso
 
 
 ################
@@ -35,11 +34,11 @@ $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 
 .PHONY : clean
 clean :
-	-rm $(OBJS)
+	-rm $(CLEANABLE)
 
 .PHONY : fclean
 fclean : clean
-	-rm $(NAME)
+	-rm $(FCLEANABLE)
 
 .PHONY : re
 re : fclean all
