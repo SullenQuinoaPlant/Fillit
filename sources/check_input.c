@@ -6,16 +6,14 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:00 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:45:02 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 04:27:55 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static
-int
-	follow_tmino_shape(
-		char (*ar)[4], int i, int j, uint64_t *minobits)
+static int		follow_tmino_shape(char (*ar)[4], int i,\
+									int j, uint64_t *minobits)
 {
 	int			k;
 	int			ii;
@@ -38,10 +36,10 @@ int
 	return (count);
 }
 
-static int		bad_tmino(t_mino * mino)
+static int		bad_tmino(t_mino *mino)
 {
-	char	ar[4][4];
-	int		j;
+	char		ar[4][4];
+	int			j;
 
 	arrange_tmino(mino);
 	ft_memcpy(ar, mino->ar, sizeof(mino->ar));
@@ -53,19 +51,16 @@ static int		bad_tmino(t_mino * mino)
 	return (1);
 }
 
-static
-int
-	set_tmino_ar(
-		const char *input, t_mino *ret_ar)
+static int		set_tmino_ar(const char *input, t_mino *ret_ar)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	c;
+	int			i;
+	int			j;
+	int			k;
+	char		c;
 
 	i = -1;
 	c = '\n';
-	while (++i < TMINO_MAX_CT && c == '\n'  && (j = -1))
+	while (++i < TMINO_MAX_CT && c == '\n' && (j = -1))
 	{
 		while (++j < 4 && (k = -1))
 		{
@@ -82,21 +77,19 @@ int
 	return (!c);
 }
 
-static
-int
-	get_input(
-		const char *input, t_mino *ret_ar)
+static int		get_input(const char *input, t_mino *ret_ar)
 {
-	int		r;
-	int		fd;
-	char	buff[BUFF_SZ] = {0};
-	ssize_t	index;
+	int			r;
+	int			fd;
+	char		buff[BUFF_SZ];
+	ssize_t		index;
 
 	r = 0;
 	if (((fd = open(input, O_RDONLY)) != -1) &&
 		(index = read(fd, buff, BUFF_SZ)) > 0 &&
 		index < BUFF_SZ)
 	{
+		buff[index] = 0;
 		if (!(r = set_tmino_ar(buff, ret_ar)))
 			usage(USAGE_BAD_TETRAMINOS);
 	}
@@ -107,9 +100,7 @@ int
 	return (r);
 }
 
-int
-	check_input(
-		int ac, char *av[], t_mino *ret_ar)
+int			check_input(int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
 		usage(USAGE_ARG_COUNT);

@@ -6,18 +6,15 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:07 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:45:13 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 04:13:56 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static
-void
-	set_best(
-		t_stack_state *s, int new_best)
+static void		set_best(t_stack_state *s, int new_best)
 {
-	int		i;
+	int			i;
 
 	s->best = new_best;
 	i = -1;
@@ -25,8 +22,7 @@ void
 		s->ret_pos[i] = s->wk_pos[i];
 }
 
-int
-	compare_best(t_stack_state *s)
+int				compare_best(t_stack_state *s)
 {
 	int			i;
 	int			j;
@@ -41,7 +37,7 @@ int
 		j = -1;
 		while (++j < i)
 			if (s->wk_grid[j + 1] & prod)
-				break;
+				break ;
 		if (j != i || s->wk_grid[i + 1])
 			stop = i;
 		prod >>= 1;
