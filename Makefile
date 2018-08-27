@@ -35,7 +35,7 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS) | objdir
+$(NAME) : $(OBJ_DIR) $(LIB_OBJ_DIR)/libft.a $(OBJS)
 	$(CC) $(CFLAGS)\
 		-L $(LIB_OBJ_DIR)\
 		$(OBJS)\
@@ -55,9 +55,8 @@ $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 	-rm $(LIB_DIR)/is_liba
 	-rm $(LIB_DIR)/is_libso
 
-.PHONY : objdir
-objdir :
-	mkdir $(ROOT)/objects
+$(OBJ_DIR) :
+	mkdir $@
 
 ################
 #MISCELLANEOUS :
