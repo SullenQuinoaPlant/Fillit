@@ -43,7 +43,7 @@ $(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
 		-lft\
 	 	-o $(NAME) 
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
 	$(CC) $(CFLAGS)\
 		-I $(LIB_H_DIR)\
 		-c -o $@ $<
@@ -55,6 +55,9 @@ $(LIB_OBJ_DIR)/libft.a $(LIB_H_DIR)/libft.h :
 	-rm $(LIB_DIR)/is_liba
 	-rm $(LIB_DIR)/is_libso
 
+.PHONY : objdir
+objdir :
+	mkdir $(ROOT)/objects
 
 ################
 #MISCELLANEOUS :
