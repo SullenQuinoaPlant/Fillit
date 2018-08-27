@@ -35,7 +35,7 @@ all : $(NAME)
 ########
 #BUILD :
 
-$(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
+$(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS) | objdir
 	$(CC) $(CFLAGS)\
 		-L $(LIB_OBJ_DIR)\
 		$(OBJS)\
@@ -43,7 +43,7 @@ $(NAME) : $(LIB_OBJ_DIR)/libft.a $(OBJS)
 		-lft\
 	 	-o $(NAME) 
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | objdir
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS)\
 		-I $(LIB_H_DIR)\
 		-c -o $@ $<
