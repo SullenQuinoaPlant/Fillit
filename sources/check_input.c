@@ -6,14 +6,13 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:00 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 04:27:55 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 04:32:33 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		follow_tmino_shape(char (*ar)[4], int i,\
-									int j, uint64_t *minobits)
+static int		follow_tmino_shape(char (*ar)[4], int i, int j, uint64_t *bits)
 {
 	int			k;
 	int			ii;
@@ -21,7 +20,7 @@ static int		follow_tmino_shape(char (*ar)[4], int i,\
 	int			count;
 
 	ar[i][j] = 0;
-	*minobits |= ((uint64_t)1) << (i * 16 + j);
+	*bits |= ((uint64_t)1) << (i * 16 + j);
 	count = 1;
 	k = -1;
 	while (++k < 4)
@@ -31,7 +30,7 @@ static int		follow_tmino_shape(char (*ar)[4], int i,\
 		jj = j + ((k - 2) * (k % 2));
 		jj = jj >= 0 && jj < 4 ? jj : 0;
 		if (ar[ii][jj])
-			count += follow_tmino_shape(ar, ii, jj, minobits);
+			count += follow_tmino_shape(ar, ii, jj, bits);
 	}
 	return (count);
 }
@@ -100,7 +99,7 @@ static int		get_input(const char *input, t_mino *ret_ar)
 	return (r);
 }
 
-int			check_input(int ac, char *av[], t_mino *ret_ar)
+int				check_input(int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
 		usage(USAGE_ARG_COUNT);
