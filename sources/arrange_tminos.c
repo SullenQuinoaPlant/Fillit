@@ -6,13 +6,13 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:44:54 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 02:44:57 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 04:30:06 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	up_shift(t_mino	mino)
+static int	up_shift(t_mino mino)
 {
 	int		i;
 	int		j;
@@ -78,9 +78,7 @@ static void	set_w_h(t_mino *mino)
 	mino->w = j;
 }
 
-void
-	arrange_tmino(
-		t_mino *mino)
+void		arrange_tmino(t_mino *mino)
 {
 	shift_tmino(mino);
 	set_w_h(mino);
