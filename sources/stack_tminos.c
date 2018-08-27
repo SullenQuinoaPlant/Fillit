@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:40 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 03:39:32 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/27 03:55:44 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ static void			recurse(t_stack_state *s, int h, int w, int rk)
 		return ;
 	ft_memcpy(&grid, s->wk_grid, sizeof(uint64_t));
 	i = -1;
-	while (++i + h < s->best)
+	while (++i + h < s->best && (j = -1))
 	{
 		grid = (grid >> 16) | ((uint64_t)s->wk_grid[i + 4] << 48);
-		j = -1;
 		while (++j + w < s->best)
 		{
 			if (!(mino_bits & grid))
