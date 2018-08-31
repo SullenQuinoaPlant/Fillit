@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbellaic <mbellaic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 03:52:41 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 04:11:24 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/08/31 04:48:39 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,15 @@ void				usage(int i);
 ** usage constants :
 */
 
-# define MESSAGES 6
+# define MESSAGES 7
 
 /*
 ** usage message codes :
 */
 
 # define USAGE_SIMPLE 5
-# define USAGE_DEFAULT 0
+# define USAGE_USAGE 0
+# define USAGE_DEFAULT USAGE_SIMPLE
 # define USAGE_ARG_COUNT USAGE_SIMPLE
 # define USAGE_BAD_FILE USAGE_SIMPLE
 # define USAGE_BAD_TETRAMINOS USAGE_SIMPLE

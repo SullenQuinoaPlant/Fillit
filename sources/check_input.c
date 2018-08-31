@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbellaic <mbellaic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:00 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 04:32:33 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/08/31 04:48:23 by mbellaic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ static int		get_input(const char *input, t_mino *ret_ar)
 
 int				check_input(int ac, char *av[], t_mino *ret_ar)
 {
-	if (ac ^ 2)
-		usage(USAGE_ARG_COUNT);
+	if (ac != 2 || ac < 2 || ac > 2)
+		usage(USAGE_USAGE);
 	else
 		return (get_input(av[1], ret_ar));
 	return (0);
