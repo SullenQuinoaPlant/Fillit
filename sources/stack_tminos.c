@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:40 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 03:55:44 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/01 04:27:06 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,17 @@ int					stack_tminos(t_mino *tminos, t_s_pos *ret)
 	int				i;
 
 	state.tminos = tminos;
-	ft_memset((void*)state.wk_grid, 0, sizeof(t_stack_grid));
-	state.best = WORST_BEST;
 	state.ret_pos = ret;
 	i = -1;
 	while (++i < TMINO_MAX_CT)
 		state.wk_pos[i] = (t_s_pos){-1, -1};
-	recurse(&state, tminos->h, tminos->w, 0);
+	*ret = (t_s_pos){-1, -1};
+	state.best = 1
+	while (ret->i == -1)
+	{
+		state.best++;
+		ft_memset((void*)state.wk_grid, 0, sizeof(t_stack_grid));
+		recurse(&state, tminos->h, tminos->w, 0);
+	}
 	return (state.best + 1);
 }
