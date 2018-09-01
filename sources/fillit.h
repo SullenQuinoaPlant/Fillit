@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 03:52:41 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 04:11:24 by mbellaic         ###   ########.fr       */
+/*   Updated: 2018/09/01 04:13:44 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,27 +91,12 @@ int					check_input(int ac, char *av[], t_mino *ret_ar);
 
 int					compare_best(t_stack_state *s);
 
+void				error();
+
 int					print_stack(int side, t_s_pos *mino_pos, t_mino *minos);
 
 int					stack_tminos(t_mino *tminos, t_s_pos *ret_ar);
 
-void				usage(int i);
-
-/*
-** usage constants :
-*/
-
-# define MESSAGES 6
-
-/*
-** usage message codes :
-*/
-
-# define USAGE_SIMPLE 5
-# define USAGE_DEFAULT 0
-# define USAGE_ARG_COUNT USAGE_SIMPLE
-# define USAGE_BAD_FILE USAGE_SIMPLE
-# define USAGE_BAD_TETRAMINOS USAGE_SIMPLE
-# define USAGE_SYS_ERR USAGE_SIMPLE
+void				usage();
 
 #endif
