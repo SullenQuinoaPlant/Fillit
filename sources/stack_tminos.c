@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:40 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/09/01 04:27:06 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/01 04:34:02 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int					stack_tminos(t_mino *tminos, t_s_pos *ret)
 	while (++i < TMINO_MAX_CT)
 		state.wk_pos[i] = (t_s_pos){-1, -1};
 	*ret = (t_s_pos){-1, -1};
-	state.best = 1
+	state.best = 1;
 	while (ret->i == -1)
 	{
 		state.best++;
