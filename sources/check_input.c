@@ -6,7 +6,7 @@
 /*   By: mbellaic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 02:45:00 by mbellaic          #+#    #+#             */
-/*   Updated: 2018/08/27 04:32:33 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/01 04:18:16 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ static int		get_input(const char *input, t_mino *ret_ar)
 	{
 		buff[index] = 0;
 		if (!(r = set_tmino_ar(buff, ret_ar)))
-			usage(USAGE_BAD_TETRAMINOS);
+			error();
 	}
 	else
-		usage(USAGE_BAD_FILE);
+		error();
 	if (fd != -1)
 		close(fd);
 	return (r);
@@ -102,7 +102,7 @@ static int		get_input(const char *input, t_mino *ret_ar)
 int				check_input(int ac, char *av[], t_mino *ret_ar)
 {
 	if (ac ^ 2)
-		usage(USAGE_ARG_COUNT);
+		usage();
 	else
 		return (get_input(av[1], ret_ar));
 	return (0);

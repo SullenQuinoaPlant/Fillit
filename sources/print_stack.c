@@ -41,7 +41,7 @@ int					print_stack(int side, t_s_pos *pos, t_mino *minos)
 
 	if (!(out = malloc(sz)))
 	{
-		usage(USAGE_SYS_ERR);
+		error();
 		return (0);
 	}
 	ft_memset(out, '.', sz - 2);

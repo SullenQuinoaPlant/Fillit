@@ -14,7 +14,7 @@
 
 #DEFINE USAGE "usage: ./fillit [filename]
 
-void	usage()
+void	error()
 {
 	ft_putstr(USAGE);
 }
