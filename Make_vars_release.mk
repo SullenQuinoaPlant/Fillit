@@ -17,9 +17,9 @@ TARGETS = \
 		arrange_tminos\
 		check_input\
 		compare_best\
+		messages\
 		print_stack\
-		stack_tminos\
-		usage
+		stack_tminos
 
 OBJS := $(patsubst %,$(OBJ_DIR)/%.o,$(TARGETS))
 
